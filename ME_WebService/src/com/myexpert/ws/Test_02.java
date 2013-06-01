@@ -20,7 +20,7 @@ public class Test_02 extends HttpServlet {
   }
   
   protected void doGet(HttpServletRequest request,
-      HttpServletResponse response) throws ServletException, IOException {
+    HttpServletResponse response) throws ServletException, IOException {
     // Set a cookie for the user, so that the counter does not increate
     // everytime the user press refresh
     HttpSession session = request.getSession(true);

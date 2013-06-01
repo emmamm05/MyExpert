@@ -3,6 +3,7 @@
 	<name>ME_PresentationLayer</name>
 	<comment></comment>
 	<projects>
+		<project>ME_BusinessLogicLayer</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
