@@ -3,6 +3,7 @@
 	<name>ME_BusinessLogicLayer</name>
 	<comment></comment>
 	<projects>
+		<project>ME_DataAccessLayer</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

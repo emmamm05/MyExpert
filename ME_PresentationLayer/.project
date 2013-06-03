@@ -4,6 +4,7 @@
 	<comment></comment>
 	<projects>
 		<project>ME_BusinessLogicLayer</project>
+		<project>ME_DataAccessLayer</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
