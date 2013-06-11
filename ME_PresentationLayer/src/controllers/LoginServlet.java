@@ -20,11 +20,11 @@ import test.cLogin;
 
 
 
-import DataTrasportObjects.LoginDTO;
+import Models.UserModel;
 
 import com.sun.jersey.api.view.Viewable;
 
-import factory.ViewModelFactory;
+import factory.ViewModelBuilder;
 
 
 @Path("/Login")
@@ -48,21 +48,26 @@ public class LoginServlet {
 	  @POST
 	  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	  public Response sayHtmlHello( 
-			  @FormParam("user") String user, 
-			  @FormParam("pwd") String pwd ) {
+			  @FormParam("Username") String user, 
+			  @FormParam("Password") String pwd ) {
 		
 		cLogin loginBL = new cLogin();
-		LoginDTO loginRequested = new LoginDTO();  
+		UserModel loginRequested = new UserModel();  
 		loginRequested.setUser(user);
 		loginRequested.setPwd(pwd);
+		
+		ViewModelBuilder vmFactory = new ViewModelBuilder();
 				
-		if (loginBL.Validate(loginRequested)){		
-			return Response.ok(new Viewable("/ResultLogin",
-					ViewModelFactory.getInstance().buildLoginViewModel(loginRequested,true)
+		if (loginBL.Validate(loginRequested)){	
+			System.out.println("Autentificacion Valida");
+			return Response.ok(new Viewable("/Perfil",
+					vmFactory.buildPerfilViewModel(
+							loginBL.getLoginDTO())
 					)).build();
 		}
-		return Response.ok(new Viewable("/ResultLogin",
-				ViewModelFactory.getInstance().buildLoginViewModel(loginRequested,false)
+		System.out.println("Autentificacion Invalida");
+		return Response.ok(new Viewable("/Login",
+				vmFactory.buildLoginViewModel(true)
 				)).build();
 	  }
 	  

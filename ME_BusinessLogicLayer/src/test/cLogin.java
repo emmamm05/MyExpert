@@ -1,20 +1,21 @@
 package test;
 
-import DataAccessObjects.LoginDAO;
-import DataTrasportObjects.LoginDTO;
+import repositories.UserRepository;
+import Models.UserModel;
 
 public class cLogin {
 	
-	private LoginDTO mLoginData;
+	private UserModel mLoginData;
 	
 	public cLogin(){
 		
 	}
 	
-	public boolean Validate(LoginDTO pLoginRequested){
+	public boolean Validate(UserModel pLoginRequested){
 		
-		LoginDAO loginDao = new LoginDAO();
-		LoginDTO loginUserMatched = loginDao.find(pLoginRequested);
+		UserRepository userRepository = new UserRepository();
+		UserModel loginUserMatched = 
+				userRepository.getUserModel(pLoginRequested.getmUser(), pLoginRequested.getmPwd());
 		if (pLoginRequested.getUser().equals(loginUserMatched.getUser() )
 			&& pLoginRequested.getPwd().equals(loginUserMatched.getPwd())){
 			
@@ -25,7 +26,7 @@ public class cLogin {
 					
 	}
 	
-	public LoginDTO getLoginDTO(){
+	public UserModel getLoginDTO(){
 		return mLoginData;
 	}
 
