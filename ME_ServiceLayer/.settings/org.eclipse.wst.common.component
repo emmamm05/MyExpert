@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="ME_ServiceLayer">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <dependent-module archiveName="ME_CommonLayer.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ME_CommonLayer/ME_CommonLayer">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ME_BusinessLogicLayer.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ME_BusinessLogicLayer/ME_BusinessLogicLayer">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ME_DataAccessLayer.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ME_DataAccessLayer/ME_DataAccessLayer">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="ME_ServiceLayer"/>
+        <property name="java-output-path" value="/ME_ServiceLayer/build/classes"/>
+    </wb-module>
+</project-modules>

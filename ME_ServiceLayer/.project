@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>ME_PresentationLayer</name>
+	<name>ME_ServiceLayer</name>
 	<comment></comment>
 	<projects>
+		<project>ME_CommonLayer</project>
 		<project>ME_BusinessLogicLayer</project>
 		<project>ME_DataAccessLayer</project>
-		<project>ME_CommonLayer</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

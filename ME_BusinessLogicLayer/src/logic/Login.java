@@ -1,13 +1,13 @@
-package test;
+package logic;
 
+import models.UserModel;
 import repositories.UserRepository;
-import Models.UserModel;
 
-public class cLogin {
+public class Login {
 	
 	private UserModel mLoginData;
 	
-	public cLogin(){
+	public Login(){
 		
 	}
 	
@@ -15,7 +15,7 @@ public class cLogin {
 		
 		UserRepository userRepository = new UserRepository();
 		UserModel loginUserMatched = 
-				userRepository.getUserModel(pLoginRequested.getmUser(), pLoginRequested.getmPwd());
+				userRepository.getUserModel(pLoginRequested.getUser(), pLoginRequested.getPwd());
 		if (pLoginRequested.getUser().equals(loginUserMatched.getUser() )
 			&& pLoginRequested.getPwd().equals(loginUserMatched.getPwd())){
 			
@@ -26,7 +26,7 @@ public class cLogin {
 					
 	}
 	
-	public UserModel getLoginDTO(){
+	public UserModel getLoggedUser(){
 		return mLoginData;
 	}
 

@@ -44,7 +44,7 @@
 	<div id="footer-content">
 		<div>
 			<form id="input" action="Login" class="auto-style1" method="post" style="height: 226px; width: 392px">
-				<p><b>${it.Message}</b></p>
+				<p><b>${it.message}</b></p>
 				<p style="width: 351px" id="tituloSeccion">Iniciar Sesión</p>
 				<p></p>
 				<table>

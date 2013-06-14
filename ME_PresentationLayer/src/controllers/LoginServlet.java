@@ -1,11 +1,5 @@
 package controllers;
 
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -15,35 +9,22 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.FormParam;
 
-import test.cLogin;
-
-
-
-
-import Models.UserModel;
+import logic.Login;
+import models.UserModel;
+import models.ViewLoginModel;
 
 import com.sun.jersey.api.view.Viewable;
-
-import factory.ViewModelBuilder;
 
 
 @Path("/Login")
 public class LoginServlet {
 
-	  // This method is called if TEXT_PLAIN is request
 	  @GET
-	  @Produces(MediaType.TEXT_PLAIN)
-	  public String sayPlainTextHello() {
-	    return "Hello Jersey";
+	  @Produces(MediaType.TEXT_HTML)
+	  public Response showLoginPage(){
+		  return Response.ok(new Viewable("/Login")).build();
 	  }
-
-	  // This method is called if XML is request
-	  @GET
-	  @Produces(MediaType.TEXT_XML)
-	  public String sayXMLHello() {
-	    return "<?xml version=\"1.0\"?>" + "<hello> Hello Jersey" + "</hello>";
-	  }
-
+	  
 	  // This method is called if HTML is request
 	  @POST
 	  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
@@ -51,30 +32,25 @@ public class LoginServlet {
 			  @FormParam("Username") String user, 
 			  @FormParam("Password") String pwd ) {
 		
-		cLogin loginBL = new cLogin();
-		UserModel loginRequested = new UserModel();  
+		Login loginBL = new Login();
+		
+		UserModel loginRequested = new UserModel();
 		loginRequested.setUser(user);
 		loginRequested.setPwd(pwd);
 		
-		ViewModelBuilder vmFactory = new ViewModelBuilder();
+		boolean isValid = loginBL.Validate(loginRequested);//temporalmente
+		UserModel loginMatched = loginBL.getLoggedUser();
 				
-		if (loginBL.Validate(loginRequested)){	
+		if ( isValid ){	
 			System.out.println("Autentificacion Valida");
-			return Response.ok(new Viewable("/Perfil",
-					vmFactory.buildPerfilViewModel(
-							loginBL.getLoginDTO())
-					)).build();
+			return Response.ok(new Viewable("/Perfil", loginMatched )).build();
 		}
 		System.out.println("Autentificacion Invalida");
-		return Response.ok(new Viewable("/Login",
-				vmFactory.buildLoginViewModel(true)
-				)).build();
+		ViewLoginModel loginView = new ViewLoginModel();
+		loginView.setMessage("Autentificacion Invalida");
+		loginView.setUserModel(loginMatched);
+		return Response.ok(new Viewable("/Login",loginView )).build();
 	  }
 	  
-	  @GET
-	  @Produces(MediaType.TEXT_HTML)
-	  public Response showLoginPage(){
-		  return Response.ok(new Viewable("/Login")).build();
-	  }
 		
 }

@@ -13,5 +13,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/ME_DataAccessLayer"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ME_CommonLayer"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

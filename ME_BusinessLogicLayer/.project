@@ -4,6 +4,7 @@
 	<comment></comment>
 	<projects>
 		<project>ME_DataAccessLayer</project>
+		<project>ME_CommonLayer</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

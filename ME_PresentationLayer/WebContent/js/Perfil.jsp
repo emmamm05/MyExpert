@@ -58,28 +58,28 @@
 			<p></p>
 			<table class="auto-style2">
 				<tr>
-					<td>Usuario: ${it.Username}
+					<td>Usuario: ${it.user}
 					</td><td></td>
 				</tr>
 				<tr><td></td><td></td></tr>
 				<tr>
-					<td>Nombre: ${it.Nombre}</td><td></td>
+					<td>Nombre: ${it.nombre}</td><td></td>
 				</tr>
 				<tr><td></td><td></td></tr>
 				<tr>
-					<td>E-mail: ${it.Email}</td><td></td>
+					<td>E-mail: ${it.email}</td><td></td>
 				</tr>
 				<tr><td></td><td></td></tr>
 				<tr>
-					<td>Genero: ${it.Genero}</td><td></td>
+					<td>Genero: ${it.genero}</td><td></td>
 				</tr>
 				<tr><td></td><td></td></tr>
 				<tr>
-					<td>Pais: ${it.Pais}</td><td></td>
+					<td>Pais: ${it.pais}</td><td></td>
 				</tr>
 				<tr><td></td><td></td></tr>
 				<tr>
-					<td>Experiencia: ${it.Experiencia}</td><td></td>
+					<td>Experiencia: </td><td></td>
 				</tr>
 				<tr><td></td><td></td></tr>
 				<tr>

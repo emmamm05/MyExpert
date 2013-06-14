@@ -13,8 +13,8 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/ME_BusinessLogicLayer"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/ME_DataAccessLayer"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ME_BusinessLogicLayer"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ME_DataAccessLayer"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ME_CommonLayer"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

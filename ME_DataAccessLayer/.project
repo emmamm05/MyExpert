@@ -3,6 +3,7 @@
 	<name>ME_DataAccessLayer</name>
 	<comment></comment>
 	<projects>
+		<project>ME_CommonLayer</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

@@ -8,6 +8,9 @@
         <dependent-module archiveName="ME_DataAccessLayer.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ME_DataAccessLayer/ME_DataAccessLayer">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="ME_CommonLayer.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ME_CommonLayer/ME_CommonLayer">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="ME_PresentationLayer"/>
         <property name="java-output-path" value="/ME_PresentationLayer/build/classes"/>
     </wb-module>
