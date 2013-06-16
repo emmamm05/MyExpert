@@ -5,7 +5,7 @@ import repositories.UserRepository;
 
 public class Login {
 	
-	private UserModel mLoginData;
+	private static UserModel mLoginData;
 	
 	public Login(){
 		

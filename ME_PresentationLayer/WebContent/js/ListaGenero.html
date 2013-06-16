@@ -22,6 +22,11 @@ Released   : 20121013
 <!--[if IE 6]>
 <link href="default_ie6.css" rel="stylesheet" type="text/css" />
 <![endif]-->
+<style type="text/css">
+.auto-style1 {
+	margin-left: 300px;
+}
+</style>
 </head>
 <body>
 
@@ -34,7 +39,12 @@ Released   : 20121013
 		</div>
 		<div id="menu">
 			<ul>
-				<li><a href="#" accesskey="4" title="">Volver</a></li>
+				<li><a href="#" accesskey="4" title="">Búsqueda de títulos</a></li>
+				<li class="current_page_item"><a href="AddGenero.html" accesskey="2" title="">Lista generos</a></li>
+				<li><a href="AddTitulo.html" accesskey="3" title="">Crear título</a></li>
+				<li><a href="#" accesskey="5" title="">Cargar calificación</a></li>
+				<li><a href="PaginaPerfil_2.html" accesskey="1" title="">Perfil</a></li>
+				<li><a href="logInMyExpert.html" accesskey="5" title="">Salir</a></li>
 			</ul>
 		</div>
 	</div>
@@ -47,7 +57,21 @@ Released   : 20121013
 <div id="footer-wrapper">
 	<div id="footer-content">
 		<div>
-			<form action="" method="post" style="height: 205px">
+			<form action="" method="post" style="height: 432px">
+				<p style="width: 351px" id="tituloSeccion">Lista de géneros</p>
+				<p></p>
+				<table class="auto-style1">
+					<tr>
+						<td></td><td><a href="AddGenero.html"><input name="CrearGenero" type="button" value="Crear un género nuevo" ></input></a></td>
+					</tr>
+					<tr>
+					<td>
+					<table border="1" style="height: 336px; width: 350px">
+					<tr><td></td></tr>
+					</table>
+						</td>
+					</tr>
+				</table>
 			</form>
 		</div>
 	</div>
@@ -57,10 +81,6 @@ Released   : 20121013
 
 <!-- Parte inferior de la pagina web -->
 
-<div id="page-wrapper">
-	<div id="page">
-	</div>
-</div>
 
 <!-- Fin de Parte inferior de la pagina web -->
 
