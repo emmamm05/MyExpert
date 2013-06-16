@@ -102,12 +102,12 @@ public class UserModelTest {
 	}
 
 	@Test
-	public void testGetGéneros() {
+	public void testGetGeneros() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testSetGéneros() {
+	public void testSetGeneros() {
 		fail("Not yet implemented");
 	}
 

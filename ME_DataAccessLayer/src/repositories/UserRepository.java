@@ -51,4 +51,39 @@ public class UserRepository {
 	public List<UserModel> getUsersByFullName(String name){
 		return null;
 	}
+	
+	/**
+	 * @param pUserName: Nombre del nuevo usuario a registrarse
+	 * @param pPassword: Contrasena del nuevo usuario
+	 * @param pMail: correo del nuevo usuario
+	 * @param pRol: rol correspondiente del nuevo usuario
+	 * @return Se devuelve un valor booleano correspondiente al
+	 * resultado del proceso de guardar la informacion en la base
+	 * de datos.
+	 */
+	public boolean setNewUser(String pUserName, String pPassword, String pMail, String pRol){
+		
+		/*
+		 * Aqui se coloca la logica para guardar la informacion del usuario en la base de datos
+		 */
+		
+		return true;
+	}
+	
+	/**
+	 * 
+	 * @param pUser: Username del nuevo usuario experto
+	 * @param pNombre: Nombre completo del usuario
+	 * @param pPais: Pais de procedencia del usuario
+	 * @param pSexo: Genero del nuevo usuario
+	 * @param pGenero: Generos de pelicuals que domina el usuario
+	 * @param pExperiencia: Experincia en el septimo arte el nuevo usuario
+	 * @param pEmail: Correo electronico de contacto del nuevo usuario
+	 * @return Se retorna el valor boolenao del resultado del proceso de guardar los datos
+	 * en la base de datos
+	 */
+	public boolean guardarInformacionAdicionalDeUsuario(String pUser, String pNombre, String pPais, String pSexo, String pGenero, String pExperiencia, String pEmail){
+		//Aqui se coloca la logica para guardar esta informacion dentro de la base de datos
+		return true;
+	}
 }
