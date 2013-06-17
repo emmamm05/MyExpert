@@ -5,7 +5,7 @@ import java.util.List;
 
 import repositories.RecomendationsRepository;
 
-import models.Recomendation;
+import models.Recomendacion;
 
 /**
  * @author emma
@@ -23,8 +23,8 @@ public class RecommendationBL {
 		
 	}
 	
-	public List<Recomendation> getNewRecommendations(String pUsuario,String timestamp){
-		List<Recomendation> recomendaciones = new ArrayList<Recomendation>();
+	public List<Recomendacion> getNewRecommendations(String pUsuario,String timestamp){
+		List<Recomendacion> recomendaciones = new ArrayList<Recomendacion>();
 		mRepository.getNuevasRecomendaciones(recomendaciones,pUsuario, timestamp);
 		return recomendaciones;
 	}

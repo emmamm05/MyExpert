@@ -7,6 +7,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -16,7 +17,7 @@ import java.util.Date;
  */
 
 @XmlRootElement(name = "recomendation")
-public class Recomendation implements IModel{
+public class Recomendacion implements IModel, Serializable{
 	private String  mAutor;
 	private int     mTipoAutor;
 	private String  mDestinatario;

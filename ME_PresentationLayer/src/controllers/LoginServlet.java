@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URI;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +12,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -19,8 +21,10 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.FormParam;
 
 import logic.Login;
-import models.UserModel;
+import models.User;
 import models.ViewLoginModel;
+
+import autentificacion.BasicAuth;
 
 import com.sun.jersey.api.view.Viewable;
 
@@ -30,7 +34,6 @@ public class LoginServlet {
 
 	  @Context
 	  UriInfo uriInfo;
-	  Login loginBL = new Login();
 
 	  @GET
 	  @Produces(MediaType.TEXT_HTML)
@@ -40,48 +43,34 @@ public class LoginServlet {
 			return Response.ok(new Viewable("/Login",loginView )).build();
 	  }	  
 	  
-	  @Path("/Perfil")
-	  @GET
-	  @Produces(MediaType.TEXT_HTML)
-	  public Response showPerfilPage(@Context HttpServletRequest req){
-		  	HttpSession session = req.getSession(true);
-		    UserModel user = loginBL.getLoggedUser();
-		    System.out.println(user.toString());
-			return Response.ok(new Viewable("/Perfil", user )).build();
-	  }
-	  
 	  // This method is called if HTML is request
 	  @POST
 	  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	  public Response handlerLogin( 
 			  @FormParam("Username") String user, 
 			  @FormParam("Password") String pwd,
-			  @Context final HttpServletResponse response) throws IOException {
-		
-		Login loginBL = new Login();
-
-		  
-		UserModel loginRequested = new UserModel();
+			  @Context HttpServletRequest request,
+			  @Context HttpServletResponse response) throws IOException {
+				  
+		User loginRequested = new User();
 		loginRequested.setUser(user);
 		loginRequested.setPwd(pwd);
-		
-		boolean isValid = loginBL.Validate(loginRequested);
-		//temporalmente necesita validarse antes de llamar getLoggedUser
-		UserModel loginMatched = loginBL.getLoggedUser();
+		String id = UUID.randomUUID().toString();
+		boolean isValid = Login.Validate(loginRequested, id );
 				
-		if ( isValid ){	
+		if ( isValid ){
+//			response.setHeader("UUID", id);
 			System.out.println("Autentificacion Valida");
-			//return showPerfilPage( loginMatched );
-			//response.sendRedirect("http://localhost:8080/ME_PresentationLayer/rest/Login/perfil");
-			System.out.println(uriInfo.getBaseUriBuilder());
-			URI uri = uriInfo.getBaseUriBuilder().path("/Login/Perfil").build();
-			System.out.println(uri.getPath());
-			System.out.println(loginMatched.toString());
-			return Response.seeOther(uri).build();						
+			UriBuilder builder = uriInfo.getBaseUriBuilder();
+			builder.path("/Perfil");
+			builder.queryParam("UUID", id);
+			URI uri = builder.build();
+			Response res = Response.seeOther(uri).header("UUID", request.getHeader("UUID")).build();
+			return res;						
 		}
 		System.out.println("Autentificacion Invalida");
 		return showLoginPage("Autentificacion Invalida");
 	  }
 	  
-		
+	
 }

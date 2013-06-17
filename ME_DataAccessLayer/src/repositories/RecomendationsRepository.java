@@ -5,7 +5,7 @@ package repositories;
 
 import java.util.List;
 
-import models.Recomendation;
+import models.Recomendacion;
 
 /**
  * @author emma
@@ -14,16 +14,16 @@ import models.Recomendation;
 public class RecomendationsRepository {
 	
 	public boolean getNuevasRecomendaciones(
-			List<Recomendation> pRecomendaciones, 
+			List<Recomendacion> pRecomendaciones, 
 			String Usuario, String timestamp){
-		Recomendation recomendacion1 = new Recomendation();
+		Recomendacion recomendacion1 = new Recomendacion();
 		recomendacion1.setDestinatario("destinatario");
 		recomendacion1.setAutor("autor");
 		recomendacion1.setFecha("2001");
 		recomendacion1.setProcessed(true);
 		recomendacion1.setTipoAutor(1);
 		
-		Recomendation recomendacion2 = new Recomendation();
+		Recomendacion recomendacion2 = new Recomendacion();
 		recomendacion2.setDestinatario("destinatario2");
 		recomendacion2.setAutor(Usuario);
 		recomendacion2.setFecha(timestamp);
