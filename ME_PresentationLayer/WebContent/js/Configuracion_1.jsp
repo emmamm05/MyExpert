@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -54,25 +55,25 @@
 	<div id="footer-content" style="height: 374px">
 		<div style="width: 313px; height: 168px; position: relative; left: 32px; top: -18px">
 			<img src="../images/icono_perfil.png" alt="" height="145" width="148"/>
-			<form method="post">
+			<form action="" method="post">
 				Seleccionar imagen de perfil:<input name="File1" type="file" />
 			</form>
 		</div>
 		<div class="auto-style8" style="position: relative; left: -100px; top: -193px; height: 361px">
-			<form action="" method="post" style="height: 314px; width: 436px;" class="auto-style1">
+			<form action="userConfig" method="post" style="height: 314px; width: 436px;" class="auto-style1">
 				<p></p>
 				<table>
 					<tr>
-					<td>Usuario:</td><td><input name="user" type="text" class="auto-style4" style="width: 200px" /></td>
+					<td>Usuario:</td><td><input name="user" type="text" class="auto-style4" style="width: 200px" value="${it.username}" /></td>
 					</tr>
 					<tr>
-					<td>Nombre:</td><td><input name="name" type="password" class="auto-style4" style="width: 200px" /></td>
+					<td>Nombre:</td><td><input name="name" type="text" class="auto-style4" style="width: 200px" value="" /></td>
 					</tr>
 					<tr>
-					<td>Email:</td><td><input name="correo" type="password" class="auto-style4" style="width: 200px" /></td>
+					<td>Email:</td><td><input name="correo" type="text" class="auto-style4" style="width: 200px" value="${it.mail}" /></td>
 					</tr>
 					<tr>
-					<td>Genero:</td><td><input name="sexo" type="radio" class="auto-style4" />Femenino<input name="Text1" type="radio" class="auto-style4" />Masculino</td>
+					<td>Genero:</td><td><input name="femenino" type="radio" class="auto-style4" value="femenino" />Femenino<input name="masculino" type="radio" class="auto-style4" value="masculino" />Masculino</td>
 					</tr>
 					<tr>
 					<td>Pais:</td><td>
@@ -84,7 +85,7 @@
 						</select></td>
 					</tr>
 					<tr>
-					<td>Experiencia:</td><td><input name="experiencia" type="password" class="auto-style4" style="width: 200px" /></td>
+					<td>Experiencia:</td><td><input name="experiencia" type="text" class="auto-style4" style="width: 200px" /></td>
 					</tr>
 					<tr>
 					<td>Generos:</td><td>
@@ -100,7 +101,7 @@
 						<textarea rows="3" name="comentarios" class="auto-style4" style="width: 200px"></textarea></td>
 					</tr>
 				</table>
-				<div><input class="auto-style7" name="resgistro" type="button" value="Registrarse" /></div>
+				<div><input class="auto-style7" name="resgistro" type="submit" value="Registrarse" /></div>
 			</form>
 		</div>
 	</div>

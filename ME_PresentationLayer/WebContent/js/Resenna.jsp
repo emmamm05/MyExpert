@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,13 +16,7 @@
 <![endif]-->
 <style type="text/css">
 .auto-style1 {
-	margin-left: 51px;
-}
-.auto-style2 {
-	margin-left: 52px;
-}
-.auto-style3 {
-	margin-left: 96px;
+	margin-left: 220px;
 }
 </style>
 </head>
@@ -36,10 +31,11 @@
 		</div>
 		<div id="menu">
 			<ul>
-				<li class="current_page_item"><a href="#" accesskey="1" title="">Perfil</a></li>
+				<li><a href="#" accesskey="1" title="">Perfil</a></li>
 				<li><a href="Buzon.html" accesskey="2" title="">Buzón</a></li>
-				<li><a href="#" accesskey="3" title="">Búsqueda de títulos</a></li>
+				<li class="current_page_item"><a href="#" accesskey="3" title="">Búsqueda de títulos</a></li>
 				<li><a href="logInMyExpert.html" accesskey="4" title="">Salir</a></li>
+
 			</ul>
 		</div>
 	</div>
@@ -49,54 +45,30 @@
 
 <!-- Pare media de la pagina web -->
 
-<div id="footer-wrapper" style="height: 475px">
-	<div id="footer-content">
-		<div class="auto-style1" style="position: relative; left: 0px; top: 0px; width: 281px; height: 152px">
-			<img src="../images/icono_perfil.png" alt="" height="145" width="148"/>
-		</div>
-		<div style="position: relative; left: 378px; top: -149px; width: 622px; height: 410px">
-			<p></p>
-			<table class="auto-style2">
-				<tr>
-					<td>Usuario:
-					</td><td>${it.user}</td>
-				</tr>
-				<tr><td></td><td></td></tr>
-				<tr>
-					<td>Nombre:</td><td>${it.nombre}</td>
-				</tr>
-				<tr><td></td><td></td></tr>
-				<tr>
-					<td>E-mail:</td><td>${it.email}</td>
-				</tr>
-				<tr><td></td><td></td></tr>
-				<tr>
-					<td>Genero:</td><td>${it.genero}</td>
-				</tr>
-				<tr><td></td><td></td></tr>
-				<tr>
-					<td>Pais:</td><td>${it.pais}</td>
-				</tr>
-				<tr><td></td><td></td></tr>
-				<tr>
-					<td>Experiencia: </td><td></td>
-				</tr>
-				<tr><td></td><td></td></tr>
-				<tr>
-					<td>Géneros:</td><td></td>
-				</tr>
-				<tr><td></td><td></td></tr>
-				<tr>
-					<td>Información personal:</td><td></td>
-				</tr>
-			</table>
-			<p></p>
-			<form method="post">
-				<table>
+<div id="footer-wrapper">
+	<div id="footer-content" style="height: 341px">
+		<div>
+			<form action="" method="post" style="height: 205px">
+				<p style="width: 351px" id="tituloSeccion">Nombre del titulo</p>
+				<table class="auto-style1">
 					<tr>
-						<td style="width: 279px">
-						<input name="darseDeBaja" type="button" value="Darse de baja" class="auto-style3" /></td><td><input name="Editar" type="button" value="Editar" /></td>
-					</tr>	
+						<td>Para:</td><td></td>
+					</tr>
+					<tr>
+						<td>Reseña:</td><td>
+						<textarea name="resenna" style="width: 497px; height: 109px"></textarea></td>
+					</tr>
+					<tr>
+						<td>Calificacion:</td><td>
+						<input name="calificacion" style="width: 497px" type="text" /></td>
+					</tr>
+					<tr>
+						<td></td><td></td>
+					</tr>
+					<tr>
+						<td></td><td align="center">
+						<input name="enviar" type="submit" value="Enviar" /></td>
+					</tr>
 				</table>
 			</form>
 		</div>
@@ -106,11 +78,6 @@
 <!-- Fin Pare media de la pagina web -->
 
 <!-- Parte inferior de la pagina web -->
-
-<div id="page-wrapper">
-	<div id="page">
-	</div>
-</div>
 
 <!-- Fin de Parte inferior de la pagina web -->
 

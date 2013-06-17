@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,17 +14,6 @@
 <!--[if IE 6]>
 <link href="default_ie6.css" rel="stylesheet" type="text/css" />
 <![endif]-->
-<style type="text/css">
-.auto-style1 {
-	margin-left: 51px;
-}
-.auto-style2 {
-	margin-left: 52px;
-}
-.auto-style3 {
-	margin-left: 96px;
-}
-</style>
 </head>
 <body>
 
@@ -36,10 +26,11 @@
 		</div>
 		<div id="menu">
 			<ul>
-				<li class="current_page_item"><a href="#" accesskey="1" title="">Perfil</a></li>
+				<li><a href="#" accesskey="1" title="">Perfil</a></li>
 				<li><a href="Buzon.html" accesskey="2" title="">Buzón</a></li>
-				<li><a href="#" accesskey="3" title="">Búsqueda de títulos</a></li>
+				<li class="current_page_item"><a href="#" accesskey="3" title="">Búsqueda de títulos</a></li>
 				<li><a href="logInMyExpert.html" accesskey="4" title="">Salir</a></li>
+
 			</ul>
 		</div>
 	</div>
@@ -49,54 +40,42 @@
 
 <!-- Pare media de la pagina web -->
 
-<div id="footer-wrapper" style="height: 475px">
+<div id="footer-wrapper">
 	<div id="footer-content">
-		<div class="auto-style1" style="position: relative; left: 0px; top: 0px; width: 281px; height: 152px">
-			<img src="../images/icono_perfil.png" alt="" height="145" width="148"/>
-		</div>
-		<div style="position: relative; left: 378px; top: -149px; width: 622px; height: 410px">
-			<p></p>
-			<table class="auto-style2">
-				<tr>
-					<td>Usuario:
-					</td><td>${it.user}</td>
-				</tr>
-				<tr><td></td><td></td></tr>
-				<tr>
-					<td>Nombre:</td><td>${it.nombre}</td>
-				</tr>
-				<tr><td></td><td></td></tr>
-				<tr>
-					<td>E-mail:</td><td>${it.email}</td>
-				</tr>
-				<tr><td></td><td></td></tr>
-				<tr>
-					<td>Genero:</td><td>${it.genero}</td>
-				</tr>
-				<tr><td></td><td></td></tr>
-				<tr>
-					<td>Pais:</td><td>${it.pais}</td>
-				</tr>
-				<tr><td></td><td></td></tr>
-				<tr>
-					<td>Experiencia: </td><td></td>
-				</tr>
-				<tr><td></td><td></td></tr>
-				<tr>
-					<td>Géneros:</td><td></td>
-				</tr>
-				<tr><td></td><td></td></tr>
-				<tr>
-					<td>Información personal:</td><td></td>
-				</tr>
-			</table>
-			<p></p>
-			<form method="post">
-				<table>
+		<div>
+			<form action="" method="post" style="height: 577px">
+				<p style="width: 351px" id="tituloSeccion">Búsqueda de títulos</p>
+				<p></p>
+				<table style="width: 1000px; height: 261px;">
 					<tr>
-						<td style="width: 279px">
-						<input name="darseDeBaja" type="button" value="Darse de baja" class="auto-style3" /></td><td><input name="Editar" type="button" value="Editar" /></td>
-					</tr>	
+						<td>
+							<table style="width: 1000px">
+								<tr>
+									<td style="width: 230px" align="center">
+									<select name="Criterio">
+										<option>Película o serie</option>
+										<option>Director</option>
+									</select></td>
+									<td align="center" style="width: 568px">
+									<input name="PalabraClave" style="width: 492px" type="text" /></td>
+									<td align="center">
+									<input name="BuscarButton" type="submit" value="Buscar" /></td>
+								</tr>
+							</table>
+
+						</td>
+					</tr>
+					<tr>
+						<td style="height: 21px">
+						</td>
+					</tr>
+					<tr>
+						<td style="height:404px; border:thin">
+						</td>
+					</tr>
+					<tr>
+						<td align="center"></td>
+					</tr>
 				</table>
 			</form>
 		</div>
@@ -106,11 +85,6 @@
 <!-- Fin Pare media de la pagina web -->
 
 <!-- Parte inferior de la pagina web -->
-
-<div id="page-wrapper">
-	<div id="page">
-	</div>
-</div>
 
 <!-- Fin de Parte inferior de la pagina web -->
 

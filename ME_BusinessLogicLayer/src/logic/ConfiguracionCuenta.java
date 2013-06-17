@@ -22,14 +22,9 @@ public class ConfiguracionCuenta {
 	 */
 	public boolean registrarNuevoUsuario(RegistroModel pUserRegister){
 		
-		if((!pUserRegister.getUsername().equals("") || !pUserRegister.getPassword().equals("") || !pUserRegister.getMail().equals("") || !pUserRegister.getRol().equals("")) && pUserRegister.getPassword().equals(pUserRegister.getRepeatPassword())){//Se verifica que el usuario haya ingresado toda la informacion solicitada
+		if((!pUserRegister.getUsername().equals("") && !pUserRegister.getPassword().equals("") && !pUserRegister.getMail().equals("") && !pUserRegister.getRol().equals("")) && pUserRegister.getPassword().equals(pUserRegister.getRepeatPassword())){//Se verifica que el usuario haya ingresado toda la informacion solicitada
 			UserRepository userRepository = new UserRepository();
-			if(userRepository.setNewUser(pUserRegister.getUsername(), pUserRegister.getPassword(), pUserRegister.getMail(), pUserRegister.getRol())){//Se verifica que el proceso para guardar los datos se haya completado
-				return true;
-			}
-			else{
-				return false;
-			}
+			return userRepository.setNewUser(pUserRegister.getUsername(), pUserRegister.getPassword(), pUserRegister.getMail(), pUserRegister.getRol());//Se verifica que el proceso para guardar los datos se haya completado
 		}
 		else{
 			return false;
@@ -42,7 +37,7 @@ public class ConfiguracionCuenta {
 	 * @return Se retorna el valor booleano indicando el resultado del proceso de guardar los datos en la base de datos
 	 */
 	public boolean configurarCuentaDeUsuario(UserModel pUser){
-		if(!pUser.getNombre().equals("") || !pUser.getPais().equals("") || !pUser.getExperiencia().equals("") || !pUser.getGenero().equals("") || !pUser.getGeneros().equals("") || !pUser.getEmail().equals("") || !pUser.getUser().equals("")){
+		if(!pUser.getNombre().equals("") && !pUser.getPais().equals("") && !pUser.getExperiencia().equals("") && !pUser.getGenero().equals("") && !pUser.getGeneros().equals("") && !pUser.getEmail().equals("") && !pUser.getUser().equals("")){
 			UserRepository userRepository = new UserRepository();
 			return userRepository.guardarInformacionAdicionalDeUsuario(pUser.getUser(), pUser.getNombre(), pUser.getPais(), pUser.getGenero(), pUser.getGeneros(), pUser.getExperiencia(), pUser.getEmail());
 		}else{

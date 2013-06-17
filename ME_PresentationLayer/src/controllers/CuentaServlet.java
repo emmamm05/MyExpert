@@ -24,7 +24,7 @@ public class CuentaServlet{
 	  }
 	  
 	  // This method is called if HTML is request
-	  @Path("/newUser")
+	  @Path("newUser")
 	  @POST
 	  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	  public Response requestUserRegister( 
@@ -32,12 +32,9 @@ public class CuentaServlet{
 			  @FormParam("Password") String pwd,
 			  @FormParam("RepeatPassword") String rpwd,
 			  @FormParam("Email") String mail,
-			  @FormParam("RolUser") boolean userRol,
-			  @FormParam("RolAdmin") boolean userAdmin,
-			  @FormParam("RolPlan") boolean userPlan) {
-		  
-		System.out.println("Valor de la variable userRol");
-		System.out.println(userRol);
+			  @FormParam("RolUser") String userRol,
+			  @FormParam("RolAdmin") String userAdmin,
+			  @FormParam("RolPlan") String userPlan) {
 		
 		ConfiguracionCuenta config = new ConfiguracionCuenta();
 		RegistroModel newUserRegister = new RegistroModel();
@@ -47,22 +44,20 @@ public class CuentaServlet{
 		newUserRegister.setRepeatPassword(rpwd);
 		newUserRegister.setMail(mail);
 		
-		if (userRol){
+		if ("RolUser".equals(userRol)){
 			newUserRegister.setRol("Usuario");
 		}
-		else if (userAdmin){
-			System.out.println("Se quiere un rol de administrados");
+		else if ("RolAdmin".equals(userAdmin)){
 			newUserRegister.setRol("Administrador");
 		}
-		else if (userPlan){
+		else if ("RolPlan".equals(userPlan)){
 			newUserRegister.setRol("Administrador de planilla");
 		}
 		
 		boolean isValid = config.registrarNuevoUsuario(newUserRegister);
 		
-		if (user.equals(isValid)){
-			//File fichero = new File ("c:/User/Luis Alonso/Desktop/fichero.txt");
-			return Response.ok(new Viewable("/Configuracion",newUserRegister )).build();
+		if (isValid){
+			return Response.ok(new Viewable("/Configuracion_1",newUserRegister )).build();
 		}
 		
 		
@@ -76,7 +71,8 @@ public class CuentaServlet{
 			  @FormParam("user") String pUser, 
 			  @FormParam("name") String pName,
 			  @FormParam("correo") String pMail,
-			  @FormParam("sexo") String pSexo,
+			  @FormParam("femenino") String pFemenino,
+			  @FormParam("masculino") String pMasculino,
 			  @FormParam("paises") String pCountry,
 			  @FormParam("generos") String pGenre,
 			  @FormParam("experiencia") String pExpirience){
@@ -89,12 +85,18 @@ public class CuentaServlet{
 		  newUserModel.setPais(pCountry);
 		  newUserModel.setEmail(pMail);
 		  newUserModel.setExperiencia(pExpirience);
-		  newUserModel.setGenero(pSexo);
 		  newUserModel.setGeneros(pGenre);
+		  
+		  if ("femenino".equals(pFemenino)){
+			  newUserModel.setGenero(pFemenino);
+		  }else if ("masculino".equals(pMasculino)){
+			  newUserModel.setGenero(pMasculino);
+		  }
 		  
 		  boolean isValid = config.configurarCuentaDeUsuario(newUserModel);
 		  
 		  if (isValid){
+			  System.out.println("Se ingresaron todos los datos requridos");
 			  return Response.ok(new Viewable("/Perfil",newUserModel )).build();
 		  }
 		  return Response.ok(new Viewable("/Configurar_1",newUserModel )).build();

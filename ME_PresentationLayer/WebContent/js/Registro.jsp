@@ -52,7 +52,7 @@
 <div id="footer-wrapper">
 	<div id="footer-content">
 		<div>
-			<form action="rest/Registro" method="post" style="height: 365px; width: 459px;" class="auto-style1">
+			<form action="Registro/newUser" method="post" style="height: 365px; width: 459px;" class="auto-style1">
 				<table>
 					<tr>
 						<td style="width: 134px">Usuario:</td><td>
@@ -74,9 +74,9 @@
 						<td style="width: 134px">Rol de usuario:</td>
 						<td><div id="rolUsuario" class="auto-style6">
 							<ul>
-								<li>Usuario<input name="RolUser" type="radio"/></li>
-								<li>Administrador<input name="RolAdmin" type="radio" /></li>
-								<li>Encargado de planilla<input name="RolPlan" type="radio" /></li>
+								<li>Usuario<input name="RolUser" type="radio" value="RolUser"/></li>
+								<li>Administrador<input name="RolAdmin" type="radio" value="RolAdmin" /></li>
+								<li>Encargado de planilla<input name="RolPlan" type="radio" value="RolPlan" /></li>
 							</ul>
 						</div></td>
 					</tr>

@@ -14,6 +14,7 @@ public class ResennaModel implements IModel {
 	private String mAutor;
 	private int mIdAutor;
 	private Timestamp mFechaDePublicacion;
+	private int mCalificacionDeExperto;
 	
 	/**
 	 * Constructor
@@ -90,5 +91,19 @@ public class ResennaModel implements IModel {
 	 */
 	public void setFechaDePublicacion(Timestamp mFechaDePublicacion) {
 		this.mFechaDePublicacion = mFechaDePublicacion;
+	}
+
+	/**
+	 * @return the mCalificacionDeExperto
+	 */
+	public int getCalificacionDeExperto() {
+		return mCalificacionDeExperto;
+	}
+
+	/**
+	 * @param mCalificacionDeExperto the mCalificacionDeExperto to set
+	 */
+	public void setCalificacionDeExperto(int mCalificacionDeExperto) {
+		this.mCalificacionDeExperto = mCalificacionDeExperto;
 	}
 }

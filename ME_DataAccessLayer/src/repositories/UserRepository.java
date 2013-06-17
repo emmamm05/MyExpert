@@ -4,6 +4,12 @@ import java.util.List;
 
 import models.UserModel;
 
+import Database.Conexion;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import javax.management.Query;
 
 /**
  * @author emma
@@ -63,11 +69,53 @@ public class UserRepository {
 	 */
 	public boolean setNewUser(String pUserName, String pPassword, String pMail, String pRol){
 		
-		/*
-		 * Aqui se coloca la logica para guardar la informacion del usuario en la base de datos
-		 */
+		Conexion baseDeDatos = new Conexion();
 		
-		return true;
+		boolean isValid = true;
+		int contador = 0;
+		
+		try{
+			baseDeDatos.crearConexion();
+			
+			PreparedStatement pstmt = baseDeDatos.getConexion().prepareStatement("{call dbo.sprVerificaUsuario(?,?)}");
+			pstmt.setString(1, pUserName);
+			pstmt.setString(2, pPassword);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				System.out.println(rs.getString(1));
+			}
+		}catch(Exception e){
+			System.out.println("Error al tratar de establecer conexion desde el repositorio");
+		}
+		
+		if (contador > 0){
+			System.out.println("Ya existe el usuario");
+			isValid = false;
+		}
+		
+		if (isValid){
+			try{
+				//baseDeDatos.crearConexion();
+				
+				PreparedStatement pstmt = baseDeDatos.getConexion().prepareStatement("{call dbo.sprRegistraUsuario(?,?)}");
+				pstmt.setString(1, pUserName);
+				pstmt.setString(2, pPassword);
+				System.out.println("antes");
+				pstmt.executeQuery();
+				System.out.println("despues");
+			}catch(Exception e){
+				System.out.println("Error al tratar de establecer conexion desde el repositorio 2");
+			}
+		}
+		
+		try{
+			baseDeDatos.cerrarConexion();
+		}catch(Exception e){
+			System.out.println("Error al trata de cerrar conexion desde el repositorio");
+		}
+		
+		return isValid;
 	}
 	
 	/**
