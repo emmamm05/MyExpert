@@ -31,8 +31,11 @@ public class RecommendationBL {
 	
 	public String getRecomendationLastUpdate(String pUsuario){
 		return mRepository.getLastUpdateTime(pUsuario);		
-	}	
+	}
 	
-	
+	public void addNuevaRecomendacion(Recomendacion pRecomendacion){
+		RecomendationsRepository repo = new RecomendationsRepository();
+		repo.addNuevaRecomendacion(pRecomendacion);
+	}
 	
 }

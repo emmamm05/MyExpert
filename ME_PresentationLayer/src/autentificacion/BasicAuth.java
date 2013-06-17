@@ -4,6 +4,9 @@
 package autentificacion;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriBuilder;
+import javax.ws.rs.core.UriInfo;
 import javax.xml.bind.DatatypeConverter;
 
 /**
@@ -11,6 +14,7 @@ import javax.xml.bind.DatatypeConverter;
  *
  */
 public class BasicAuth {
+	
 	public static String[] decode(String auth) {
         //Replacing "Basic THE_BASE_64" to "THE_BASE_64" directly
         auth = auth.replaceFirst("[B|b]asic ", "");
@@ -33,5 +37,6 @@ public class BasicAuth {
 		String header = req.getHeader("authorization");
 		return BasicAuth.decode(header)[0];	
 	}
+	
 	
 }

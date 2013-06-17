@@ -3,6 +3,7 @@ package models;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -25,8 +26,8 @@ public class User implements IModel,Serializable{
 	private String  mPwd;
 	private String  mNombre;
 	private String  mApellidos;
-	private String    mFechaNacimiento;
-	private String    mFechaDeRegistro;
+	private String  mFechaNacimiento;
+	private String  mFechaDeRegistro;
 	private String  mImagenPerfil;
 	private boolean mEstado;
 	private int		mPuntuacion;
@@ -35,10 +36,16 @@ public class User implements IModel,Serializable{
 	private String  mPais;
 	private String  mExperiencia;
 	private String  mGeneros;
-	private List<Recomendacion>  mBuzon;
+	private int     mRol;
+	private HashMap<Integer,Recomendacion>  mBuzon;
+	
+
+	public static final int ADMIN_ROLE = 0;
+
+	public static final int BASIC_ROLE = 1;
 	
 	public User(){
-		mBuzon = new ArrayList<Recomendacion>();
+		mBuzon = new HashMap<Integer,Recomendacion>();
 	}
 	
 	
@@ -47,7 +54,7 @@ public class User implements IModel,Serializable{
 	 * @return the mBuzon
 	 */
 	@XmlElement
-	public List<Recomendacion> getBuzon() {
+	public HashMap<Integer,Recomendacion> getBuzon() {
 		return mBuzon;
 	}
 
@@ -56,7 +63,7 @@ public class User implements IModel,Serializable{
 	/**
 	 * @param mBuzon the mBuzon to set
 	 */
-	public void setBuzon(List<Recomendacion> mBuzon) {
+	public void setBuzon(HashMap<Integer,Recomendacion> mBuzon) {
 		this.mBuzon = mBuzon;
 	}
 
@@ -238,6 +245,15 @@ public class User implements IModel,Serializable{
 	@XmlElement
 	public String getGéneros() {
 		return mGeneros;
+	}
+	
+	@XmlElement
+	public int getRole(){
+		return mRol;
+	}
+	
+	public void setRole(int pRol){
+		mRol = pRol;
 	}
 
 	/**

@@ -18,9 +18,11 @@ import java.util.Date;
 
 @XmlRootElement(name = "recomendation")
 public class Recomendacion implements IModel, Serializable{
+	private int     mId;
 	private String  mAutor;
 	private int     mTipoAutor;
 	private String  mDestinatario;
+	private String  mDescripcion;
 	private String  mFecha;
 	private boolean mProcessed;
 	private boolean mAnswered;
@@ -63,7 +65,7 @@ public class Recomendacion implements IModel, Serializable{
 	/**
 	 * @return the mAnswered
 	 */
-	@XmlElement
+	@XmlElement(name="answered")
 	public boolean isAnswered() {
 		return mAnswered;
 	}
@@ -103,6 +105,27 @@ public class Recomendacion implements IModel, Serializable{
 	 */
 	public void setAnswered(boolean mAnswered) {
 		this.mAnswered = mAnswered;
+	}
+	
+	@XmlElement
+	public int getId(){
+		return mId;
+	}
+	
+	public void setId(int pId){
+		mId = pId;
+	}
+	/**
+	 * @return the mDescripcion
+	 */
+	public String getmDescripcion() {
+		return mDescripcion;
+	}
+	/**
+	 * @param mDescripcion the mDescripcion to set
+	 */
+	public void setmDescripcion(String mDescripcion) {
+		this.mDescripcion = mDescripcion;
 	}
 	
 }

@@ -1,6 +1,7 @@
 package repositories;
 
 import java.util.List;
+import java.util.UUID;
 
 import models.Recomendacion;
 import models.User;
@@ -12,6 +13,7 @@ import models.User;
  * incluyendo las busquedas
  */
 public class UserRepository {
+
 
 	/**
 	 * @param pUsername
@@ -27,12 +29,14 @@ public class UserRepository {
 		logindata.setNombre("Luisa Matamoros");
 		logindata.setEmail("luisa05@email.com");
 		logindata.setGenero("Femenino");
+		logindata.setRole(User.BASIC_ROLE);
 		logindata.setPais("Colombia");
 		for ( int i = 0 ; i < 10 ; i++){
 			Recomendacion  recomendation = new Recomendacion();
 			recomendation.setAutor( "autor"+Integer.toString(i) );
 			recomendation.setDestinatario( "destinatario"+Integer.toString(i) );
-			logindata.getBuzon().add( recomendation );
+			recomendation.setId(UUID.randomUUID().hashCode());
+			logindata.getBuzon().put(recomendation.getId(), recomendation );
 		}
 		return logindata;
 	}

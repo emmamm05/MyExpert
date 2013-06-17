@@ -57,7 +57,7 @@
 						<td>Contraseña:</td><td><input class="auto-style5" name="Password" style="width: 213px" type="password" /></td>
 					</tr>
 					<tr>
-						<td></td><td><input name="accederButton" type="submit" value="Iniciar Sesión" class="auto-style7" /></td>
+						<td></td><td><input name="accederButton" type="submit" value="Iniciar Sesión" class="auto-style7"/></td>
 					</tr>
 				</table>
 			</form>

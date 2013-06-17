@@ -20,6 +20,8 @@ import models.User;
 import com.sun.jersey.api.view.Viewable;
 import com.sun.research.ws.wadl.Request;
 
+
+
 /**
  * @author emma
  *
@@ -27,13 +29,22 @@ import com.sun.research.ws.wadl.Request;
 
 @Path("/Perfil")
 public class PerfilServlet {
-
+	
+	public final static int ADMIN_ROLE = 0;
+	public final static int EXPERT_ROLE = 1;
+	
 	  @GET
 	  @Produces(MediaType.TEXT_HTML)
 	  public Response showPerfilPage(
 			  @QueryParam("UUID") String pUUID){
 		    User user = Login.getLoggedUser(pUUID);
-			return Response.ok(new Viewable("/Perfil", user ) ).build();
+		    String perfilPageLocation;
+		    if ( user.getRole() == ADMIN_ROLE ){
+		    	perfilPageLocation = "/AdminPerfil";		    	
+		    }else{
+		    	perfilPageLocation = "/Perfil";
+		    }
+			return Response.ok(new Viewable( perfilPageLocation , user ) ).build();
 	  }
 	
 }
