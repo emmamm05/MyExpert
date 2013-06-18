@@ -16,7 +16,7 @@ import javax.ws.rs.core.Response;
 
 import repositories.CatalogosRepository;
 
-import models.Genero;
+import models.GeneroModel;
 
 /**
  * @author emma
@@ -28,10 +28,10 @@ public class GenerosController {
 	@Path("/updates")
 	@GET
 	@Produces(MediaType.TEXT_XML)
-	public List<Genero> getUpdates(
+	public List<GeneroModel> getUpdates(
 			@QueryParam("timestamp") String pTimeFrom){
 		CatalogosRepository repo = new CatalogosRepository();
-		List<Genero> generos = new ArrayList<Genero>();
+		List<GeneroModel> generos = new ArrayList<GeneroModel>();
 		repo.getGenerosFrom( generos, pTimeFrom );
 		return generos;		
 	}

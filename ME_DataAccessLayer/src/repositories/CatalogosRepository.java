@@ -5,9 +5,9 @@ package repositories;
 
 import java.util.List;
 
-import models.Genero;
-import models.Resenna;
-import models.Titulo;
+import models.GeneroModel;
+import models.ResennaModel;
+import models.TituloModel;
 
 /**
  * @author emma
@@ -15,30 +15,30 @@ import models.Titulo;
  */
 public class CatalogosRepository{
 	
-	public void getInfoCompleto( Titulo pTitulo ){
+	public void getInfoCompleto( TituloModel pTitulo ){
 	}
 	
-	public void addTitulo( Titulo pTitulo ){
+	public void addTitulo( TituloModel pTitulo ){
 	}
 	
-	public void buscarPorNombre( Titulo pTitulo, String pNombre ){
+	public void buscarPorNombre( TituloModel pTitulo, String pNombre ){
 	}
 	
-	public void buscarPorDirector( Titulo pTitulo, String pNombre ){
+	public void buscarPorDirector( TituloModel pTitulo, String pNombre ){
 	}
 	
-	public void getResennas(  Resenna pResenna  ){
+	public void getResennas(  ResennaModel pResenna  ){
 	}
 	
-	public void getRessennaCompleta( Resenna pResenna ){
+	public void getRessennaCompleta( ResennaModel pResenna ){
 		pResenna.setId(123);
 		pResenna.setIdExperto(456);
 		pResenna.setNombreAutor("Max Soto");
 		pResenna.setContenido("Some content here...");
 	}
 	
-	public void getGenerosFrom( List<Genero> pGeneros , String pTimestamp ){
-		Genero genero1 = new Genero();
+	public void getGenerosFrom( List<GeneroModel> pGeneros , String pTimestamp ){
+		GeneroModel genero1 = new GeneroModel();
 		genero1.setId(1233);
 		genero1.setNombre("Drama");
 		genero1.setDescripcion("Some description here...");
@@ -49,18 +49,18 @@ public class CatalogosRepository{
 		return 183;
 	}
 	
-	public void getGeneros( List<Genero> pGeneros , int page ){
+	public void getGeneros( List<GeneroModel> pGeneros , int page ){
 		for (int i=1;i<=20;i++){
-			Genero gen = new Genero();
+			GeneroModel gen = new GeneroModel();
 			gen.setId(i);
 			gen.setNombre("Genero" + Integer.toString(i+20*page));
 			gen.setDescripcion("Some description here...");
 		}
 	}
 	
-	public void getTitulosFrom( List<Titulo> pTitulos , String pTimestamp ){
+	public void getTitulosFrom( List<TituloModel> pTitulos , String pTimestamp ){
 
-		Titulo titulo1 = new Titulo();
+		TituloModel titulo1 = new TituloModel();
 		titulo1.setId(1234);
 		titulo1.setNombre("Man of Steel");
 		titulo1.setDateTime(null);

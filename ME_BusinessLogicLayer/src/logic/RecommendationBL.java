@@ -5,7 +5,7 @@ import java.util.List;
 
 import repositories.RecomendationsRepository;
 
-import models.Recomendacion;
+import models.RecomendacionModel;
 
 /**
  * @author emma
@@ -23,8 +23,8 @@ public class RecommendationBL {
 		
 	}
 	
-	public List<Recomendacion> getNewRecommendations(String pUsuario,String timestamp){
-		List<Recomendacion> recomendaciones = new ArrayList<Recomendacion>();
+	public List<RecomendacionModel> getNewRecommendations(String pUsuario,String timestamp){
+		List<RecomendacionModel> recomendaciones = new ArrayList<RecomendacionModel>();
 		mRepository.getNuevasRecomendaciones(recomendaciones,pUsuario, timestamp);
 		return recomendaciones;
 	}
@@ -33,7 +33,7 @@ public class RecommendationBL {
 		return mRepository.getLastUpdateTime(pUsuario);		
 	}
 	
-	public void addNuevaRecomendacion(Recomendacion pRecomendacion){
+	public void addNuevaRecomendacion(RecomendacionModel pRecomendacion){
 		RecomendationsRepository repo = new RecomendationsRepository();
 		repo.addNuevaRecomendacion(pRecomendacion);
 	}

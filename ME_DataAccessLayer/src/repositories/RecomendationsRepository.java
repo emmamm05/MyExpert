@@ -5,7 +5,7 @@ package repositories;
 
 import java.util.List;
 
-import models.Recomendacion;
+import models.RecomendacionModel;
 
 /**
  * @author emma
@@ -14,16 +14,16 @@ import models.Recomendacion;
 public class RecomendationsRepository {
 	
 	public boolean getNuevasRecomendaciones(
-			List<Recomendacion> pRecomendaciones, 
+			List<RecomendacionModel> pRecomendaciones, 
 			String Usuario, String timestamp){
-		Recomendacion recomendacion1 = new Recomendacion();
+		RecomendacionModel recomendacion1 = new RecomendacionModel();
 		recomendacion1.setDestinatario("destinatario");
 		recomendacion1.setAutor("autor");
 		recomendacion1.setFecha("2001");
 		recomendacion1.setProcessed(true);
 		recomendacion1.setTipoAutor(1);
 		
-		Recomendacion recomendacion2 = new Recomendacion();
+		RecomendacionModel recomendacion2 = new RecomendacionModel();
 		recomendacion2.setDestinatario("destinatario2");
 		recomendacion2.setAutor(Usuario);
 		recomendacion2.setFecha(timestamp);
@@ -36,16 +36,16 @@ public class RecomendationsRepository {
 	}
 	
 	public boolean getNuevasSolicitudes(
-			List<Recomendacion> pRecomendaciones, 
+			List<RecomendacionModel> pRecomendaciones, 
 			String Usuario, String timestamp){
-		Recomendacion recomendacion1 = new Recomendacion();
+		RecomendacionModel recomendacion1 = new RecomendacionModel();
 		recomendacion1.setDestinatario("destinatario");
 		recomendacion1.setAutor("autor");
 		recomendacion1.setFecha("2001");
 		recomendacion1.setProcessed(true);
 		recomendacion1.setTipoAutor(1);
 		
-		Recomendacion recomendacion2 = new Recomendacion();
+		RecomendacionModel recomendacion2 = new RecomendacionModel();
 		recomendacion2.setDestinatario("destinatario2");
 		recomendacion2.setAutor(Usuario);
 		recomendacion2.setFecha(timestamp);
@@ -57,8 +57,8 @@ public class RecomendationsRepository {
 		return true;
 	}
 	
-	public Recomendacion getRecomendacion( int pId ){
-		Recomendacion recomendacion1 = new Recomendacion();
+	public RecomendacionModel getRecomendacion( int pId ){
+		RecomendacionModel recomendacion1 = new RecomendacionModel();
 		recomendacion1.setDestinatario("destinatario"+ Integer.toString(pId));
 		recomendacion1.setAutor("autor");
 		recomendacion1.setId(pId);
@@ -73,7 +73,7 @@ public class RecomendationsRepository {
 		return null;
 	}
 	
-	public boolean addNuevaRecomendacion(Recomendacion pRecomendacion){
+	public boolean addNuevaRecomendacion(RecomendacionModel pRecomendacion){
 		return false;		
 	}
 		

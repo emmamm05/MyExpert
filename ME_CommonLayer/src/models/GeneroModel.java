@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  */
 @XmlRootElement(name = "genero")
-public class Genero {
+public class GeneroModel {
 	int    mId;
 	String mNombre;
 	String mDescripcion;

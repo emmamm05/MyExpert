@@ -17,7 +17,7 @@ import java.util.Date;
  */
 
 @XmlRootElement(name = "recomendation")
-public class Recomendacion implements IModel, Serializable{
+public class RecomendacionModel implements IModel, Serializable{
 	private int     mId;
 	private String  mAutor;
 	private int     mTipoAutor;

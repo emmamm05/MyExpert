@@ -17,8 +17,8 @@ import javax.ws.rs.core.Response;
 import com.sun.jersey.api.view.Viewable;
 
 import logic.Login;
-import models.Genero;
-import models.User;
+import models.GeneroModel;
+import models.UserModel;
 
 import repositories.CatalogosRepository;
 import repositories.UserRepository;
@@ -36,9 +36,9 @@ public class GenerosController {
 			@QueryParam("UUID") String pUUID,
 			@QueryParam("pagina") int pNumPagina
 			){
-		User user = Login.getLoggedUser(pUUID);
+		UserModel user = Login.getLoggedUser(pUUID);
 		CatalogosRepository repo = new CatalogosRepository();
-		List<Genero> generos = new ArrayList<Genero>();
+		List<GeneroModel> generos = new ArrayList<GeneroModel>();
 		repo.getCantidadGeneros();
 		repo.getGeneros( generos , 1 );
 		

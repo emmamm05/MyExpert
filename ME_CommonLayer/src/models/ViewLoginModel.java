@@ -15,7 +15,7 @@ public class ViewLoginModel implements IModel, Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private User mUserModel;
+	private UserModel mUserModel;
 	private String    mMessage;
 	
 	
@@ -29,7 +29,7 @@ public class ViewLoginModel implements IModel, Serializable{
 	/**
 	 * @return the mUserModel
 	 */
-	public User getUserModel() {
+	public UserModel getUserModel() {
 		return mUserModel;
 	}
 	/**
@@ -41,7 +41,7 @@ public class ViewLoginModel implements IModel, Serializable{
 	/**
 	 * @param mUserModel the mUserModel to set
 	 */
-	public void setUserModel(User mUserModel) {
+	public void setUserModel(UserModel mUserModel) {
 		this.mUserModel = mUserModel;
 	}
 	/**

@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  */
 @XmlRootElement(name = "titulo")
-public class Titulo implements IModel, Serializable{
+public class TituloModel implements IModel, Serializable{
 	
 	int mId;
 	String mNombre;

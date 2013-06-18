@@ -15,7 +15,7 @@ import javax.ws.rs.QueryParam;
 
 
 import logic.RecommendationBL;
-import models.Recomendacion;
+import models.RecomendacionModel;
 
 /**
  * @author emma
@@ -27,7 +27,7 @@ public class RecomendacionesController {
 	@Path("/updates")
 	@GET
 	@Produces(MediaType.TEXT_XML)
-	public List<Recomendacion> handleGetRecomendations(
+	public List<RecomendacionModel> handleGetRecomendations(
 			@QueryParam("Username") String pUsername,
 			@QueryParam("TimeOrigin") String pTimeOrigin){
 		RecommendationBL recomendationsBL = new RecommendationBL();

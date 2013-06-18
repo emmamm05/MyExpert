@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlElement;
  * TODO: Revisar cuales modelos no son leidos en los views para 
  * quitar el serializable
  */
-public class User implements IModel,Serializable{
+public class UserModel implements IModel,Serializable{
 	
 	
 	/**
@@ -37,15 +37,15 @@ public class User implements IModel,Serializable{
 	private String  mExperiencia;
 	private String  mGeneros;
 	private int     mRol;
-	private HashMap<Integer,Recomendacion>  mBuzon;
+	private HashMap<Integer,RecomendacionModel>  mBuzon;
 	
 
 	public static final int ADMIN_ROLE = 0;
 
 	public static final int BASIC_ROLE = 1;
 	
-	public User(){
-		mBuzon = new HashMap<Integer,Recomendacion>();
+	public UserModel(){
+		mBuzon = new HashMap<Integer,RecomendacionModel>();
 	}
 	
 	
@@ -54,7 +54,7 @@ public class User implements IModel,Serializable{
 	 * @return the mBuzon
 	 */
 	@XmlElement
-	public HashMap<Integer,Recomendacion> getBuzon() {
+	public HashMap<Integer,RecomendacionModel> getBuzon() {
 		return mBuzon;
 	}
 
@@ -63,7 +63,7 @@ public class User implements IModel,Serializable{
 	/**
 	 * @param mBuzon the mBuzon to set
 	 */
-	public void setBuzon(HashMap<Integer,Recomendacion> mBuzon) {
+	public void setBuzon(HashMap<Integer,RecomendacionModel> mBuzon) {
 		this.mBuzon = mBuzon;
 	}
 

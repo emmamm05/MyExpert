@@ -21,7 +21,7 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.FormParam;
 
 import logic.Login;
-import models.User;
+import models.UserModel;
 import models.ViewLoginModel;
 
 import autentificacion.BasicAuth;
@@ -30,7 +30,7 @@ import com.sun.jersey.api.view.Viewable;
 
 
 @Path("/Login")
-public class LoginServlet {
+public class LoginController {
 
 	  @Context
 	  UriInfo uriInfo;
@@ -52,7 +52,7 @@ public class LoginServlet {
 			  @Context HttpServletRequest request,
 			  @Context HttpServletResponse response) throws IOException {
 				  
-		User loginRequested = new User();
+		UserModel loginRequested = new UserModel();
 		loginRequested.setUser(user);
 		loginRequested.setPwd(pwd);
 		String id = UUID.randomUUID().toString();

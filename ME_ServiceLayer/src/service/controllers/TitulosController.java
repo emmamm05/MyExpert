@@ -14,8 +14,8 @@ import javax.ws.rs.core.MediaType;
 
 import repositories.CatalogosRepository;
 
-import models.Resenna;
-import models.Titulo;
+import models.ResennaModel;
+import models.TituloModel;
 
 /**
  * @author emma
@@ -27,11 +27,11 @@ public class TitulosController {
 	@Path("/updates")
 	@GET
 	@Produces(MediaType.TEXT_XML)
-	public List<Titulo> getUpdates(
+	public List<TituloModel> getUpdates(
 			@QueryParam("username") String pUsername,
 			@QueryParam("timestamp") String pTimestamp){
 		CatalogosRepository repo = new CatalogosRepository();
-		List<Titulo> titulos = new ArrayList<Titulo>();
+		List<TituloModel> titulos = new ArrayList<TituloModel>();
 		repo.getTitulosFrom(titulos, pTimestamp);
 		return titulos;
 	}
@@ -39,10 +39,10 @@ public class TitulosController {
 	@Path("/resenna")
 	@GET
 	@Produces(MediaType.TEXT_XML)
-	public Resenna getResenna(){
+	public ResennaModel getResenna(){
 		
 		CatalogosRepository repo = new CatalogosRepository();
-		Resenna resenna = new Resenna();
+		ResennaModel resenna = new ResennaModel();
 		repo.getRessennaCompleta(resenna);
 		return resenna;		
 	}
