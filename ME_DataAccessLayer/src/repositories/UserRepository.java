@@ -6,6 +6,12 @@ import java.util.UUID;
 import models.RecomendacionModel;
 import models.UserModel;
 
+import Database.Conexion;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import javax.management.Query;
 
 /**
  * @author emma
@@ -61,5 +67,82 @@ public class UserRepository {
 	 */
 	public List<UserModel> getUsersByFullName(String name){
 		return null;
+	}
+	
+	/**
+	 * @param pUserName: Nombre del nuevo usuario a registrarse
+	 * @param pPassword: Contrasena del nuevo usuario
+	 * @param pMail: correo del nuevo usuario
+	 * @param pRol: rol correspondiente del nuevo usuario
+	 * @return Se devuelve un valor booleano correspondiente al
+	 * resultado del proceso de guardar la informacion en la base
+	 * de datos.
+	 */
+	public boolean setNewUser(String pUserName, String pPassword, String pMail, String pRol){
+		
+		Conexion baseDeDatos = new Conexion();
+		
+		boolean isValid = true;
+		int contador = 0;
+		
+		try{
+			baseDeDatos.crearConexion();
+			
+			PreparedStatement pstmt = baseDeDatos.getConexion().prepareStatement("{call dbo.sprVerificaUsuario(?,?)}");
+			pstmt.setString(1, pUserName);
+			pstmt.setString(2, pPassword);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				System.out.println(rs.getString(1));
+			}
+		}catch(Exception e){
+			System.out.println("Error al tratar de establecer conexion desde el repositorio");
+		}
+		
+		if (contador > 0){
+			System.out.println("Ya existe el usuario");
+			isValid = false;
+		}
+		
+		if (isValid){
+			try{
+				//baseDeDatos.crearConexion();
+				
+				PreparedStatement pstmt = baseDeDatos.getConexion().prepareStatement("{call dbo.sprRegistraUsuario(?,?)}");
+				pstmt.setString(1, pUserName);
+				pstmt.setString(2, pPassword);
+				System.out.println("antes");
+				pstmt.executeQuery();
+				System.out.println("despues");
+			}catch(Exception e){
+				System.out.println("Error al tratar de establecer conexion desde el repositorio 2");
+			}
+		}
+		
+		try{
+			baseDeDatos.cerrarConexion();
+		}catch(Exception e){
+			System.out.println("Error al trata de cerrar conexion desde el repositorio");
+		}
+		
+		return isValid;
+	}
+	
+	/**
+	 * 
+	 * @param pUser: Username del nuevo usuario experto
+	 * @param pNombre: Nombre completo del usuario
+	 * @param pPais: Pais de procedencia del usuario
+	 * @param pSexo: Genero del nuevo usuario
+	 * @param pGenero: Generos de pelicuals que domina el usuario
+	 * @param pExperiencia: Experincia en el septimo arte el nuevo usuario
+	 * @param pEmail: Correo electronico de contacto del nuevo usuario
+	 * @return Se retorna el valor boolenao del resultado del proceso de guardar los datos
+	 * en la base de datos
+	 */
+	public boolean guardarInformacionAdicionalDeUsuario(String pUser, String pNombre, String pPais, String pSexo, String pGenero, String pExperiencia, String pEmail){
+		//Aqui se coloca la logica para guardar esta informacion dentro de la base de datos
+		return true;
 	}
 }

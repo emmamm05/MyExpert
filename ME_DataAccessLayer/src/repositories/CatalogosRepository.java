@@ -31,10 +31,6 @@ public class CatalogosRepository{
 	}
 	
 	public void getRessennaCompleta( ResennaModel pResenna ){
-		pResenna.setId(123);
-		pResenna.setIdExperto(456);
-		pResenna.setNombreAutor("Max Soto");
-		pResenna.setContenido("Some content here...");
 	}
 	
 	public void getGenerosFrom( List<GeneroModel> pGeneros , String pTimestamp ){
@@ -60,14 +56,5 @@ public class CatalogosRepository{
 	
 	public void getTitulosFrom( List<TituloModel> pTitulos , String pTimestamp ){
 
-		TituloModel titulo1 = new TituloModel();
-		titulo1.setId(1234);
-		titulo1.setNombre("Man of Steel");
-		titulo1.setDateTime(null);
-		titulo1.setDescripcion("Some description here...");
-		titulo1.setDirectores("Zack Snyder, Cristopher Nolan");
-		titulo1.setCalificacionesExpertos(null);
-		titulo1.setCalificacionComunidad(10);
-		pTitulos.add(titulo1);
 	}
 }

@@ -1,119 +1,170 @@
-/**
- * 
- */
 package models;
 
-import java.io.Serializable;
-import java.util.Date;
+import java.sql.Timestamp;
 import java.util.HashMap;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-
 /**
- * @author emma
+ * Encargada de manejar toda la informacion conrrespondiente de determinado titulo
+ * @author Luis Alonso
  *
  */
-@XmlRootElement(name = "titulo")
-public class TituloModel implements IModel, Serializable{
+public class TituloModel implements IModel {
 	
-	int mId;
-	String mNombre;
-	String mDescripcion;
-	String mDirectores;
-	Date mDateTime;
-	HashMap<Integer,Integer> mCalificacionesExpertos;
-	int mCalificacionComunidad;
+	private int mID;
+	private String mNombre;
+	private String mDescripcion;
+	private String mDirector;
+	private Timestamp mAnno;
+	private HashMap<Integer, Integer> mCalificacionExpertos;
+	private int mCalificacionesIMDB;
+	private int mCalificacionesComunidad;
+	private ResennaModel mResenna;
+	private GeneroModel mGenero;
+	
 	/**
-	 * @return the mId
+	 * Constructor
 	 */
-	@XmlElement
-	public int getId() {
-		return mId;
+	public TituloModel(){
+		
 	}
+
+	/**
+	 * @return the mID
+	 */
+	public int getID() {
+		return mID;
+	}
+
+	/**
+	 * @param mID the mID to set
+	 */
+	public void setID(int mID) {
+		this.mID = mID;
+	}
+
 	/**
 	 * @return the mNombre
 	 */
-	@XmlElement
 	public String getNombre() {
 		return mNombre;
 	}
-	/**
-	 * @return the mDescripcion
-	 */
-	@XmlElement
-	public String getDescripcion() {
-		return mDescripcion;
-	}
-	/**
-	 * @return the mDirectores
-	 */
-	@XmlElement
-	public String getDirectores() {
-		return mDirectores;
-	}
-	/**
-	 * @return the mDateTime
-	 */
-	public Date getDateTime() {
-		return mDateTime;
-	}
-	/**
-	 * TODO: Tal vez sea necesario un adapter aqui
-	 * @return the mCalificacionesExpertos
-	 */
-	public HashMap<Integer, Integer> getCalificacionesExpertos() {
-		return mCalificacionesExpertos;
-	}
-	/**
-	 * @return the mCalificacionComunidad
-	 */
-	@XmlElement
-	public int getCalificacionComunidad() {
-		return mCalificacionComunidad;
-	}
-	/**
-	 * @param mId the mId to set
-	 */
-	public void setId(int mId) {
-		this.mId = mId;
-	}
+
 	/**
 	 * @param mNombre the mNombre to set
 	 */
 	public void setNombre(String mNombre) {
 		this.mNombre = mNombre;
 	}
+
+	/**
+	 * @return the mAnno
+	 */
+	public Timestamp getAnno() {
+		return mAnno;
+	}
+
+	/**
+	 * @param mAnno the mAnno to set
+	 */
+	public void setAnno(Timestamp mAnno) {
+		this.mAnno = mAnno;
+	}
+
+	/**
+	 * @return the mDescripcion
+	 */
+	public String getDescripcion() {
+		return mDescripcion;
+	}
+
 	/**
 	 * @param mDescripcion the mDescripcion to set
 	 */
 	public void setDescripcion(String mDescripcion) {
 		this.mDescripcion = mDescripcion;
 	}
+
 	/**
-	 * @param mDirectores the mDirectores to set
+	 * @return the mDirector
 	 */
-	public void setDirectores(String mDirectores) {
-		this.mDirectores = mDirectores;
+	public String getDirector() {
+		return mDirector;
 	}
+
 	/**
-	 * @param mDateTime the mDateTime to set
+	 * @param mDirector the mDirector to set
 	 */
-	public void setDateTime(Date mDateTime) {
-		this.mDateTime = mDateTime;
+	public void setDirector(String mDirector) {
+		this.mDirector = mDirector;
 	}
+
 	/**
-	 * @param mCalificacionesExpertos the mCalificacionesExpertos to set
+	 * @return the mCalificacionExpertos
 	 */
-	public void setCalificacionesExpertos(
-			HashMap<Integer, Integer> mCalificacionesExpertos) {
-		this.mCalificacionesExpertos = mCalificacionesExpertos;
+	public HashMap<Integer, Integer> getCalificacionExpertos() {
+		return mCalificacionExpertos;
 	}
+
 	/**
-	 * @param mCalificacionComunidad the mCalificacionComunidad to set
+	 * @param mCalificacionExpertos the mCalificacionExpertos to set
 	 */
-	public void setCalificacionComunidad(int mCalificacionComunidad) {
-		this.mCalificacionComunidad = mCalificacionComunidad;
+	public void setCalificacionExpertos(HashMap<Integer, Integer> mCalificacionExpertos) {
+		this.mCalificacionExpertos = mCalificacionExpertos;
 	}
-	
+
+	/**
+	 * @return the mCalificacionesIMDB
+	 */
+	public int getCalificacionesIMDB() {
+		return mCalificacionesIMDB;
+	}
+
+	/**
+	 * @param mCalificacionesIMDB the mCalificacionesIMDB to set
+	 */
+	public void setCalificacionesIMDB(int mCalificacionesIMDB) {
+		this.mCalificacionesIMDB = mCalificacionesIMDB;
+	}
+
+	/**
+	 * @return the mCalificacionesComunidad
+	 */
+	public int getCalificacionesComunidad() {
+		return mCalificacionesComunidad;
+	}
+
+	/**
+	 * @param mCalificacionesComunidad the mCalificacionesComunidad to set
+	 */
+	public void setCalificacionesComunidad(int mCalificacionesComunidad) {
+		this.mCalificacionesComunidad = mCalificacionesComunidad;
+	}
+
+	/**
+	 * @return the mResenna
+	 */
+	public ResennaModel getResenna() {
+		return mResenna;
+	}
+
+	/**
+	 * @param mResenna the mResenna to set
+	 */
+	public void setResenna(ResennaModel mResenna) {
+		this.mResenna = mResenna;
+	}
+
+	/**
+	 * @return the mGenero
+	 */
+	public GeneroModel getGenero() {
+		return mGenero;
+	}
+
+	/**
+	 * @param mGenero the mGenero to set
+	 */
+	public void setGenero(GeneroModel mGenero) {
+		this.mGenero = mGenero;
+	}
 }

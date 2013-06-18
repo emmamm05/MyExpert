@@ -243,7 +243,7 @@ public class UserModel implements IModel,Serializable{
 	 * @return the géneros
 	 */
 	@XmlElement
-	public String getGéneros() {
+	public String getGeneros() {
 		return mGeneros;
 	}
 	

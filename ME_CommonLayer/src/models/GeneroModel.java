@@ -12,9 +12,18 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement(name = "genero")
 public class GeneroModel {
-	int    mId;
-	String mNombre;
-	String mDescripcion;
+
+	private int    mId;
+	private String mNombre;
+	private String mDescripcion;
+	
+	/**
+	 * Constructor
+	 */
+	public GeneroModel(){
+		
+	}
+
 	/**
 	 * @return the mId
 	 */

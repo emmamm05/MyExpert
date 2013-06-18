@@ -1,25 +1,34 @@
-/**
- * 
- */
 package models;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * @author emma
+ * Encargada de los datos de resenna de determinado titulo
+ * @author Luis Alonso
  *
  */
 @XmlRootElement(name = "resenna")
-public class ResennaModel {
+public class ResennaModel implements IModel {
 	
-	int    mId;
-	int    mIdExperto;
-	String mContenido;
-	String mNombreAutor;
-	Date   mFechaPublicacion;
+	private int mId;
+	private String mContenido;
+	private String mAutor;
+	private int mIdAutor;
+	private Timestamp mFechaDePublicacion;
+	private int mCalificacionDeExperto;
+	
+	/**
+	 * Constructor
+	 */
+	
+	public ResennaModel(){
+		
+	}
+
 	/**
 	 * @return the mId
 	 */
@@ -27,13 +36,14 @@ public class ResennaModel {
 	public int getId() {
 		return mId;
 	}
+
 	/**
-	 * @return the mIdExperto
+	 * @param mId the mId to set
 	 */
-	@XmlElement
-	public int getIdExperto() {
-		return mIdExperto;
+	public void setId(int mId) {
+		this.mId = mId;
 	}
+
 	/**
 	 * @return the mContenido
 	 */
@@ -41,51 +51,71 @@ public class ResennaModel {
 	public String getContenido() {
 		return mContenido;
 	}
-	/**
-	 * @return the mNombreAutor
-	 */
-	@XmlElement
-	public String getNombreAutor() {
-		return mNombreAutor;
-	}
-	/**
-	 * @return the mFechaPublicacion
-	 */
-	@XmlElement
-	public Date getFechaPublicacion() {
-		return mFechaPublicacion;
-	}
-	/**
-	 * @param mId the mId to set
-	 */
-	public void setId(int mId) {
-		this.mId = mId;
-	}
-	/**
-	 * @param mIdExperto the mIdExperto to set
-	 */
-	public void setIdExperto(int mIdExperto) {
-		this.mIdExperto = mIdExperto;
-	}
+
 	/**
 	 * @param mContenido the mContenido to set
 	 */
 	public void setContenido(String mContenido) {
 		this.mContenido = mContenido;
 	}
+
 	/**
-	 * @param mNombreAutor the mNombreAutor to set
+	 * @return the mAutor
 	 */
-	public void setNombreAutor(String mNombreAutor) {
-		this.mNombreAutor = mNombreAutor;
+	@XmlElement
+	public String getAutor() {
+		return mAutor;
 	}
+
 	/**
-	 * @param mFechaPublicacion the mFechaPublicacion to set
+	 * @param mAutor the mAutor to set
 	 */
-	public void setFechaPublicacion(Date mFechaPublicacion) {
-		this.mFechaPublicacion = mFechaPublicacion;
+	public void setAutor(String mAutor) {
+		this.mAutor = mAutor;
 	}
-	
-	
-	
+
+	/**
+	 * @return the mIdAutor
+	 */
+	@XmlElement
+	public int getIdAutor() {
+		return mIdAutor;
+	}
+
+	/**
+	 * @param mIdAutor the mIdAutor to set
+	 */
+	public void setIdAutor(int mIdAutor) {
+		this.mIdAutor = mIdAutor;
+	}
+
+	/**
+	 * @return the mFechaDePublicacion
+	 */
+	@XmlElement
+	public Timestamp getFechaDePublicacion() {
+		return mFechaDePublicacion;
+	}
+
+	/**
+	 * @param mFechaDePublicacion the mFechaDePublicacion to set
+	 */
+	public void setFechaDePublicacion(Timestamp mFechaDePublicacion) {
+		this.mFechaDePublicacion = mFechaDePublicacion;
+	}
+
+	/**
+	 * @return the mCalificacionDeExperto
+	 */
+	@XmlElement
+	public int getCalificacionDeExperto() {
+		return mCalificacionDeExperto;
+	}
+
+	/**
+	 * @param mCalificacionDeExperto the mCalificacionDeExperto to set
+	 */
+	public void setCalificacionDeExperto(int mCalificacionDeExperto) {
+		this.mCalificacionDeExperto = mCalificacionDeExperto;
+	}
 }

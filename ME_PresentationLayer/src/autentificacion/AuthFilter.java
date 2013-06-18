@@ -31,7 +31,8 @@ public class AuthFilter implements ContainerRequestFilter{
         //@TODO: cambiar por regex
         if ( path.equals( "application.wadl") 
     		|| path.equals("application.wadl/xsd0.xsd")
-    		|| path.equals("Login")){
+    		|| path.equals("Login")
+    		|| path.contains("Registro")){
         	System.out.println("Auth:Public");
             return containerRequest;
             
