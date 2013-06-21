@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @author Luis Alonso
  *
  */
-public class RegistroModel implements IModel,Serializable{
+public class RegistroModel implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	

@@ -6,8 +6,7 @@ import models.BusquedaSimpleModel;
 import models.PeliculaModel;
 import models.TituloModel;
 import models.GeneroModel;
-
-import repositories.TitleRepository;
+import repositories.IRepositorioTitulos;
 
 /**
  * 
@@ -92,22 +91,22 @@ public class Busquedas {
 	 */
 	public void busquedaSimple(BusquedaSimpleModel pBusquedaModel){
 		
-		TitleRepository titleRepository = new TitleRepository();
-		if (pBusquedaModel.getBusquedaPorDirector()){
-			this.mResultadoTitulos =  titleRepository.buscarPorDirector(pBusquedaModel.getPalabraClave());
-			this.mPuntuacionResultadoTitulos = titleRepository.buscarPorDirector_aux(pBusquedaModel.getPalabraClave());
-		}else if (pBusquedaModel.getBusquedaPorNombre()){
-			this.mResultadoTitulos = titleRepository.buscarPorNombre(pBusquedaModel.getPalabraClave());
-			this.mPuntuacionResultadoTitulos = titleRepository.buscarPorNombre_aux(pBusquedaModel.getPalabraClave());
-		}
-		
-		for (int contador = 0; contador < this.mResultadoTitulos.size(); contador++){
-			PeliculaModel titleModel = new PeliculaModel();
-			titleModel.setNombre(this.mResultadoTitulos.get(contador));
-			titleModel.setCalificacionesComunidad(this.mPuntuacionResultadoTitulos.get(contador));
-			
-			this.mResultadosDeBusqueda.add(titleModel);
-		}
+//		IRepositorioTitulos titleRepository = new IRepositorioTitulos();
+//		if (pBusquedaModel.getBusquedaPorDirector()){
+//			this.mResultadoTitulos =  titleRepository.buscarPorDirector(pBusquedaModel.getPalabraClave());
+//			this.mPuntuacionResultadoTitulos = titleRepository.buscarPorDirector_aux(pBusquedaModel.getPalabraClave());
+//		}else if (pBusquedaModel.getBusquedaPorNombre()){
+//			this.mResultadoTitulos = titleRepository.buscarPorNombre(pBusquedaModel.getPalabraClave());
+//			this.mPuntuacionResultadoTitulos = titleRepository.buscarPorNombre_aux(pBusquedaModel.getPalabraClave());
+//		}
+//		
+//		for (int contador = 0; contador < this.mResultadoTitulos.size(); contador++){
+//			PeliculaModel titleModel = new PeliculaModel();
+//			titleModel.setNombre(this.mResultadoTitulos.get(contador));
+//			titleModel.setCalificacionesComunidad(this.mPuntuacionResultadoTitulos.get(contador));
+//			
+//			this.mResultadosDeBusqueda.add(titleModel);
+//		}
 		
 	}
 	
@@ -119,25 +118,25 @@ public class Busquedas {
 	 */
 	public TituloModel buscarDatosDeTitulo(TituloModel pTitulo){
 		
-		TitleRepository titleRepository = new TitleRepository();
-		GeneroModel generoTitulo = new GeneroModel();
-		
-		List<String> informacionDeTitulo = titleRepository.buscarInformacionDeTitulo(pTitulo.getNombre());
-		List<Integer> calificacionesDeTitulo = titleRepository.buscarCalificacionesDeTitulo(pTitulo.getNombre());
-		List<String> genero = titleRepository.buscarGeneroDeTitulo(pTitulo.getNombre());
-		
-		pTitulo.setDescripcion(informacionDeTitulo.get(0));//*
-		pTitulo.setDirector(informacionDeTitulo.get(1));//*
-		pTitulo.setCalificacionesIMDB(calificacionesDeTitulo.get(0));
-		pTitulo.setCalificacionesComunidad(calificacionesDeTitulo.get(1));
-		pTitulo.setAnno(titleRepository.buscarPublicacionDeTitulo(pTitulo.getNombre()));
-		pTitulo.setCalificacionExpertos(titleRepository.buscarCalificaionDeExpertos(pTitulo.getNombre()));
-		
-		generoTitulo.setNombre(genero.get(0));
-		generoTitulo.setDescripcion(genero.get(1));
-		
-		pTitulo.setGenero(generoTitulo);
-		
+//		TitleRepository titleRepository = new TitleRepository();
+//		GeneroModel generoTitulo = new GeneroModel();
+//		
+//		List<String> informacionDeTitulo = titleRepository.buscarInformacionDeTitulo(pTitulo.getNombre());
+//		List<Integer> calificacionesDeTitulo = titleRepository.buscarCalificacionesDeTitulo(pTitulo.getNombre());
+//		List<String> genero = titleRepository.buscarGeneroDeTitulo(pTitulo.getNombre());
+//		
+//		pTitulo.setDescripcion(informacionDeTitulo.get(0));//*
+//		pTitulo.setDirector(informacionDeTitulo.get(1));//*
+//		pTitulo.setCalificacionesIMDB(calificacionesDeTitulo.get(0));
+//		pTitulo.setCalificacionesComunidad(calificacionesDeTitulo.get(1));
+//		pTitulo.setAnno(titleRepository.buscarPublicacionDeTitulo(pTitulo.getNombre()));
+//		pTitulo.setCalificacionExpertos(titleRepository.buscarCalificaionDeExpertos(pTitulo.getNombre()));
+//		
+//		generoTitulo.setNombre(genero.get(0));
+//		generoTitulo.setDescripcion(genero.get(1));
+//		
+//		pTitulo.setGenero(generoTitulo);
+//		
 		return pTitulo;
 	}
 

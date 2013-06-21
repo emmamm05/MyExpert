@@ -21,7 +21,7 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.FormParam;
 
 import logic.Login;
-import models.UserModel;
+import models.UsuarioModel;
 import models.ViewLoginModel;
 
 import autentificacion.BasicAuth;
@@ -52,7 +52,7 @@ public class LoginController {
 			  @Context HttpServletRequest request,
 			  @Context HttpServletResponse response) throws IOException {
 				  
-		UserModel loginRequested = new UserModel();
+		UsuarioModel loginRequested = new UsuarioModel();
 		loginRequested.setUser(user);
 		loginRequested.setPwd(pwd);
 		String id = UUID.randomUUID().toString();

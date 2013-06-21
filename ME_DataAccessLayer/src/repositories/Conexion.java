@@ -13,7 +13,7 @@ import java.sql.Statement;
 public class Conexion {
 	
 	//private static String mNombre = "jdbc:odbc:MyExpert://localhost:1433";
-	private static String mNombre = "jdbc:sqlserver://localhost:1433;databaseName=MyExpert;user=emma;password=poja";
+	private static String mNombre = "jdbc:sqlserver://localhost:1433;databaseName=MyExpert;user=emma;password=1234";
 	
 	private Connection mConexion;
 	private Statement mSentencia;

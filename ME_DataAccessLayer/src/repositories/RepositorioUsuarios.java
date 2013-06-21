@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import models.RecomendacionModel;
-import models.UserModel;
+import models.UsuarioModel;
 
 
 import java.sql.PreparedStatement;
@@ -18,7 +18,7 @@ import javax.management.Query;
  * Se encarga de administrar los repositorios relacionados a los usuarios
  * incluyendo las busquedas
  */
-public class UserRepository {
+public class RepositorioUsuarios {
 
 
 	/**
@@ -28,38 +28,31 @@ public class UserRepository {
 	 * del usuario cuyo username y contrasenna coinciden con los
 	 * parametros
 	 */
-	public UserModel getUserModel( String pUsername , String pPassword ){
+	public UsuarioModel getUserModel( String pUsername , String pPassword ){
 		
 		UsuariosDataAccess access = new UsuariosDataAccess();
+		UsuarioModel dbUser = new UsuarioModel();
+		ResultSet rs = null;
 		
 		try {
-			access.queryUsersByUserPass(pUsername, pPassword);
-		} catch (SQLException e) {
+			rs = access.verificaLoginUsuario(pUsername, pPassword);
+			
+			while ( rs.next() ){
+				
+				dbUser.setUser( rs.getString("Usuario") );
+				dbUser.setNombre("Luisa Matamoros");
+				dbUser.setEmail("luisa05@email.com");
+				dbUser.setGenero("Femenino");
+				dbUser.setRole( rs.getInt("Rol"));	
+				
+				System.out.println( dbUser.toString() );
+			}
+			
+		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e1.printStackTrace();
 		}
-		
-		UserModel logindata = new UserModel();
-		logindata.setPwd("1234");
-		logindata.setNombre("Luisa Matamoros");
-		logindata.setEmail("luisa05@email.com");
-		logindata.setGenero("Femenino");
-		if ( pUsername.equals("luisa05") ){
-			logindata.setUser("luisa05");
-			logindata.setRole(UserModel.BASIC_ROLE);
-		}else if ( pUsername.equals("admin") ){
-			logindata.setUser("admin");
-			logindata.setRole(UserModel.ADMIN_ROLE);
-		}
-		logindata.setPais("Colombia");
-		for ( int i = 0 ; i < 10 ; i++){
-			RecomendacionModel  recomendation = new RecomendacionModel();
-			recomendation.setAutor( "autor"+Integer.toString(i) );
-			recomendation.setDestinatario( "destinatario"+Integer.toString(i) );
-			recomendation.setId(UUID.randomUUID().hashCode());
-			logindata.getBuzon().put(recomendation.getId(), recomendation );
-		}
-		return logindata;
+		return dbUser;
 	}
 	
 	/**
@@ -69,7 +62,7 @@ public class UserRepository {
 	 * nombre completo. Dicha lista contiene los usuarios 
 	 * cuyo username contiene al parametro name.
 	 */
-	public List<UserModel> getUsersByUsername(String name){
+	public List<UsuarioModel> getUsersByUsername(String name){
 		return null;
 	}
 	
@@ -80,7 +73,7 @@ public class UserRepository {
 	 * nombre completo. Dicha lista contiene los usuarios 
 	 * cuyo Nombre Completo contiene al parametro name.
 	 */
-	public List<UserModel> getUsersByFullName(String name){
+	public List<UsuarioModel> getUsersByFullName(String name){
 		return null;
 	}
 	

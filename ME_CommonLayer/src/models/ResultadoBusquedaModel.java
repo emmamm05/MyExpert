@@ -8,7 +8,7 @@ import java.util.List;
  * @author Luis Alonso
  *
  */
-public class ResultadoBusquedaModel implements IModel {
+public class ResultadoBusquedaModel{
 	
 	private List<TituloModel> mResultadoBusquedaTitulo;
 	

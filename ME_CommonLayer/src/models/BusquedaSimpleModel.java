@@ -8,7 +8,7 @@ import java.util.List;
  * @author Luis Alonso
  *
  */
-public class BusquedaSimpleModel implements IModel {
+public class BusquedaSimpleModel{
 	
 	private boolean mBusquedaPorNombre;
 	private boolean mBusquedaPorDirector;

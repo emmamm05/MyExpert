@@ -11,7 +11,7 @@ import javax.ws.rs.FormParam;
 
 import logic.ConfiguracionCuenta;
 import models.RegistroModel;
-import models.UserModel;
+import models.UsuarioModel;
 
 import com.sun.jersey.api.view.Viewable;
 
@@ -79,7 +79,7 @@ public class CuentaController{
 		  
 		  
 		  ConfiguracionCuenta config = new ConfiguracionCuenta();
-		  UserModel newUserModel = new UserModel();
+		  UsuarioModel newUserModel = new UsuarioModel();
 		  newUserModel.setUser(pUser);
 		  newUserModel.setNombre(pName);
 		  newUserModel.setPais(pCountry);

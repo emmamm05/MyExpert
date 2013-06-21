@@ -7,7 +7,7 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response.Status;
 
 import logic.Login;
-import models.UserModel;
+import models.UsuarioModel;
 
 import com.sun.jersey.spi.container.ContainerRequest;
 import com.sun.jersey.spi.container.ContainerRequestFilter;
@@ -41,13 +41,13 @@ public class AuthFilter implements ContainerRequestFilter{
         	throw new WebApplicationException(Status.UNAUTHORIZED);
         }
         
-        UserModel user = Login.getLoggedUser(UUID);
+        UsuarioModel user = Login.getLoggedUser(UUID);
         
         if ( user == null ){
         	System.out.println("Auth:User Null");
         	throw new WebApplicationException(Status.UNAUTHORIZED);
         	
-		}else if ( path.contains("Generos") && user.getRole() != UserModel.ADMIN_ROLE ){
+		}else if ( path.contains("Generos") && user.getRole() != UsuarioModel.ADMIN_ROLE ){
         	
 			System.out.println("Auth:Role !=");
 			throw new WebApplicationException(Status.UNAUTHORIZED);       	

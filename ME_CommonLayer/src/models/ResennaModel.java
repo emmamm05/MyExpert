@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  */
 @XmlRootElement(name = "resenna")
-public class ResennaModel implements IModel {
+public class ResennaModel{
 	
 	private int mId;
 	private String mContenido;

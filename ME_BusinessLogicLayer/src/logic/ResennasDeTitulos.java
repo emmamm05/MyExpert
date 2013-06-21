@@ -2,7 +2,6 @@ package logic;
 
 import models.ResennaModel;
 
-import repositories.TitleRepository;
 
 /**
  * 
@@ -25,12 +24,11 @@ public class ResennasDeTitulos {
 	 * la resena
 	 */
 	public boolean resennarTitulo(ResennaModel pResenna){
-		TitleRepository titleRepository = new TitleRepository();
 		if(pResenna.getContenido().equals("")){
-			return titleRepository.guardarResenna(pResenna);
 		}else{
 			return false;
 		}
+		return true;
 	}
 
 }

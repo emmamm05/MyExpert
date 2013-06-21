@@ -9,13 +9,13 @@ import java.io.Serializable;
  * @author emma
  *
  */
-public class ViewLoginModel implements IModel, Serializable{
+public class ViewLoginModel implements Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private UserModel mUserModel;
+	private UsuarioModel mUserModel;
 	private String    mMessage;
 	
 	
@@ -29,7 +29,7 @@ public class ViewLoginModel implements IModel, Serializable{
 	/**
 	 * @return the mUserModel
 	 */
-	public UserModel getUserModel() {
+	public UsuarioModel getUserModel() {
 		return mUserModel;
 	}
 	/**
@@ -41,7 +41,7 @@ public class ViewLoginModel implements IModel, Serializable{
 	/**
 	 * @param mUserModel the mUserModel to set
 	 */
-	public void setUserModel(UserModel mUserModel) {
+	public void setUserModel(UsuarioModel mUserModel) {
 		this.mUserModel = mUserModel;
 	}
 	/**

@@ -21,7 +21,7 @@ import models.TituloModel;
 import models.PeliculaModel;
 import models.TemporadaModel;
 import models.ResennaModel;
-import models.UserModel;
+import models.UsuarioModel;
 
 import com.sun.jersey.api.view.Viewable;
 
@@ -40,9 +40,9 @@ public class TituloController{
 	  public Response showLoginPage(
 			  @QueryParam("UUID") String pUUID){
 		  
-		  UserModel user = Login.getLoggedUser(pUUID);
+		  UsuarioModel user = Login.getLoggedUser(pUUID);
 		  String perfilPageLocation;
-		  if ( user.getRole() == UserModel.ADMIN_ROLE ){
+		  if ( user.getRole() == UsuarioModel.ADMIN_ROLE ){
 		     perfilPageLocation = "/BusquedaDeTituloAdmin";		    	
 		  }else{
 		     perfilPageLocation = "/BusquedaDeTitulo";

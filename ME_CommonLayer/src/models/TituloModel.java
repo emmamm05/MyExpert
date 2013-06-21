@@ -8,7 +8,7 @@ import java.util.HashMap;
  * @author Luis Alonso
  *
  */
-public class TituloModel implements IModel {
+public class TituloModel{
 	
 	private int mID;
 	private String mNombre;

@@ -8,7 +8,7 @@ import java.sql.Timestamp;
  * @author Luis Alonso
  *
  */
-public class TemporadaModel extends TituloModel implements IModel {
+public class TemporadaModel extends TituloModel{
 	
 	private Timestamp mFechaDeLanzamiento;
 	private Timestamp mFechaDeConclusion;

@@ -19,7 +19,7 @@ import javax.ws.rs.core.UriInfo;
 
 import logic.Login;
 import logic.RecommendationBL;
-import models.UserModel;
+import models.UsuarioModel;
 
 import com.sun.jersey.api.view.Viewable;
 
@@ -38,7 +38,7 @@ public class BuzonController{
 	public Response getBuzonPage(
 			@QueryParam("UUID") String pUUID ){
 		
-		UserModel user = Login.getLoggedUser(pUUID);
+		UsuarioModel user = Login.getLoggedUser(pUUID);
 		return Response.ok( new Viewable( "/Buzon", user.getBuzon() ) ).build();		
 	}
 	
@@ -49,7 +49,7 @@ public class BuzonController{
 			@QueryParam("UUID") String pUUID,
 			@QueryParam("Id")  int pId){
 		
-		UserModel user = Login.getLoggedUser(pUUID);
+		UsuarioModel user = Login.getLoggedUser(pUUID);
 		return Response.ok( new Viewable( "/ResponderSolicitud", user.getBuzon().get(pId) ) ).build();	
 	}
 	

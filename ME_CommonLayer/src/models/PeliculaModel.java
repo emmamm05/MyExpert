@@ -8,7 +8,7 @@ import java.security.Timestamp;
  * @author Luis Alonso
  *
  */
-public class PeliculaModel extends TituloModel implements IModel,Serializable {
+public class PeliculaModel extends TituloModel implements Serializable {
 	
 	private long mDuracion;
 	private Timestamp mFechaDePublicacion;

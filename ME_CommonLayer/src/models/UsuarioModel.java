@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlElement;
  * TODO: Revisar cuales modelos no son leidos en los views para 
  * quitar el serializable
  */
-public class UserModel implements IModel,Serializable{
+public class UsuarioModel implements Serializable{
 	
 	
 	/**
@@ -44,7 +44,7 @@ public class UserModel implements IModel,Serializable{
 
 	public static final int BASIC_ROLE = 1;
 	
-	public UserModel(){
+	public UsuarioModel(){
 		mBuzon = new HashMap<Integer,RecomendacionModel>();
 	}
 	
@@ -312,6 +312,10 @@ public class UserModel implements IModel,Serializable{
 		mGeneros = generos;
 	}
 	
+	@Override
+	public String toString(){
+		return "Username: " + this.mUser + "Rol: " + this.mRol;		
+	}
 	
 	
 	

@@ -1,8 +1,8 @@
 package logic;
 
-import repositories.UserRepository;
+import repositories.RepositorioUsuarios;
 import models.RegistroModel;
-import models.UserModel;
+import models.UsuarioModel;
 
 /**
  * 
@@ -23,7 +23,7 @@ public class ConfiguracionCuenta {
 	public boolean registrarNuevoUsuario(RegistroModel pUserRegister){
 		
 		if((!pUserRegister.getUsername().equals("") && !pUserRegister.getPassword().equals("") && !pUserRegister.getMail().equals("") && !pUserRegister.getRol().equals("")) && pUserRegister.getPassword().equals(pUserRegister.getRepeatPassword())){//Se verifica que el usuario haya ingresado toda la informacion solicitada
-			UserRepository userRepository = new UserRepository();
+			RepositorioUsuarios userRepository = new RepositorioUsuarios();
 			return userRepository.setNewUser(pUserRegister.getUsername(), pUserRegister.getPassword(), pUserRegister.getMail(), pUserRegister.getRol());//Se verifica que el proceso para guardar los datos se haya completado
 		}
 		else{
@@ -36,9 +36,9 @@ public class ConfiguracionCuenta {
 	 * @param pUser: modelo con los datos adicionales del nuevo usuario
 	 * @return Se retorna el valor booleano indicando el resultado del proceso de guardar los datos en la base de datos
 	 */
-	public boolean configurarCuentaDeUsuario(UserModel pUser){
+	public boolean configurarCuentaDeUsuario(UsuarioModel pUser){
 		if(!pUser.getNombre().equals("") && !pUser.getPais().equals("") && !pUser.getExperiencia().equals("") && !pUser.getGenero().equals("") && !pUser.getGeneros().equals("") && !pUser.getEmail().equals("") && !pUser.getUser().equals("")){
-			UserRepository userRepository = new UserRepository();
+			RepositorioUsuarios userRepository = new RepositorioUsuarios();
 			return userRepository.guardarInformacionAdicionalDeUsuario(pUser.getUser(), pUser.getNombre(), pUser.getPais(), pUser.getGenero(), pUser.getGeneros(), pUser.getExperiencia(), pUser.getEmail());
 		}else{
 			return false;
