@@ -46,4 +46,14 @@ public class GenerosController {
 				Messages.getString("Pages.ListaGenero"), 
 				generos ) ).build() ;
 	}
+	
+	@Path("/Add")
+	@GET
+	@Produces(MediaType.TEXT_HTML)
+	public Response getAddGeneroView(
+			@QueryParam("UUID") String pUUID){
+		
+		return Response.ok( new Viewable(
+				Messages.getString("Pages.AgregarGenero") ) ).build() ;	
+	}
 }

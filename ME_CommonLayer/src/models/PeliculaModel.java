@@ -1,5 +1,6 @@
 package models;
 
+import java.io.Serializable;
 import java.security.Timestamp;
 
 /**
@@ -7,7 +8,7 @@ import java.security.Timestamp;
  * @author Luis Alonso
  *
  */
-public class PeliculaModel extends TituloModel implements IModel {
+public class PeliculaModel extends TituloModel implements IModel,Serializable {
 	
 	private long mDuracion;
 	private Timestamp mFechaDePublicacion;

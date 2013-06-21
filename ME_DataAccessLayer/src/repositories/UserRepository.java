@@ -6,10 +6,10 @@ import java.util.UUID;
 import models.RecomendacionModel;
 import models.UserModel;
 
-import Database.Conexion;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.management.Query;
 
@@ -29,13 +29,28 @@ public class UserRepository {
 	 * parametros
 	 */
 	public UserModel getUserModel( String pUsername , String pPassword ){
+		
+		UsuariosDataAccess access = new UsuariosDataAccess();
+		
+		try {
+			access.queryUsersByUserPass(pUsername, pPassword);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		UserModel logindata = new UserModel();
-		logindata.setUser("luisa05");
 		logindata.setPwd("1234");
 		logindata.setNombre("Luisa Matamoros");
 		logindata.setEmail("luisa05@email.com");
 		logindata.setGenero("Femenino");
-		logindata.setRole(UserModel.BASIC_ROLE);
+		if ( pUsername.equals("luisa05") ){
+			logindata.setUser("luisa05");
+			logindata.setRole(UserModel.BASIC_ROLE);
+		}else if ( pUsername.equals("admin") ){
+			logindata.setUser("admin");
+			logindata.setRole(UserModel.ADMIN_ROLE);
+		}
 		logindata.setPais("Colombia");
 		for ( int i = 0 ; i < 10 ; i++){
 			RecomendacionModel  recomendation = new RecomendacionModel();

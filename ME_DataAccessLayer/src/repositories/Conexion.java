@@ -1,4 +1,4 @@
-package Database;
+package repositories;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -12,13 +12,14 @@ import java.sql.Statement;
  */
 public class Conexion {
 	
-	private static String mNombre = "jdbc:odbc:MyCinema";
+	//private static String mNombre = "jdbc:odbc:MyExpert://localhost:1433";
+	private static String mNombre = "jdbc:sqlserver://localhost:1433;databaseName=MyExpert;user=emma;password=poja";
+	
 	private Connection mConexion;
 	private Statement mSentencia;
-	private CallableStatement mSentencia_2;
+	private CallableStatement mCallableSentence;
 	
 	public Conexion(){
-		
 	}
 
 	/**
@@ -69,11 +70,13 @@ public class Conexion {
 	 */
 	public void crearConexion(){
 		try{
-			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-			this.mConexion = DriverManager.getConnection(this.mNombre.toString());
+			//Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			this.mConexion = DriverManager.getConnection(mNombre);
 			this.mSentencia = this.mConexion.createStatement();
 		}catch(Exception e){
 			System.out.println("Error al conectarse con la base de datos");
+			e.printStackTrace();
 		}
 		
 	}
@@ -94,15 +97,15 @@ public class Conexion {
 	/**
 	 * @return the mSentencia_2
 	 */
-	public CallableStatement getSentencia_2() {
-		return mSentencia_2;
+	public CallableStatement getCallableSentence() {
+		return mCallableSentence;
 	}
 
 	/**
-	 * @param mSentencia_2 the mSentencia_2 to set
+	 * @param pCallableSentence the mSentencia_2 to set
 	 */
-	public void setSentencia_2(CallableStatement mSentencia_2) {
-		this.mSentencia_2 = mSentencia_2;
+	public void setCallableSentence(CallableStatement pCallableSentence) {
+		this.mCallableSentence = pCallableSentence;
 	}
 	
 }

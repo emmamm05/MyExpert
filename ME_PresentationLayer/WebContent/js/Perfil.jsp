@@ -9,7 +9,7 @@
 <title>MyExpert</title>
 <link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css' />
 <link href='http://fonts.googleapis.com/css?family=Abel|Satisfy' rel='stylesheet' type='text/css' />
-<link href="http://localhost:8080/ME_PresentationLayer/css/default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/ME_PresentationLayer/css/default.css" rel="stylesheet" type="text/css" media="all" />
 <!--[if IE 6]>
 <link href="default_ie6.css" rel="stylesheet" type="text/css" />
 <![endif]-->
@@ -32,13 +32,13 @@
 <div id="header-wrapper">
 	<div id="header">
 		<div id="logo">
-			<h1><img src="http://localhost:8080/ME_PresentationLayer/images/myexpert_256.png" alt=""/></h1>
+			<h1><img src="/ME_PresentationLayer/images/myexpert_256.png" alt=""/></h1>
 		</div>
 		<div id="menu">
 			<ul>
 				<li class="current_page_item"><a href="#" accesskey="1" title="">Perfil</a></li>
 				<li><a href="Buzon?UUID=<%= request.getParameter("UUID") %>" accesskey="2" title="">Buzón</a></li>
-				<li><a href="#" accesskey="3" title="">Búsqueda de títulos</a></li>
+				<li><a href="Titulo?UUID=<%= request.getParameter("UUID") %>" accesskey="3" title="">Búsqueda de títulos</a></li>
 				<li><a href="logInMyExpert.html" accesskey="4" title="">Salir</a></li>
 			</ul>
 		</div>
@@ -52,7 +52,7 @@
 <div id="footer-wrapper" style="height: 475px">
 	<div id="footer-content">
 		<div class="auto-style1" style="position: relative; left: 0px; top: 0px; width: 281px; height: 152px">
-			<img src="http://localhost:8080/ME_PresentationLayer/images/icono_perfil.png" alt="" height="145" width="148"/>
+			<img src="/ME_PresentationLayer/images/icono_perfil.png" alt="" height="145" width="148"/>
 		</div>
 		<div style="position: relative; left: 378px; top: -149px; width: 622px; height: 410px">
 			<p></p>

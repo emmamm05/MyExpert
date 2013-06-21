@@ -14,34 +14,8 @@
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
-<!--   <servlet> -->
-<!--     <servlet-name>TitulosController</servlet-name> -->
-<!--     <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class> -->
-<!--     <init-param> -->
-<!--       <param-name>com.sun.jersey.config.property.packages</param-name> -->
-<!--       <param-value>service.controllers</param-value> -->
-<!--     </init-param> -->
-<!--     <load-on-startup>2</load-on-startup> -->
-<!--   </servlet> -->
-<!--   <servlet> -->
-<!--     <servlet-name>GenerosController</servlet-name> -->
-<!--     <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class> -->
-<!--     <init-param> -->
-<!--       <param-name>com.sun.jersey.config.property.packages</param-name> -->
-<!--       <param-value>service.controllers</param-value> -->
-<!--     </init-param> -->
-<!--     <load-on-startup>3</load-on-startup> -->
-<!--   </servlet> -->
   <servlet-mapping>
     <servlet-name>WebServiceController</servlet-name>
     <url-pattern>/rest/*</url-pattern>
   </servlet-mapping>
-<!--   <servlet-mapping> -->
-<!--     <servlet-name>TitulosController</servlet-name> -->
-<!--     <url-pattern>/Titulos/*</url-pattern> -->
-<!--   </servlet-mapping> -->
-<!--   <servlet-mapping> -->
-<!--     <servlet-name>GenerosController</servlet-name> -->
-<!--     <url-pattern>/Generos/*</url-pattern> -->
-<!--   </servlet-mapping> -->
 </web-app>

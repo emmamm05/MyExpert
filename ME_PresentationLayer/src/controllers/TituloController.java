@@ -7,11 +7,13 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.FormParam;
 
 import logic.Busquedas;
+import logic.Login;
 import logic.ResennasDeTitulos;
 
 import models.BusquedaSimpleModel;
@@ -19,6 +21,7 @@ import models.TituloModel;
 import models.PeliculaModel;
 import models.TemporadaModel;
 import models.ResennaModel;
+import models.UserModel;
 
 import com.sun.jersey.api.view.Viewable;
 
@@ -34,8 +37,17 @@ public class TituloController{
 	
 	  @GET
 	  @Produces(MediaType.TEXT_HTML)
-	  public Response showLoginPage(){
-		  return Response.ok(new Viewable("/BusquedaDeTitulo")).build();
+	  public Response showLoginPage(
+			  @QueryParam("UUID") String pUUID){
+		  
+		  UserModel user = Login.getLoggedUser(pUUID);
+		  String perfilPageLocation;
+		  if ( user.getRole() == UserModel.ADMIN_ROLE ){
+		     perfilPageLocation = "/BusquedaDeTituloAdmin";		    	
+		  }else{
+		     perfilPageLocation = "/BusquedaDeTitulo";
+		   }
+		  return Response.ok(new Viewable( perfilPageLocation ) ).build();
 	  }
 	  
 	  // This method is called if HTML is request
@@ -44,9 +56,8 @@ public class TituloController{
 	  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	  public Response requestSearch( 
 			  @FormParam("Criterio") String pCriterio, 
-			  @FormParam("PalabraClave") String pPalabraClave ) {
-		  
-		  
+			  @FormParam("PalabraClave") String pPalabraClave ){
+		  		  
 		  BusquedaSimpleModel search = new BusquedaSimpleModel();
 		  search.setPalabraClave(pPalabraClave);
 		  
@@ -55,15 +66,15 @@ public class TituloController{
 		  }else if("Director".equals(pCriterio)){
 			  search.setBusquedaPorDirector(true);
 		  }
+		   
 		  
-		  Busquedas newSearch = new Busquedas();
-		  newSearch.busquedaSimple(search);
-		  
-		  this.mResultadosDeBusqueda = newSearch.getResultadosDeBusqueda();
-		  
-		  search.setResultadoBusqueda(this.mResultadosDeBusqueda);
-		
-		return Response.ok(new Viewable("/BusquedaDeTitulo",search )).build();
+//		  Busquedas newSearch = new Busquedas();
+//		  newSearch.busquedaSimple(search);
+//		  
+//		  this.mResultadosDeBusqueda = newSearch.getResultadosDeBusqueda();
+//		  
+//		  search.setResultadoBusqueda(this.mResultadosDeBusqueda);
+		return Response.ok(new Viewable( "/BusquedaDeTitulo"  )).build();
 	  }
 	  
 	  @Path("/Mostrar")
@@ -111,6 +122,16 @@ public class TituloController{
 		  
 		  return Response.ok(new Viewable("/BusquedaDeTitulo",this.mTituloSelecionado )).build();
 	  }
+	  
+	  @Path("/Add")
+	  @GET
+	  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	  public Response getAddTituloPage(
+				@QueryParam("UUID") String pUUID){
+		  return Response.ok(new Viewable("/AddTitulo")).build();
+		  
+	  }
+	  
 
 	/**
 	 * @return the mResultadosDeBusqueda

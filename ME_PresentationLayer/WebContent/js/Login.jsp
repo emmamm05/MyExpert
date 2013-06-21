@@ -9,7 +9,7 @@
 <title>MyExpert</title>
 <link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css' />
 <link href='http://fonts.googleapis.com/css?family=Abel|Satisfy' rel='stylesheet' type='text/css' />
-<link href="http://localhost:8080/ME_PresentationLayer/css/default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/ME_PresentationLayer/css/default.css" rel="stylesheet" type="text/css" media="all" />
 <!--[if IE 6]>
 <link href="default_ie6.css" rel="stylesheet" type="text/css" />
 <![endif]-->
@@ -36,7 +36,7 @@
 <div id="header-wrapper">
 	<div id="header">
 		<div id="logo">
-			<h1><img src="http://localhost:8080/ME_PresentationLayer/images/myexpert_512.png" alt=""/></h1>
+			<h1><img src="/ME_PresentationLayer/images/myexpert_512.png" alt=""/></h1>
 		</div>
 	</div>
 </div>

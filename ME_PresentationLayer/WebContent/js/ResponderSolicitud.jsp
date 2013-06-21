@@ -20,7 +20,7 @@ Released   : 20121013
 <title>MyExpert</title>
 <link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css' />
 <link href='http://fonts.googleapis.com/css?family=Abel|Satisfy' rel='stylesheet' type='text/css' />
-<link href="http://localhost:8080/ME_PresentationLayer/css/default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/ME_PresentationLayer/css/default.css" rel="stylesheet" type="text/css" media="all" />
 <!--[if IE 6]>
 <link href="default_ie6.css" rel="stylesheet" type="text/css" />
 <![endif]-->
@@ -37,13 +37,13 @@ Released   : 20121013
 <div id="header-wrapper">
 	<div id="header">
 		<div id="logo">
-			<h1><img src="images/myexpert_256.png" alt=""/></h1>
+			<h1><img src="/ME_PresentationLayer/images/myexpert_256.png" alt=""/></h1>
 		</div>
 		<div id="menu">
 			<ul>
 				<li><a href="PaginaPerfil.html" accesskey="1" title="">Perfil</a></li>
 				<li class="current_page_item"><a href="Buzon.html" accesskey="2" title="">Buzon</a></li>
-				<li><a href="#" accesskey="3" title="">Busqueda de ti­tulos</a></li>
+				<li><a href="#" accesskey="3" title="">Busqueda de titulos</a></li>
 				<li><a href="logInMyExpert.html" accesskey="4" title="">Salir</a></li>
 
 			</ul>

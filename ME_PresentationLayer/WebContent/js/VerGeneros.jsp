@@ -23,7 +23,7 @@ Released   : 20121013
 <title>MyExpert</title>
 <link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css' />
 <link href='http://fonts.googleapis.com/css?family=Abel|Satisfy' rel='stylesheet' type='text/css' />
-<link href="http://localhost:8080/ME_PresentationLayer/css/default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/ME_PresentationLayer/css/default.css" rel="stylesheet" type="text/css" media="all" />
 <!--[if IE 6]>
 <link href="default_ie6.css" rel="stylesheet" type="text/css" />
 <![endif]-->
@@ -40,16 +40,11 @@ Released   : 20121013
 <div id="header-wrapper">
 	<div id="header">
 		<div id="logo">
-			<h1><img src="http://localhost:8080/ME_PresentationLayer/images/myexpert_256.png" alt=""/></h1>
+			<h1><img src="/ME_PresentationLayer/images/myexpert_256.png" alt=""/></h1>
 		</div>
 		<div id="menu">
 			<ul>
-				<li><a href="#" accesskey="4" title="">Busqueda de ti­tulos</a></li>
-				<li class="current_page_item"><a href="AddGenero.html" accesskey="2" title="">Lista generos</a></li>
-				<li><a href="AddTitulo.html" accesskey="3" title="">Crear ti­tulo</a></li>
-				<li><a href="#" accesskey="5" title="">Cargar calificacion</a></li>
-				<li><a href="PaginaPerfil_2.html" accesskey="1" title="">Perfil</a></li>
-				<li><a href="logInMyExpert.html" accesskey="5" title="">Salir</a></li>
+				<jsp:include page="adminMenu.jsp"/>
 			</ul>
 		</div>
 	</div>
@@ -67,7 +62,7 @@ Released   : 20121013
 				<p></p>
 				<table class="auto-style1">
 					<tr>
-						<td></td><td><a href="AddGenero.html"><input name="CrearGenero" type="button" value="Crear un genero nuevo" ></input></a></td>
+						<td></td><td><a href="Generos/Add?UUID=<%= request.getParameter("UUID") %>"><input name="CrearGenero" type="button" value="Crear un genero nuevo" ></input></a></td>
 					</tr>
 					<tr>
 					<td>

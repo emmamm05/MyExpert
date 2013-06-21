@@ -10,7 +10,7 @@
 <title>MyExpert</title>
 <link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css' />
 <link href='http://fonts.googleapis.com/css?family=Abel|Satisfy' rel='stylesheet' type='text/css' />
-<link href="../css/default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/ME_PresentationLayer/css/default.css" rel="stylesheet" type="text/css" media="all" />
 <!--[if IE 6]>
 <link href="default_ie6.css" rel="stylesheet" type="text/css" />
 <![endif]-->
@@ -22,7 +22,7 @@
 <div id="header-wrapper">
 	<div id="header">
 		<div id="logo">
-			<h1><img src="../images/myexpert_256.png" alt=""/></h1>
+			<h1><img src="/ME_PresentationLayer/images/myexpert_256.png" alt=""/></h1>
 		</div>
 		<div id="menu">
 			<ul>
@@ -43,7 +43,7 @@
 <div id="footer-wrapper">
 	<div id="footer-content">
 		<div>
-			<form action="" method="post" style="height: 577px">
+			<form action="Titulo/Busqueda?UUID=<%= request.getParameter("UUID") %>" method="post" style="height: 577px">
 				<p style="width: 351px" id="tituloSeccion">Búsqueda de títulos</p>
 				<p></p>
 				<table style="width: 1000px; height: 261px;">

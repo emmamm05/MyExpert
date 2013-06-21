@@ -4,5 +4,8 @@
         <dependent-module archiveName="ME_CommonLayer.jar" deploy-path="/" handle="module:/resource/ME_CommonLayer/ME_CommonLayer">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="sqljdbc4.jar" deploy-path="/" handle="module:/classpath/lib/D:/emma temp/workspace/MyExpert/ME_DataAccessLayer/lib/sqljdbc4.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>
