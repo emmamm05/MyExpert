@@ -1,5 +1,6 @@
 package repositories;
 
+import models.RecomendacionModel;
 import models.UsuarioModel;
 
 public interface IRepositorioUsuarios {
@@ -10,5 +11,5 @@ public interface IRepositorioUsuarios {
 	public boolean actualizarInformacionAdicional( UsuarioModel pUsuario );
 	public boolean getPerfilUsuario( UsuarioModel pUsuario );
 	public boolean cambiarClave( UsuarioModel pUsuarioModel );	
-	
+	public void getSolicitud( RecomendacionModel pRecomendacion );
 }

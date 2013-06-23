@@ -11,13 +11,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Luis Alonso
  *
  */
-@XmlRootElement(name = "resenna")
+@XmlRootElement(name = "ResennaModel")
 public class ResennaModel{
 	
-	private int mId;
+	private String mTitulo;
 	private String mContenido;
 	private String mAutor;
-	private int mIdAutor;
+	private String mCodigoAutor;
+	private String mCodigoTitulo;
 	private Timestamp mFechaDePublicacion;
 	private int mCalificacionDeExperto;
 	
@@ -32,22 +33,22 @@ public class ResennaModel{
 	/**
 	 * @return the mId
 	 */
-	@XmlElement
-	public int getId() {
-		return mId;
+	@XmlElement(name="CodigoExperto")
+	public String getCodigoAutor() {
+		return mCodigoAutor;
 	}
 
 	/**
-	 * @param mId the mId to set
+	 * @param pCodigoAutor the mId to set
 	 */
-	public void setId(int mId) {
-		this.mId = mId;
+	public void setCodigoAutor(String pCodigoAutor) {
+		this.mCodigoAutor = pCodigoAutor;
 	}
 
 	/**
 	 * @return the mContenido
 	 */
-	@XmlElement
+	@XmlElement(name="ContenidoResenna")
 	public String getContenido() {
 		return mContenido;
 	}
@@ -62,7 +63,7 @@ public class ResennaModel{
 	/**
 	 * @return the mAutor
 	 */
-	@XmlElement
+	@XmlElement(name="NombreExperto")
 	public String getAutor() {
 		return mAutor;
 	}
@@ -77,22 +78,22 @@ public class ResennaModel{
 	/**
 	 * @return the mIdAutor
 	 */
-	@XmlElement
-	public int getIdAutor() {
-		return mIdAutor;
+	@XmlElement(name="CodigoTitulo")
+	public String getCodigoTitulo() {
+		return mCodigoTitulo;
 	}
 
 	/**
 	 * @param mIdAutor the mIdAutor to set
 	 */
-	public void setIdAutor(int mIdAutor) {
-		this.mIdAutor = mIdAutor;
+	public void setCodigoTitulo(String pCodigoTitulo) {
+		this.mCodigoTitulo = pCodigoTitulo;
 	}
 
 	/**
 	 * @return the mFechaDePublicacion
 	 */
-	@XmlElement
+	@XmlElement(name="FechaCalificacion")
 	public Timestamp getFechaDePublicacion() {
 		return mFechaDePublicacion;
 	}
@@ -107,7 +108,7 @@ public class ResennaModel{
 	/**
 	 * @return the mCalificacionDeExperto
 	 */
-	@XmlElement
+	@XmlElement(name="Calificacion")
 	public int getCalificacionDeExperto() {
 		return mCalificacionDeExperto;
 	}
@@ -117,5 +118,14 @@ public class ResennaModel{
 	 */
 	public void setCalificacionDeExperto(int mCalificacionDeExperto) {
 		this.mCalificacionDeExperto = mCalificacionDeExperto;
+	}
+	
+	public void setTitulo( String pTitulo ){
+		mTitulo = pTitulo;
+	}
+	
+	@XmlElement
+	public String getTitulo(){
+		return mTitulo;
 	}
 }

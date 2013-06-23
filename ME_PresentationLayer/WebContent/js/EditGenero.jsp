@@ -8,7 +8,8 @@ Name       : GoodLife
 Description: A two-column, fixed-width design with dark color scheme.
 Version    : 1.0
 Released   : 20121013
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -52,22 +53,22 @@ Released   : 20121013
 <div id="footer-wrapper">
 	<div id="footer-content">
 		<div>
-			<form action="/ME_PresentationLayer/rest/Generos/Add?UUID=<%= request.getParameter("UUID") %>" method="post" style="height: 205px">
-				<p style="width: 351px" id="tituloSeccion">Agregar genero</p>
+			<form action="/ME_PresentationLayer/rest/Generos/Save?UUID=<%= request.getParameter("UUID") %>&Codigo=<%= request.getParameter("Codigo") %>" method="post" style="height: 205px">
+				<p style="width: 351px" id="tituloSeccion">Editar genero</p>
 				<p></p>
 				<table class="auto-style1">
 					<tr>
-						<td><p>Genero:</p></td><td><input name="Nombre" style="width: 300px" type="text" value=""/></td>
+						<td><p>Genero:</p></td><td><input name="Nombre" style="width: 300px" type="text" value="${it.nombre}"/></td>
 					</tr>
 					<tr>
-						<td>Descripcion:*</td><td><textarea rows="3" name="Descripcion" style="width: 300px" value=""></textarea></td>
+						<td>Descripcion:*</td><td><textarea rows="3" name="Descripcion" style="width: 300px">${it.descripcion}</textarea></td>
 					</tr>
 					<tr>
 						<td></td><td>* Opcional</td>
 					</tr>
 					<tr>
 						<td></td><td>
-						<input name="CrearGenero" type="submit" value="Crear" /></td>
+						<input name="CrearGenero" type="submit" value="Guardar" /></td>
 					</tr>
 				</table>
 			</form>

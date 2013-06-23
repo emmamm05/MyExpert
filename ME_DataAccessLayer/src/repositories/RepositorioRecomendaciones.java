@@ -11,7 +11,7 @@ import models.RecomendacionModel;
  * @author emma
  *
  */
-public class RecomendationsRepository {
+public class RepositorioRecomendaciones {
 	
 	public boolean getNuevasRecomendaciones(
 			List<RecomendacionModel> pRecomendaciones, 

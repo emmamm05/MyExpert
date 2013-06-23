@@ -8,41 +8,32 @@ import java.util.HashMap;
 import models.UsuarioModel;
 import repositories.RepositorioUsuarios;
 
-public class Login {
+public class Login implements IAutorizacionLogic{
 	
-	private static List<UsuarioModel> mAutentication = new ArrayList<UsuarioModel>();
-	private static HashMap<String,UsuarioModel> mLogged = new HashMap<String,UsuarioModel>();
+	private List<UsuarioModel> mAutentication = new ArrayList<UsuarioModel>();
+	private HashMap<String,UsuarioModel> mLogged = new HashMap<String,UsuarioModel>();
 	
-	public static boolean Validate(UsuarioModel pLoginRequested, String pUuid){
+	Login(){
 		
+	}
+	
+	public boolean ValidarUsuario(UsuarioModel pLoginRequested, String pUuid){
 		RepositorioUsuarios userRepository = new RepositorioUsuarios();
 		UsuarioModel loginUserMatched = 
 				userRepository.getUserModel(pLoginRequested.getUser(), pLoginRequested.getPwd());
-		if (pLoginRequested.getUser().equals(loginUserMatched.getUser() )
-			&& pLoginRequested.getPwd().equals(loginUserMatched.getPwd())){
-			
+		if ( loginUserMatched != null ){			
 			mAutentication.add(loginUserMatched);
 			mLogged.put( pUuid , loginUserMatched );
-			HashMap<String,UsuarioModel> Logged = mLogged;
 			return true;
 		}
 		return false;
 					
 	}
 	
-	public static UsuarioModel getLoggedUser(String pUuid){
-//		System.out.println("#############################");
-//		for ( int i=0; i< mAutentication.size() ; i++ ){
-//			if ( mAutentication.get(i).getUser().equals(pUsername) ){
-//				return mAutentication.get(i);
-//			}
-//		}
-//		return null;
-		HashMap<String,UsuarioModel> Logged = mLogged;
+	public UsuarioModel getLoggedUser(String pUuid){
 		if( mLogged.containsKey(pUuid) ){
 			return mLogged.get(pUuid);
 		}
 		return null;
 	}
-	
 }

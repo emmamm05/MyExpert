@@ -1,6 +1,10 @@
 package models;
 
 import java.sql.Timestamp;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import java.util.HashMap;
 
 /**
@@ -8,13 +12,14 @@ import java.util.HashMap;
  * @author Luis Alonso
  *
  */
+@XmlRootElement(name = "titulo")
 public class TituloModel{
 	
-	private int mID;
+	private int mId;
 	private String mNombre;
 	private String mDescripcion;
 	private String mDirector;
-	private Timestamp mAnno;
+	private int mAnno;
 	private HashMap<Integer, Integer> mCalificacionExpertos;
 	private int mCalificacionesIMDB;
 	private int mCalificacionesComunidad;
@@ -24,6 +29,7 @@ public class TituloModel{
 	/**
 	 * Constructor
 	 */
+	
 	public TituloModel(){
 		
 	}
@@ -31,20 +37,22 @@ public class TituloModel{
 	/**
 	 * @return the mID
 	 */
-	public int getID() {
-		return mID;
+	@XmlElement
+	public int getId() {
+		return mId;
 	}
 
 	/**
 	 * @param mID the mID to set
 	 */
-	public void setID(int mID) {
-		this.mID = mID;
+	public void setId(int mId) {
+		this.mId = mId;
 	}
 
 	/**
 	 * @return the mNombre
 	 */
+	@XmlElement
 	public String getNombre() {
 		return mNombre;
 	}
@@ -59,20 +67,22 @@ public class TituloModel{
 	/**
 	 * @return the mAnno
 	 */
-	public Timestamp getAnno() {
+	@XmlElement
+	public int getAnno() {
 		return mAnno;
 	}
 
 	/**
 	 * @param mAnno the mAnno to set
 	 */
-	public void setAnno(Timestamp mAnno) {
+	public void setAnno(int mAnno) {
 		this.mAnno = mAnno;
 	}
 
 	/**
 	 * @return the mDescripcion
 	 */
+	@XmlElement
 	public String getDescripcion() {
 		return mDescripcion;
 	}
@@ -87,6 +97,7 @@ public class TituloModel{
 	/**
 	 * @return the mDirector
 	 */
+	@XmlElement
 	public String getDirector() {
 		return mDirector;
 	}
@@ -101,6 +112,7 @@ public class TituloModel{
 	/**
 	 * @return the mCalificacionExpertos
 	 */
+	@XmlElement
 	public HashMap<Integer, Integer> getCalificacionExpertos() {
 		return mCalificacionExpertos;
 	}
@@ -115,6 +127,7 @@ public class TituloModel{
 	/**
 	 * @return the mCalificacionesIMDB
 	 */
+	@XmlElement
 	public int getCalificacionesIMDB() {
 		return mCalificacionesIMDB;
 	}
@@ -129,6 +142,7 @@ public class TituloModel{
 	/**
 	 * @return the mCalificacionesComunidad
 	 */
+	@XmlElement
 	public int getCalificacionesComunidad() {
 		return mCalificacionesComunidad;
 	}
@@ -143,6 +157,7 @@ public class TituloModel{
 	/**
 	 * @return the mResenna
 	 */
+	@XmlElement
 	public ResennaModel getResenna() {
 		return mResenna;
 	}
@@ -157,6 +172,7 @@ public class TituloModel{
 	/**
 	 * @return the mGenero
 	 */
+	@XmlElement
 	public GeneroModel getGenero() {
 		return mGenero;
 	}

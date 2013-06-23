@@ -20,6 +20,8 @@ import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.FormParam;
 
+import logic.IAutorizacionLogic;
+import logic.LogicFactory;
 import logic.Login;
 import models.UsuarioModel;
 import models.ViewLoginModel;
@@ -56,7 +58,10 @@ public class LoginController {
 		loginRequested.setUser(user);
 		loginRequested.setPwd(pwd);
 		String id = UUID.randomUUID().toString();
-		boolean isValid = Login.Validate(loginRequested, id );
+		
+		LogicFactory logicFactory = new LogicFactory();
+		IAutorizacionLogic login = logicFactory.createAutorizacionLogic();
+		boolean isValid = login.ValidarUsuario(loginRequested, id );
 				
 		if ( isValid ){
 //			response.setHeader("UUID", id);

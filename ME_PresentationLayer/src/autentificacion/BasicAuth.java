@@ -9,6 +9,9 @@ import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 import javax.xml.bind.DatatypeConverter;
 
+import logic.LogicFactory;
+import models.UsuarioModel;
+
 /**
  * @author emma
  *
@@ -33,10 +36,14 @@ public class BasicAuth {
         return new String(decodedBytes).split(":", 2);   
 	}
 	
-	public static String getUser(HttpServletRequest req) {
-		String header = req.getHeader("authorization");
-		return BasicAuth.decode(header)[0];	
-	}
+//	public static String getUser(HttpServletRequest req) {
+//		String header = req.getHeader("authorization");
+//		return BasicAuth.decode(header)[0];	
+//	}
 	
+	public static UsuarioModel getUser(String pUUID){
+		LogicFactory logicFactory = new LogicFactory();
+		return logicFactory.createAutorizacionLogic().getLoggedUser(pUUID);
+	}
 	
 }

@@ -14,7 +14,6 @@ import javax.ws.rs.FormParam;
 
 import logic.Busquedas;
 import logic.Login;
-import logic.ResennasDeTitulos;
 
 import models.BusquedaSimpleModel;
 import models.TituloModel;
@@ -22,6 +21,8 @@ import models.PeliculaModel;
 import models.TemporadaModel;
 import models.ResennaModel;
 import models.UsuarioModel;
+
+import autentificacion.BasicAuth;
 
 import com.sun.jersey.api.view.Viewable;
 
@@ -40,7 +41,7 @@ public class TituloController{
 	  public Response showLoginPage(
 			  @QueryParam("UUID") String pUUID){
 		  
-		  UsuarioModel user = Login.getLoggedUser(pUUID);
+		  UsuarioModel user = BasicAuth.getUser(pUUID);
 		  String perfilPageLocation;
 		  if ( user.getRole() == UsuarioModel.ADMIN_ROLE ){
 		     perfilPageLocation = "/BusquedaDeTituloAdmin";		    	
@@ -104,8 +105,8 @@ public class TituloController{
 	  public Response requestReview(
 			  @FormParam("resenna") String pReview,
 			  @FormParam("calificacion") String pScore){
-		  
-		  ResennasDeTitulos review = new ResennasDeTitulos();
+//		  
+//		  ResennasDeTitulos review = new ResennasDeTitulos();
 		  ResennaModel reviewModel = new ResennaModel();
 		  
 		  reviewModel.setContenido(pReview);
@@ -114,13 +115,13 @@ public class TituloController{
 			  reviewModel.setCalificacionDeExperto(Integer.parseInt(pScore));
 		  }catch(Exception e){}
 		  
-		  boolean isValid = review.resennarTitulo(reviewModel);
+//		  boolean isValid = review.resennarTitulo(reviewModel);
 		  
-		  if (isValid){
+//		  if (isValid){
 			  return Response.ok(new Viewable("/PerfilTitulo",this.mTituloSelecionado )).build();
-		  }
+//		  }
 		  
-		  return Response.ok(new Viewable("/BusquedaDeTitulo",this.mTituloSelecionado )).build();
+//		  return Response.ok(new Viewable("/BusquedaDeTitulo",this.mTituloSelecionado )).build();
 	  }
 	  
 	  @Path("/Add")
@@ -130,6 +131,20 @@ public class TituloController{
 				@QueryParam("UUID") String pUUID){
 		  return Response.ok(new Viewable("/AddTitulo")).build();
 		  
+	  }
+	  
+	  @Path("/Add")
+	  @POST
+	  public Response postAddTitulo(
+			  @QueryParam("UUID") String pUUID,
+			  @FormParam("Titulo") String pTitulo,
+			  @FormParam("Director") String pDirector,
+			  @FormParam("Ano") String pAnno,
+			  @FormParam("Link") String pLink,
+			  @FormParam("Tipo") String pTipo
+			  ){
+		  
+		  return null;
 	  }
 	  
 

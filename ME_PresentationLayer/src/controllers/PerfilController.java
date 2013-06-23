@@ -17,6 +17,8 @@ import javax.ws.rs.core.Response;
 import logic.Login;
 import models.UsuarioModel;
 
+import autentificacion.BasicAuth;
+
 import com.sun.jersey.api.view.Viewable;
 import com.sun.research.ws.wadl.Request;
 
@@ -37,7 +39,7 @@ public class PerfilController {
 	  @Produces(MediaType.TEXT_HTML)
 	  public Response showPerfilPage(
 			  @QueryParam("UUID") String pUUID){
-		    UsuarioModel user = Login.getLoggedUser(pUUID);
+		    UsuarioModel user = BasicAuth.getUser(pUUID);
 		    String perfilPageLocation;
 		    if ( user.getRole() == ADMIN_ROLE ){
 		    	perfilPageLocation = "/AdminPerfil";		    	

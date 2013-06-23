@@ -13,9 +13,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "genero")
 public class GeneroModel {
 
-	private int    mId;
+	private String mCodigo;
 	private String mNombre;
 	private String mDescripcion;
+	private boolean mEnabled;
 	
 	/**
 	 * Constructor
@@ -28,8 +29,8 @@ public class GeneroModel {
 	 * @return the mId
 	 */
 	@XmlElement
-	public int getId() {
-		return mId;
+	public String getCodigo() {
+		return mCodigo;
 	}
 	/**
 	 * @return the mNombre
@@ -48,8 +49,8 @@ public class GeneroModel {
 	/**
 	 * @param mId the mId to set
 	 */
-	public void setId(int mId) {
-		this.mId = mId;
+	public void setCodigo(String pCodigo) {
+		this.mCodigo = pCodigo;
 	}
 	/**
 	 * @param mNombre the mNombre to set
@@ -62,6 +63,15 @@ public class GeneroModel {
 	 */
 	public void setDescripcion(String mDescripcion) {
 		this.mDescripcion = mDescripcion;
+	}
+	
+	public void setEnabled(boolean pEnabled){
+		this.mEnabled = pEnabled;
+	}
+	
+	@XmlElement
+	public boolean getEnabled(){
+		return this.mEnabled;
 	}
 	
 }

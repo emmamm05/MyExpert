@@ -69,9 +69,16 @@ Released   : 20121013
 					<table border="1" style="height: 336px; width: 350px">
 						<c:forEach items="${it}" var="genero">
 						<tr>
-							<td>${genero.nombre} </td>
-							<td><input action="" type="submit" value="editar"/></td>
-							<td><input action="" type="submit" value="deshabilitar"/></td>
+							<td>Nombre: ${genero.nombre} </td>
+							<c:choose>
+							<c:when test="${genero.enabled}">
+								<td><a href="Generos/Deshabilitar?UUID=<%= request.getParameter("UUID") %>&Codigo=${genero.nombre}"><input type="button" value="deshabilitar"/></input></a></td>
+							</c:when>
+							<c:otherwise>
+								<td><a href="Generos/Habilitar?UUID=<%= request.getParameter("UUID") %>&Codigo=${genero.nombre}"><input type="button" value="habilitar"/></input></a></td>
+							</c:otherwise>
+							</c:choose>
+								<td><a href="Generos/Edit?UUID=<%= request.getParameter("UUID") %>&Codigo=${genero.nombre}"><input type="button" value="editar"/></input></a></td>
 						</tr>
 						</c:forEach>
 					</table>

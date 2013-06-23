@@ -41,7 +41,7 @@ public class AuthFilter implements ContainerRequestFilter{
         	throw new WebApplicationException(Status.UNAUTHORIZED);
         }
         
-        UsuarioModel user = Login.getLoggedUser(UUID);
+        UsuarioModel user = BasicAuth.getUser(UUID);
         
         if ( user == null ){
         	System.out.println("Auth:User Null");

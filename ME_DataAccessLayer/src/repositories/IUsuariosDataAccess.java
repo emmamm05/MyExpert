@@ -13,4 +13,5 @@ public interface IUsuariosDataAccess {
 	public ResultSet actualizarInformacionAdicional( Object[] pParams );
 	public ResultSet getPerfil( String pUsername );
 	public ResultSet cambiarClave( String pUsername, String pPassword );
+	public ResultSet getSolicitud( String pCodigoExperto, String pCodigoSolicitante, String pTimestamp );
 }

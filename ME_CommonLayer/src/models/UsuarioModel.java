@@ -314,7 +314,7 @@ public class UsuarioModel implements Serializable{
 	
 	@Override
 	public String toString(){
-		return "Username: " + this.mUser + "Rol: " + this.mRol;		
+		return "Username: " + this.mUser + " Rol: " + this.mRol;		
 	}
 	
 	

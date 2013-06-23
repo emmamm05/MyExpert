@@ -17,9 +17,10 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 
+import logic.LogicFactory;
 import logic.Login;
-import logic.RecommendationBL;
 import models.UsuarioModel;
+import autentificacion.BasicAuth;
 
 import com.sun.jersey.api.view.Viewable;
 
@@ -38,7 +39,7 @@ public class BuzonController{
 	public Response getBuzonPage(
 			@QueryParam("UUID") String pUUID ){
 		
-		UsuarioModel user = Login.getLoggedUser(pUUID);
+		UsuarioModel user = BasicAuth.getUser(pUUID);
 		return Response.ok( new Viewable( "/Buzon", user.getBuzon() ) ).build();		
 	}
 	
@@ -49,7 +50,7 @@ public class BuzonController{
 			@QueryParam("UUID") String pUUID,
 			@QueryParam("Id")  int pId){
 		
-		UsuarioModel user = Login.getLoggedUser(pUUID);
+		UsuarioModel user = BasicAuth.getUser(pUUID);
 		return Response.ok( new Viewable( "/ResponderSolicitud", user.getBuzon().get(pId) ) ).build();	
 	}
 	
@@ -62,12 +63,7 @@ public class BuzonController{
 			@QueryParam("UUID") String pUUID,
 			@QueryParam("Id") String pId
 			){
-		
-//		RecommendationBL logic = new RecommendationBL();
-//		User user = Login.getLoggedUser(pUUID);
-//		if (user.getBuzon().get(pId) != null){
-//			user.getBuzon().get(pId).setAnswered(true);
-//		}
+		UsuarioModel user = BasicAuth.getUser(pUUID);
 
 		UriBuilder builder = uriInfo.getBaseUriBuilder();
 		builder.path("/Perfil");
@@ -75,4 +71,5 @@ public class BuzonController{
 		
 		return Response.seeOther(builder.build()).build();
 	}
+	
 }

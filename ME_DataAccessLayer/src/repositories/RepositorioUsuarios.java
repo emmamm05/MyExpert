@@ -18,7 +18,7 @@ import javax.management.Query;
  * Se encarga de administrar los repositorios relacionados a los usuarios
  * incluyendo las busquedas
  */
-public class RepositorioUsuarios {
+public class RepositorioUsuarios implements IRepositorioUsuarios{
 
 
 	/**
@@ -39,11 +39,11 @@ public class RepositorioUsuarios {
 			
 			while ( rs.next() ){
 				
-				dbUser.setUser( rs.getString("Usuario") );
+				dbUser.setUser( rs.getString("Username") );
 				dbUser.setNombre("Luisa Matamoros");
 				dbUser.setEmail("luisa05@email.com");
 				dbUser.setGenero("Femenino");
-				dbUser.setRole( rs.getInt("Rol"));	
+				dbUser.setRole( rs.getInt("Rol") );	
 				
 				System.out.println( dbUser.toString() );
 			}
@@ -152,5 +152,47 @@ public class RepositorioUsuarios {
 	public boolean guardarInformacionAdicionalDeUsuario(String pUser, String pNombre, String pPais, String pSexo, String pGenero, String pExperiencia, String pEmail){
 		//Aqui se coloca la logica para guardar esta informacion dentro de la base de datos
 		return true;
+	}
+
+	@Override
+	public boolean verificaLoginUsuario(UsuarioModel pUsuarioModel) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean registraNuevoUsuario(UsuarioModel pUsuarioModel) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean guardarInformacionAdicional(UsuarioModel pUsuario) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean actualizarInformacionAdicional(UsuarioModel pUsuario) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean getPerfilUsuario(UsuarioModel pUsuario) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean cambiarClave(UsuarioModel pUsuarioModel) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void getSolicitud(RecomendacionModel pRecomendacion) {
+		
+				
 	}
 }

@@ -53,5 +53,12 @@ public class UsuariosDataAccess extends Conexion implements IUsuariosDataAccess{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public ResultSet getSolicitud(String pCodigoExperto,
+			String pCodigoSolicitante, String pTimestamp) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
