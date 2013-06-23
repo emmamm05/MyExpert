@@ -22,7 +22,7 @@ public class LogicFactory {
 	 * @return objeto CuentaLofica
 	 */
 	public ICuentaLogic getLogicaCuenta(){
-		return new CuentaLogica();
+		return new CuentaLogic();
 	}
 	
 	/**
@@ -49,11 +49,21 @@ public class LogicFactory {
 	public IBuzonLogic createBuzonLogic() {
 		return new BuzonLogic();
 	}
+	
+	public IResennaLogic createResennaLogic(){
+		return new ResennaLogic();
+	}
+	
 	public IAutorizacionLogic createAutorizacionLogic() {
 		if (mUniqueAutorizationLogic == null) {
 			mUniqueAutorizationLogic = new Login();
 		}
 		return mUniqueAutorizationLogic;
+	}
+
+	public ICuentaLogic createCuentaLogic() {
+		// TODO Auto-generated method stub
+		return new CuentaLogic();
 	}
 
 }

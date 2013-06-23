@@ -225,41 +225,6 @@ public class RepositorioUsuarios implements IRepositorioUsuarios{
 		return true;
 	}
 
-	@Override
-	public boolean verificaLoginUsuario(UsuarioModel pUsuarioModel) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean registraNuevoUsuario(UsuarioModel pUsuarioModel) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean guardarInformacionAdicional(UsuarioModel pUsuario) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean actualizarInformacionAdicional(UsuarioModel pUsuario) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean getPerfilUsuario(UsuarioModel pUsuario) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean cambiarClave(UsuarioModel pUsuarioModel) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	@Override
 	public void getSolicitud(RecomendacionModel pRecomendacion) {

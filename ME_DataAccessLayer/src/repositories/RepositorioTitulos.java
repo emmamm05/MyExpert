@@ -245,15 +245,7 @@ public class RepositorioTitulos implements IRepositorioTitulos{
 		
 	}
 	
-	public void getResennaCompleta( ResennaModel pResenna ){
-	}
-	
 	public void getGenerosFrom( List<GeneroModel> pGeneros , String pTimestamp ){
-		GeneroModel genero1 = new GeneroModel();
-		genero1.setId(1233);
-		genero1.setNombre("Drama");
-		genero1.setDescripcion("Some description here...");
-		pGeneros.add(genero1);
 	}
 	
 	public int getCantidadGeneros(){
@@ -261,12 +253,6 @@ public class RepositorioTitulos implements IRepositorioTitulos{
 	}
 	
 	public void getGeneros( List<GeneroModel> pGeneros , int page ){
-		for (int i=1;i<=20;i++){
-			GeneroModel gen = new GeneroModel();
-			gen.setId(i);
-			gen.setNombre("Genero" + Integer.toString(i+20*page));
-			gen.setDescripcion("Some description here...");
-		}
 	}
 
 	

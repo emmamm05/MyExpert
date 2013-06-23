@@ -13,8 +13,8 @@ import java.sql.Statement;
 public class Conexion {
 	
 	//private static String mNombre = "jdbc:odbc:MyExpert://localhost:1433";
-	private static String mNombre = "jdbc:odbc:MyExpert";
-	//private static String mNombre = "jdbc:sqlserver://localhost:1433;databaseName=MyExpert;user=emma;password=1234";
+	//private static String mNombre = "jdbc:odbc:MyExpert";
+	private static String mNombre = "jdbc:sqlserver://localhost:1433;databaseName=MyExpert;user=emma;password=1234";
 	
 	private Connection mConexion;
 	private Statement mSentencia;
@@ -71,9 +71,9 @@ public class Conexion {
 	 */
 	public void crearConexion(){
 		try{
-			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-			//Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			this.mConexion = DriverManager.getConnection(mNombre.toString());
+			//Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			this.mConexion = DriverManager.getConnection(mNombre);
 			this.mSentencia = this.mConexion.createStatement();
 		}catch(Exception e){
 			System.out.println("Error al conectarse con la base de datos");

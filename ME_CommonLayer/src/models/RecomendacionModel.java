@@ -16,7 +16,7 @@ import java.util.Date;
  *
  */
 
-@XmlRootElement(name = "recomendacion")
+@XmlRootElement(name = "Recomendacion")
 public class RecomendacionModel implements Serializable{
 	private int     mId;
 	private String  mDescripcion;
@@ -29,71 +29,71 @@ public class RecomendacionModel implements Serializable{
 	private String  mCodigoExperto;
 	private String  mTimestamp;
 	
-	public int getmId() {
+	public int getId() {
 		return mId;
 	}
-	public void setmId(int mId) {
-		this.mId = mId;
+	public void setId(int pId) {
+		this.mId = pId;
 	}
 	@XmlElement
-	public String getmDescripcion() {
+	public String getDescripcion() {
 		return mDescripcion;
 	}
-	public void setmDescripcion(String mDescripcion) {
-		this.mDescripcion = mDescripcion;
-	}
 	@XmlElement
-	public int getmAnno() {
+	public int getAnno() {
 		return mAnno;
 	}
-	public void setmAnno(int mAnno) {
-		this.mAnno = mAnno;
-	}
 	@XmlElement
-	public String getmCodigoTitulo() {
+	public String getCodigoTitulo() {
 		return mCodigoTitulo;
 	}
-	public void setmCodigoTitulo(String mCodigoTitulo) {
-		this.mCodigoTitulo = mCodigoTitulo;
-	}
 	@XmlElement
-	public String getmCodigoGenero() {
+	public String getCodigoGenero() {
 		return mCodigoGenero;
 	}
-	public void setmCodigoGenero(String mCodigoGenero) {
-		this.mCodigoGenero = mCodigoGenero;
-	}
 	@XmlElement
-	public String getmCodigoSolicitante() {
+	public String getCodigoSolicitante() {
 		return mCodigoSolicitante;
-	}
-	public void setmCodigoSolicitante(String mCodigoSolicitante) {
-		this.mCodigoSolicitante = mCodigoSolicitante;
 	}
 	@XmlElement
 	public String getmNombreSolicitante() {
 		return mNombreSolicitante;
 	}
-	public void setmNombreSolicitante(String mNombreSolicitante) {
-		this.mNombreSolicitante = mNombreSolicitante;
-	}
 	@XmlElement
 	public int getmEstado() {
 		return mEstado;
-	}
-	public void setmEstado(int mEstado) {
-		this.mEstado = mEstado;
 	}
 	@XmlElement
 	public String getmCodigoExperto() {
 		return mCodigoExperto;
 	}
-	public void setmCodigoExperto(String mCodigoExperto) {
-		this.mCodigoExperto = mCodigoExperto;
-	}
 	@XmlElement
 	public String getmTimestamp() {
 		return mTimestamp;
+	}
+	public void setDescripcion(String mDescripcion) {
+		this.mDescripcion = mDescripcion;
+	}
+	public void setmAnno(int mAnno) {
+		this.mAnno = mAnno;
+	}
+	public void setCodigoTitulo(String mCodigoTitulo) {
+		this.mCodigoTitulo = mCodigoTitulo;
+	}
+	public void setCodigoGenero(String mCodigoGenero) {
+		this.mCodigoGenero = mCodigoGenero;
+	}
+	public void setCodigoSolicitante(String mCodigoSolicitante) {
+		this.mCodigoSolicitante = mCodigoSolicitante;
+	}
+	public void setmNombreSolicitante(String mNombreSolicitante) {
+		this.mNombreSolicitante = mNombreSolicitante;
+	}
+	public void setmEstado(int mEstado) {
+		this.mEstado = mEstado;
+	}
+	public void setmCodigoExperto(String mCodigoExperto) {
+		this.mCodigoExperto = mCodigoExperto;
 	}
 	public void setmTimestamp(String mTimestamp) {
 		this.mTimestamp = mTimestamp;

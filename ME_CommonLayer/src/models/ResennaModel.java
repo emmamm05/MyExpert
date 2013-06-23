@@ -21,7 +21,6 @@ public class ResennaModel{
 	private String mCodigoTitulo;
 	private Timestamp mFechaDePublicacion;
 	private float mCalificacionDeExperto;
-	private String mTitulo;
 	
 	/**
 	 * Constructor

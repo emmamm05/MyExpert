@@ -21,12 +21,10 @@ public class TituloModel{
 	private String mCodigo;
 	private int mAnno;
 	private String mDirector;
-	private int mAnno;
 	private HashMap<Integer, Integer> mCalificacionExpertos;
 	private int mCalificacionesIMDB;
 	private int mCalificacionesComunidad;
 	private List<ResennaModel> mResennas;
-	private ResennaModel mResenna;
 	private GeneroModel mGenero;
 	private String mLinkYoutube;
 	private int mTipoDeTitulo;
@@ -185,14 +183,14 @@ public class TituloModel{
 	 */
 	 @XmlElement
 	public String getLinkYouTube() {
-		return mLinkYouTube;
+		return mLinkYoutube;
 	}
 
 	/**
 	 * @param mLinkYouTube the mLinkYouTube to set
 	 */
 	public void setLinkYouTube(String mLinkYouTube) {
-		this.mLinkYouTube = mLinkYouTube;
+		this.mLinkYoutube = mLinkYouTube;
 	}
 	
 	/**
@@ -211,4 +209,17 @@ public class TituloModel{
 	public void setTipoDeTitulo(int mTipoDeTitulo) {
 		this.mTipoDeTitulo = mTipoDeTitulo;
 	}
+
+	public String getCodigo() {
+		return mCodigo;
+	}
+
+	public GeneroModel getGenero() {
+		return mGenero;
+	}
+
+	public void setGenero(GeneroModel mGenero) {
+		this.mGenero = mGenero;
+	}
+
 }
