@@ -14,4 +14,5 @@ public interface IUsuariosDataAccess {
 	public ResultSet getPerfil( String pUsername );
 	public ResultSet cambiarClave( String pUsername, String pPassword );
 	public ResultSet getSolicitud( String pCodigoExperto, String pCodigoSolicitante, String pTimestamp );
+	public ResultSet getAllExpertos() throws SQLException;
 }

@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 /**
@@ -15,6 +16,7 @@ import javax.xml.bind.annotation.XmlElement;
  * TODO: Revisar cuales modelos no son leidos en los views para 
  * quitar el serializable
  */
+@XmlRootElement(name = "usuarios")
 public class UsuarioModel implements Serializable{
 	
 	

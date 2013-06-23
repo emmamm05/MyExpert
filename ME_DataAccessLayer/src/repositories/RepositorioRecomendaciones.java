@@ -3,6 +3,8 @@
  */
 package repositories;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import models.RecomendacionModel;
@@ -11,61 +13,25 @@ import models.RecomendacionModel;
  * @author emma
  *
  */
-public class RepositorioRecomendaciones {
+public class RepositorioRecomendaciones implements IRepositorioRecomendaciones{
 	
+	@Override
 	public boolean getNuevasRecomendaciones(
 			List<RecomendacionModel> pRecomendaciones, 
 			String Usuario, String timestamp){
-		RecomendacionModel recomendacion1 = new RecomendacionModel();
-		recomendacion1.setDestinatario("destinatario");
-		recomendacion1.setAutor("autor");
-		recomendacion1.setFecha("2001");
-		recomendacion1.setProcessed(true);
-		recomendacion1.setTipoAutor(1);
 		
-		RecomendacionModel recomendacion2 = new RecomendacionModel();
-		recomendacion2.setDestinatario("destinatario2");
-		recomendacion2.setAutor(Usuario);
-		recomendacion2.setFecha(timestamp);
-		recomendacion2.setProcessed(true);
-		recomendacion2.setTipoAutor(0);
-		
-		pRecomendaciones.add(recomendacion1);
-		pRecomendaciones.add(recomendacion2);
 		return true;
 	}
 	
+	@Override
 	public boolean getNuevasSolicitudes(
 			List<RecomendacionModel> pRecomendaciones, 
 			String Usuario, String timestamp){
-		RecomendacionModel recomendacion1 = new RecomendacionModel();
-		recomendacion1.setDestinatario("destinatario");
-		recomendacion1.setAutor("autor");
-		recomendacion1.setFecha("2001");
-		recomendacion1.setProcessed(true);
-		recomendacion1.setTipoAutor(1);
-		
-		RecomendacionModel recomendacion2 = new RecomendacionModel();
-		recomendacion2.setDestinatario("destinatario2");
-		recomendacion2.setAutor(Usuario);
-		recomendacion2.setFecha(timestamp);
-		recomendacion2.setProcessed(true);
-		recomendacion2.setTipoAutor(0);
-		
-		pRecomendaciones.add(recomendacion1);
-		pRecomendaciones.add(recomendacion2);
 		return true;
 	}
 	
 	public RecomendacionModel getRecomendacion( int pId ){
-		RecomendacionModel recomendacion1 = new RecomendacionModel();
-		recomendacion1.setDestinatario("destinatario"+ Integer.toString(pId));
-		recomendacion1.setAutor("autor");
-		recomendacion1.setId(pId);
-		recomendacion1.setFecha("2001");
-		recomendacion1.setProcessed(true);
-		recomendacion1.setTipoAutor(1);
-		return recomendacion1;
+		return null;
 	}
 
 	
@@ -73,8 +39,15 @@ public class RepositorioRecomendaciones {
 		return null;
 	}
 	
-	public boolean addNuevaRecomendacion(RecomendacionModel pRecomendacion){
-		return false;		
+	public void addNuevaRecomendacion(RecomendacionModel pRecomendacion){
+		RecomendacionesDataAccess access = new RecomendacionesDataAccess();
+		try {
+			ResultSet rs = access.addRecomendacion(pRecomendacion);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 		
 }

@@ -7,6 +7,7 @@ import java.util.List;
 import models.GeneroModel;
 import models.PuntuacionesXmlModel;
 import models.TituloModel;
+import models.UsuarioModel;
 
 import repositories.RepositoriosFactory;
 
@@ -99,6 +100,13 @@ public class CatalogosLogic implements ICatalogosLogic {
 	public void getAllPuntaciones(PuntuacionesXmlModel pModel) {
 		RepositoriosFactory repoFactory = new RepositoriosFactory();
 		repoFactory.createRepositorioTitulos().getPuntuaciones(pModel);
+	}
+
+	@Override
+	public void addTitulo(TituloModel pTitulo, String pUsuario) {
+		RepositoriosFactory repoFactory = new RepositoriosFactory();
+		repoFactory.createRepositorioTitulos()
+					.addTitulo(pTitulo, pUsuario);
 	}
 	
 

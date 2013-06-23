@@ -21,6 +21,7 @@ public interface IRepositorioTitulos {
 	public List<ResennaModel> getResennas( String pCodigoTitulo );
 	public void getResennaCompleta( ResennaModel pResenna );
 	public void getPuntuaciones( PuntuacionesXmlModel pModel );
+	void addTitulo(TituloModel pTitulo, String pCodigoUsuario);
 	
 	
 }

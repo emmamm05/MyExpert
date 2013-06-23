@@ -1,6 +1,8 @@
 package controllers;
 
+import java.net.URI;
 import java.util.List;
+import java.util.UUID;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -8,14 +10,18 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.FormParam;
 
 import logic.Busquedas;
+import logic.LogicFactory;
 import logic.Login;
 
 import models.BusquedaSimpleModel;
+import models.GeneroModel;
 import models.TituloModel;
 import models.PeliculaModel;
 import models.TemporadaModel;
@@ -33,6 +39,8 @@ import com.sun.jersey.api.view.Viewable;
 @Path("/Titulo")
 public class TituloController{
 	
+	@Context
+	private UriInfo mUriInfo;
 	private List<TituloModel> mResultadosDeBusqueda;
 	private TituloModel mTituloSelecionado;
 	
@@ -62,7 +70,7 @@ public class TituloController{
 		  BusquedaSimpleModel search = new BusquedaSimpleModel();
 		  search.setPalabraClave(pPalabraClave);
 		  
-		  if("Pel�cula o serie".equals(pCriterio)){
+		  if("Pelicula o serie".equals(pCriterio)){
 			  search.setBusquedaPorNombre(true);
 		  }else if("Director".equals(pCriterio)){
 			  search.setBusquedaPorDirector(true);
@@ -129,7 +137,12 @@ public class TituloController{
 	  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	  public Response getAddTituloPage(
 				@QueryParam("UUID") String pUUID){
-		  return Response.ok(new Viewable("/AddTitulo")).build();
+		  
+		  LogicFactory logic = new LogicFactory();
+		  List<GeneroModel> generos = 
+				  logic.createCatalogosLogic().getAllGeneros();
+		  
+		  return Response.ok(new Viewable("/AddTitulo",generos) ).build();
 		  
 	  }
 	  
@@ -139,12 +152,37 @@ public class TituloController{
 			  @QueryParam("UUID") String pUUID,
 			  @FormParam("Titulo") String pTitulo,
 			  @FormParam("Director") String pDirector,
-			  @FormParam("Ano") String pAnno,
+			  @FormParam("Descripcion") String pDescripcion,
+			  @FormParam("Anno") int pAnno,
+			  @FormParam("Fotografia") String pFotografia,
+			  @FormParam("Genero") String pGenero,
 			  @FormParam("Link") String pLink,
 			  @FormParam("Tipo") String pTipo
 			  ){
 		  
-		  return null;
+		  UsuarioModel usuario = BasicAuth.getUser(pUUID);
+		  
+		  LogicFactory logic = new LogicFactory();
+		  TituloModel titulo = new TituloModel();
+		  GeneroModel genero = new GeneroModel();
+		  genero.setNombre(pGenero);
+		  titulo.setNombre(pTitulo);
+		  titulo.setDirector(pDirector);
+		  titulo.setAnno(pAnno);
+		  titulo.setGenero(genero);	
+		  titulo.setCodigo( UUID.randomUUID().toString() );
+		  titulo.setDescripcion(pDescripcion);
+		  titulo.setImagen(pFotografia);
+		  titulo.setmLinkYoutube(pLink);		  
+		  
+		  logic.createCatalogosLogic().addTitulo(titulo, usuario.getUser() );
+
+		  URI location = mUriInfo.getBaseUriBuilder()
+					.path("/Perfil")
+					.queryParam("UUID", pUUID)
+					.build();
+		  
+		  return Response.seeOther(location).build();
 	  }
 	  
 

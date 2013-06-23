@@ -45,6 +45,7 @@ public class RecomendacionesController {
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response solicitarRecomendacion( RecomendacionModel pRecomendacion ){
 		LogicFactory logic = new LogicFactory();
+		logic.createBuzonLogic().addRecomendacion(pRecomendacion);
 		return null;
 	}
 	

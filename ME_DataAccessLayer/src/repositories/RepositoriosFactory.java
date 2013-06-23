@@ -16,4 +16,9 @@ public class RepositoriosFactory {
 		
 		return new RepositorioTitulos();
 	}
+	
+	public RepositorioRecomendaciones createRepositorioRecomendaciones(){
+		
+		return new RepositorioRecomendaciones();
+	}
 }

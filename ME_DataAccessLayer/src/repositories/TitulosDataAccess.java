@@ -4,12 +4,34 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.sql.Date;
+import java.sql.Types;
 
 public class TitulosDataAccess extends Conexion{
 	
 		TitulosDataAccess(){
 			super.crearConexion();
 		}
+		
+		public ResultSet addTitulo( Object[] pParams ) throws SQLException{
+			PreparedStatement stmt = 
+					this.getConexion().prepareStatement("{call dbo.sprAddTitulo(?,?,?,?,?,?,?,?,?,?)}");
+			stmt.setString(1, (String)pParams[0]);
+			stmt.setString(2, (String)pParams[1]);
+			stmt.setString(3, (String)pParams[2]);
+			stmt.setInt(4, (Integer)pParams[3]);
+			stmt.setInt(5, (Integer)pParams[4]);
+			stmt.setString(6, (String)pParams[5]);
+			stmt.setFloat(7, (Float)pParams[6]);
+			//stmt.setDate(8, (Date)pParams[7]);
+			stmt.setString(8, (String)pParams[8]);
+			//stmt.setString(10, null);
+			stmt.setInt(9, (Integer)pParams[10]);
+			stmt.setString(10, (String)pParams[11]);
+			
+			return stmt.executeQuery();
+		}
+		
 
 		public ResultSet getTitulos(Timestamp pTimestamp) throws SQLException{
 			PreparedStatement stmt = 

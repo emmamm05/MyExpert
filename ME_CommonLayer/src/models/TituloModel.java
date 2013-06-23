@@ -1,11 +1,15 @@
 package models;
 
+import java.sql.Date;
 import java.sql.Timestamp;
+
+import javax.imageio.ImageIO;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Encargada de manejar toda la informacion conrrespondiente de determinado titulo
@@ -15,42 +19,25 @@ import java.util.HashMap;
 @XmlRootElement(name = "titulo")
 public class TituloModel{
 	
-	private int mId;
 	private String mNombre;
 	private String mDescripcion;
-	private String mDirector;
+	private String mCodigo;
 	private int mAnno;
-	private HashMap<Integer, Integer> mCalificacionExpertos;
-	private int mCalificacionesIMDB;
-	private int mCalificacionesComunidad;
-	private ResennaModel mResenna;
+	private String mDirector;
+	private List<ResennaModel> mResennas;
 	private GeneroModel mGenero;
+	private Date mFechaCreacion;
+	private String mImagen;
+	private String mLinkYoutube;
 	
-	/**
-	 * Constructor
+	/*
 	 */
 	
 	public TituloModel(){
 		
 	}
-
-	/**
-	 * @return the mID
-	 */
-	@XmlElement
-	public int getId() {
-		return mId;
-	}
-
-	/**
-	 * @param mID the mID to set
-	 */
-	public void setId(int mId) {
-		this.mId = mId;
-	}
-
-	/**
-	 * @return the mNombre
+	
+	/*
 	 */
 	@XmlElement
 	public String getNombre() {
@@ -110,66 +97,6 @@ public class TituloModel{
 	}
 
 	/**
-	 * @return the mCalificacionExpertos
-	 */
-	@XmlElement
-	public HashMap<Integer, Integer> getCalificacionExpertos() {
-		return mCalificacionExpertos;
-	}
-
-	/**
-	 * @param mCalificacionExpertos the mCalificacionExpertos to set
-	 */
-	public void setCalificacionExpertos(HashMap<Integer, Integer> mCalificacionExpertos) {
-		this.mCalificacionExpertos = mCalificacionExpertos;
-	}
-
-	/**
-	 * @return the mCalificacionesIMDB
-	 */
-	@XmlElement
-	public int getCalificacionesIMDB() {
-		return mCalificacionesIMDB;
-	}
-
-	/**
-	 * @param mCalificacionesIMDB the mCalificacionesIMDB to set
-	 */
-	public void setCalificacionesIMDB(int mCalificacionesIMDB) {
-		this.mCalificacionesIMDB = mCalificacionesIMDB;
-	}
-
-	/**
-	 * @return the mCalificacionesComunidad
-	 */
-	@XmlElement
-	public int getCalificacionesComunidad() {
-		return mCalificacionesComunidad;
-	}
-
-	/**
-	 * @param mCalificacionesComunidad the mCalificacionesComunidad to set
-	 */
-	public void setCalificacionesComunidad(int mCalificacionesComunidad) {
-		this.mCalificacionesComunidad = mCalificacionesComunidad;
-	}
-
-	/**
-	 * @return the mResenna
-	 */
-	@XmlElement
-	public ResennaModel getResenna() {
-		return mResenna;
-	}
-
-	/**
-	 * @param mResenna the mResenna to set
-	 */
-	public void setResenna(ResennaModel mResenna) {
-		this.mResenna = mResenna;
-	}
-
-	/**
 	 * @return the mGenero
 	 */
 	@XmlElement
@@ -182,5 +109,50 @@ public class TituloModel{
 	 */
 	public void setGenero(GeneroModel mGenero) {
 		this.mGenero = mGenero;
+	}
+
+	@XmlElement
+	public String getCodigo() {
+		return mCodigo;
+	}
+
+	public void setCodigo(String mCodigo) {
+		this.mCodigo = mCodigo;
+	}
+
+	@XmlElement
+	public List<ResennaModel> getResennas() {
+		return mResennas;
+	}
+
+	public void setmResennas(List<ResennaModel> Resennas) {
+		this.mResennas = mResennas;
+	}
+
+	@XmlElement
+	public Date getFechaCreacion() {
+		return mFechaCreacion;
+	}
+
+	public void setFechaCreacion(Date mFechaCreacion) {
+		this.mFechaCreacion = mFechaCreacion;
+	}
+
+	@XmlElement
+	public String getImagen() {
+		return mImagen;
+	}
+
+	public void setImagen(String mImagen) {
+		this.mImagen = mImagen;
+	}
+
+	@XmlElement
+	public String getLinkYoutube() {
+		return mLinkYoutube;
+	}
+
+	public void setmLinkYoutube(String mLinkYoutube) {
+		this.mLinkYoutube = mLinkYoutube;
 	}
 }

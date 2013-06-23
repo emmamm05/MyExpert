@@ -19,4 +19,5 @@ public interface ICatalogosLogic {
 	public boolean habilitarGenero(String pCodigo);
 	public boolean editGenero(GeneroModel pGenero, String pUsuario);
 	public boolean getGenero(GeneroModel pGenero);
+	public void addTitulo(TituloModel pTitulo, String pUsuario);
 }

@@ -10,6 +10,10 @@ Version    : 1.0
 Released   : 20121013
 
 -->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta name="keywords" content="" />
@@ -52,41 +56,42 @@ Released   : 20121013
 <div id="footer-wrapper">
 	<div id="footer-content" style="height: 272px">
 		<div>
-			<form action="" method="post" style="height: 205px">
+			<form action="/ME_PresentationLayer/rest/Titulo/Add?UUID=<%= request.getParameter("UUID") %>" method="post" style="height: 205px">
 				<p style="width: 351px" id="tituloSeccion">Crear un titulo</p>
 				<p></p>
 				<table class="auto-style1">
 					<tr>
-						<td><p>Titulo:</p></td><td><input name="NombreGenero" style="width: 300px" type="text" /></td>
+						<td><p>Titulo:</p></td><td><input name="Titulo" style="width: 300px" type="text" /></td>
 					</tr>
 					<tr>
-						<td>Director:</td><td><input name="NombreGenero" style="width: 300px" type="text" /></td>
+						<td>Director:</td><td><input name="Director" style="width: 300px" type="text" /></td>
 					</tr>
 					<tr>
-						<td>Año:</td><td><input name="NombreGenero" style="width: 300px" type="text" /></td>
+						<td>AÃ±o:</td><td><input name="Anno" style="width: 300px" type="text" /></td>
 					</tr>
 					<tr>
-						<td>Fotografia:</td><td><input name="NombreGenero" style="width: 300px" type="file" /></td>
+						<td>Fotografia:</td><td><input name="Fotografia" style="width: 300px" type="file" /></td>
 					</tr>
 					<tr>
-						<td>Link de trailer:</td><td><input name="NombreGenero" style="width: 300px" type="text" /></td>
+						<td>Link de trailer:</td><td><input name="Link" style="width: 300px" type="text" /></td>
 					</tr>
 					<tr>
-						<td>Genero:</td><td><select name="generos">
-						<option>Comedia</option>
-						<option>Drama</option>
-						<option>Thriller</option>
+						<td>Genero:</td><td><select name="Genero">
+						<c:forEach items="${it}" var="genero">
+							<option> ${genero.nombre} </option>
+						</c:forEach>
 						</select></td>
 					</tr>
 					<tr>
 						<td><p>Tipo:</p></td><td>
-						<input name="Checkbox1" type="checkbox" />Pelicula<input name="Checkbox2" type="checkbox" />Temporada de serie</td>
+						<input type="radio" name="Tipo" value="Pelicula" checked> Pelicula</input><br>
+						<input type="radio" name="Tipo" value="Temporada"> Temporada</input><br>
 					</tr>
 					<tr>
 						<td></td>
 					</tr>
 					<tr>
-						<td></td><td><input name="CrearGenero" type="button" value="Crear" /></td>
+						<td></td><td><input name="CrearGenero" type="submit" value="Crear" /></td>
 					</tr>
 				</table>
 			</form>

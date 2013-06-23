@@ -1,5 +1,6 @@
 package repositories;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -194,5 +195,31 @@ public class RepositorioUsuarios implements IRepositorioUsuarios{
 	public void getSolicitud(RecomendacionModel pRecomendacion) {
 		
 				
+	}
+
+	@Override
+	public List<UsuarioModel> getAllExpertos() {
+		UsuariosDataAccess access = new UsuariosDataAccess();
+		ResultSet rs = null;
+		List<UsuarioModel> expertos = new ArrayList<UsuarioModel>();
+		
+		try {
+			rs = access.getAllExpertos();
+			
+			while ( rs.next() ){
+				
+				UsuarioModel usuario = new UsuarioModel();
+				usuario.setUser( rs.getString("Username") );
+				usuario.setNombre( rs.getString("Nombre") );
+				usuario.setApellidos( rs.getString("Apellido1") );
+				
+				expertos.add( usuario );				
+			}
+			
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		return expertos;
 	}
 }

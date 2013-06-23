@@ -60,5 +60,14 @@ public class UsuariosDataAccess extends Conexion implements IUsuariosDataAccess{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public ResultSet getAllExpertos() throws SQLException {
+		// TODO Auto-generated method stub
+		PreparedStatement stmt = 
+				this.getConexion().prepareStatement("{call dbo.sprGetAllExpertos()}");
+		
+		return stmt.executeQuery();	
+	}
 	
 }

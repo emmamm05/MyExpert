@@ -16,116 +16,88 @@ import java.util.Date;
  *
  */
 
-@XmlRootElement(name = "recomendation")
+@XmlRootElement(name = "recomendacion")
 public class RecomendacionModel implements Serializable{
 	private int     mId;
-	private String  mAutor;
-	private int     mTipoAutor;
-	private String  mDestinatario;
 	private String  mDescripcion;
-	private String  mFecha;
-	private boolean mProcessed;
-	private boolean mAnswered;
+	private int     mAnno;
+	private String  mCodigoTitulo;
+	private String  mCodigoGenero;
+	private String  mCodigoSolicitante;
+	private String  mNombreSolicitante;
+	private int 	mEstado;
+	private String  mCodigoExperto;
+	private String  mTimestamp;
 	
-	/**
-	 * @return the mAutor
-	 */
-	@XmlElement
-	public String getAutor() {
-		return mAutor;
-	}
-	/**
-	 * @return the mTipoAutor
-	 */
-	@XmlElement
-	public int getTipoAutor() {
-		return mTipoAutor;
-	}
-	/**
-	 * @return the mDestinatario
-	 */
-	@XmlElement
-	public String getDestinatario() {
-		return mDestinatario;
-	}
-	/**
-	 * @return the mFecha
-	 */
-	@XmlElement
-	public String getFecha() {
-		return mFecha;
-	}
-	/**
-	 * @return the mProcessed
-	 */
-	@XmlElement
-	public boolean isProcessed() {
-		return mProcessed;
-	}
-	/**
-	 * @return the mAnswered
-	 */
-	@XmlElement(name="answered")
-	public boolean isAnswered() {
-		return mAnswered;
-	}
-	/**
-	 * @param mAutor the mAutor to set
-	 */
-	public void setAutor(String mAutor) {
-		this.mAutor = mAutor;
-	}
-	/**
-	 * @param mTipoAutor the mTipoAutor to set
-	 */
-	public void setTipoAutor(int mTipoAutor) {
-		this.mTipoAutor = mTipoAutor;
-	}
-	/**
-	 * @param mDestinatario the mDestinatario to set
-	 */
-	public void setDestinatario(String mDestinatario) {
-		this.mDestinatario = mDestinatario;
-	}
-	/**
-	 * @param mFecha the mFecha to set
-	 */
-	public void setFecha(String mFecha) {
-		//Validar Formato
-		this.mFecha = mFecha;
-	}
-	/**
-	 * @param mProcessed the mProcessed to set
-	 */
-	public void setProcessed(boolean mProcessed) {
-		this.mProcessed = mProcessed;
-	}
-	/**
-	 * @param mAnswered the mAnswered to set
-	 */
-	public void setAnswered(boolean mAnswered) {
-		this.mAnswered = mAnswered;
-	}
-	
-	@XmlElement
-	public int getId(){
+	public int getmId() {
 		return mId;
 	}
-	
-	public void setId(int pId){
-		mId = pId;
+	public void setmId(int mId) {
+		this.mId = mId;
 	}
-	/**
-	 * @return the mDescripcion
-	 */
+	@XmlElement
 	public String getmDescripcion() {
 		return mDescripcion;
 	}
-	/**
-	 * @param mDescripcion the mDescripcion to set
-	 */
 	public void setmDescripcion(String mDescripcion) {
 		this.mDescripcion = mDescripcion;
 	}
+	@XmlElement
+	public int getmAnno() {
+		return mAnno;
+	}
+	public void setmAnno(int mAnno) {
+		this.mAnno = mAnno;
+	}
+	@XmlElement
+	public String getmCodigoTitulo() {
+		return mCodigoTitulo;
+	}
+	public void setmCodigoTitulo(String mCodigoTitulo) {
+		this.mCodigoTitulo = mCodigoTitulo;
+	}
+	@XmlElement
+	public String getmCodigoGenero() {
+		return mCodigoGenero;
+	}
+	public void setmCodigoGenero(String mCodigoGenero) {
+		this.mCodigoGenero = mCodigoGenero;
+	}
+	@XmlElement
+	public String getmCodigoSolicitante() {
+		return mCodigoSolicitante;
+	}
+	public void setmCodigoSolicitante(String mCodigoSolicitante) {
+		this.mCodigoSolicitante = mCodigoSolicitante;
+	}
+	@XmlElement
+	public String getmNombreSolicitante() {
+		return mNombreSolicitante;
+	}
+	public void setmNombreSolicitante(String mNombreSolicitante) {
+		this.mNombreSolicitante = mNombreSolicitante;
+	}
+	@XmlElement
+	public int getmEstado() {
+		return mEstado;
+	}
+	public void setmEstado(int mEstado) {
+		this.mEstado = mEstado;
+	}
+	@XmlElement
+	public String getmCodigoExperto() {
+		return mCodigoExperto;
+	}
+	public void setmCodigoExperto(String mCodigoExperto) {
+		this.mCodigoExperto = mCodigoExperto;
+	}
+	@XmlElement
+	public String getmTimestamp() {
+		return mTimestamp;
+	}
+	public void setmTimestamp(String mTimestamp) {
+		this.mTimestamp = mTimestamp;
+	}
 	
+
 }

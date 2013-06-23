@@ -27,9 +27,28 @@ public class RepositorioTitulos implements IRepositorioTitulos{
 	}
 
 	@Override
-	public void addTitulo(TituloModel pTitulo) {
-		// TODO Auto-generated method stub
-		
+	public void addTitulo(TituloModel pTitulo, String pCodigoUsuario) {
+		TitulosDataAccess dataAccess = new TitulosDataAccess();
+
+	    Object[] params = {
+			pTitulo.getNombre(),
+			pTitulo.getDescripcion(),
+			pTitulo.getCodigo(),
+			pTitulo.getAnno(),
+			1,
+			pTitulo.getDirector(),
+			120f,
+			null,
+			pCodigoUsuario,
+			null,
+			1,
+			pTitulo.getLinkYoutube() };
+		try {
+			dataAccess.addTitulo( params );
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 	}
 
 	@Override
@@ -98,7 +117,7 @@ public class RepositorioTitulos implements IRepositorioTitulos{
 				System.out.println( rs.getString("Nombre") );
 				
 				TituloModel titulo = new TituloModel();
-				titulo.setId(rs.getInt("idTitulo"));
+				titulo.setCodigo("Codigo");
 				titulo.setNombre(rs.getString("Nombre"));
 				titulo.setDescripcion(rs.getString("Descripcion"));
 				titulo.setAnno(rs.getInt("Año"));
@@ -130,13 +149,19 @@ public class RepositorioTitulos implements IRepositorioTitulos{
 			
 			ResultSet rs2 
 				= dataAccess.getPuntuacionesExpertos(pModel.getCodigoTitulo());
-			while ( rs2.next() ){
-				pModel.addPuntuacion( rs2.getString("Username"), rs2.getInt("Puntuacion") );
-			}
+			rs2.next();
+			pModel.setCalificacionExpertos(rs2.getFloat("Puntuacion"));
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();	
 		}
+	}
+
+	@Override
+	public void addTitulo(TituloModel pTitulo) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
