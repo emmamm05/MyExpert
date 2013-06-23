@@ -2,6 +2,7 @@ package models;
 
 import java.io.Serializable;
 import java.security.Timestamp;
+import java.sql.Date;
 
 /**
  * 
@@ -10,8 +11,8 @@ import java.security.Timestamp;
  */
 public class PeliculaModel extends TituloModel implements Serializable {
 	
-	private long mDuracion;
-	private Timestamp mFechaDePublicacion;
+	private float mDuracion;
+	private Date mFechaDePublicacion;
 	
 	/**
 	 * Constructor
@@ -23,28 +24,28 @@ public class PeliculaModel extends TituloModel implements Serializable {
 	/**
 	 * @return the mDuracion
 	 */
-	public long getDuracion() {
+	public float getDuracion() {
 		return mDuracion;
 	}
 
 	/**
 	 * @param mDuracion the mDuracion to set
 	 */
-	public void setDuracion(long mDuracion) {
+	public void setDuracion(float mDuracion) {
 		this.mDuracion = mDuracion;
 	}
 
 	/**
 	 * @return the mFechaDePublicacion
 	 */
-	public Timestamp getFechaDePublicacion() {
+	public Date getFechaDePublicacion() {
 		return mFechaDePublicacion;
 	}
 
 	/**
 	 * @param mFechaDePublicacion the mFechaDePublicacion to set
 	 */
-	public void setFechaDePublicacion(Timestamp mFechaDePublicacion) {
+	public void setFechaDePublicacion(Date mFechaDePublicacion) {
 		this.mFechaDePublicacion = mFechaDePublicacion;
 	}
 }

@@ -9,7 +9,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.FormParam;
 
-import logic.ConfiguracionCuenta;
+import logic.CuentaLogica;
+import logic.ICuentaLogic;
+import logic.LogicFactory;
 import models.RegistroModel;
 import models.UsuarioModel;
 
@@ -36,7 +38,8 @@ public class CuentaController{
 			  @FormParam("RolAdmin") String userAdmin,
 			  @FormParam("RolPlan") String userPlan) {
 		
-		ConfiguracionCuenta config = new ConfiguracionCuenta();
+		LogicFactory factory = new LogicFactory();
+		ICuentaLogic config = factory.getLogicaCuenta();
 		RegistroModel newUserRegister = new RegistroModel();
 		
 		newUserRegister.setUsername(user);
@@ -78,7 +81,8 @@ public class CuentaController{
 			  @FormParam("experiencia") String pExpirience){
 		  
 		  
-		  ConfiguracionCuenta config = new ConfiguracionCuenta();
+		  LogicFactory factory = new LogicFactory();
+		  ICuentaLogic config = factory.getLogicaCuenta();
 		  UsuarioModel newUserModel = new UsuarioModel();
 		  newUserModel.setUser(pUser);
 		  newUserModel.setNombre(pName);

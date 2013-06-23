@@ -10,7 +10,7 @@
 <title>MyExpert</title>
 <link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css' />
 <link href='http://fonts.googleapis.com/css?family=Abel|Satisfy' rel='stylesheet' type='text/css' />
-<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/ME_PresentationLayer/css/default.css" rel="stylesheet" type="text/css" media="all" />
 <!--[if IE 6]>
 <link href="default_ie6.css" rel="stylesheet" type="text/css" />
 <![endif]-->
@@ -22,13 +22,13 @@
 <div id="header-wrapper">
 	<div id="header">
 		<div id="logo">
-			<h1><img src="images/myexpert_256.png" alt=""/></h1>
+			<h1><img src="/ME_PresentationLayer/images/myexpert_256.png" alt=""/></h1>
 		</div>
 		<div id="menu">
 			<ul>
 				<li><a href="#" accesskey="1" title="">Perfil</a></li>
 				<li><a href="Buzon.html" accesskey="2" title="">Buzón</a></li>
-				<li class="current_page_item"><a href="#" accesskey="3" title="">Búsqueda de títulos</a></li>
+				<li class="current_page_item"><a href="/ME_PresentationLayer/rest/BusquedaDeTitulo" accesskey="3" title="">Búsqueda de títulos</a></li>
 				<li><a href="logInMyExpert.html" accesskey="4" title="">Salir</a></li>
 			</ul>
 		</div>
@@ -43,17 +43,17 @@
 	<div id="footer-content" style="height: 422px">
 		<div>
 			<form id="formLogIn" method="post">
-				<p style="width: 351px" id="tituloSeccion">Nombre del titulo</p>
+				<p style="width: 351px" id="tituloSeccion">${it.nombre}</p>
 			</form>
 		</div>	
 		<p></p>
 		<div class="auto-style1" style="position: relative; left: 0px; top: 0px; width: 281px; height: 152px">
 			<table>
 				<tr>
-					<td><img src="images/icono_perfil.png" alt="" height="145" width="148"/></td>
+					<td><img src="/ME_PresentationLayer/images/icono_perfil.png" alt="" height="145" width="148"/></td>
 				</tr>
 				<tr>
-					<td align="center"><a href="#">Ver trailer</a></td>
+					<td align="center"><a href="${it.linkYouTube}">Ver trailer</a></td>
 				</tr>
 			</table>
 		</div>
@@ -69,7 +69,7 @@
 				</tr>
 				<tr><td></td><td></td></tr>
 				<tr>
-					<td>Calificación:</td><td>${it.calificacionesimdb }</td>
+					<td>Calificación:</td><td>${it.calificacionesIMDB }</td>
 				</tr>
 				<tr><td></td><td></td></tr>
 				<tr>
@@ -77,11 +77,11 @@
 				</tr>
 			</table>
 			<p></p>
-			<form method="post">
+			<form action="/ME_PresentationLayer/rest/Titulo/MostrarResenna?UUID=<%= request.getParameter("UUID") %>" method="post">
 				<table>
 					<tr>
 						<td style="width: 279px">
-						&nbsp;</td><td><input name="Resenar" type="button" value="Reseñar" /></td>
+						&nbsp;</td><td><input name="Resenar" type="submit" value="Reseñar" /><input name="nombreTitulo" type="hidden" value="${it.nombre}" /></td>
 					</tr>	
 				</table>
 			</form>

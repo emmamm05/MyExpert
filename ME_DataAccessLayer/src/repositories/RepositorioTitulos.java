@@ -13,17 +13,37 @@ import models.GeneroModel;
 import models.PuntuacionesXmlModel;
 import models.ResennaModel;
 import models.TituloModel;
+import models.PeliculaModel;
+import models.TemporadaModel;
+import models.BusquedaSimpleModel;
 
 /**
  * @author emma
  *
  */
 public class RepositorioTitulos implements IRepositorioTitulos{
-
-	@Override
-	public void getInfoTitulo(TituloModel pCodigoTitulo) {
-		// TODO Auto-generated method stub
-		
+	
+	/**
+	 * Metodo que tiene como funcion la de obtener, por medio del data access,
+	 * la informacion adicional necesarioa para mostar el perfil de un titulo
+	 * determinado
+	 */
+	public void getInfoTitulo( TituloModel pCodigoTitulo ){
+		TituloDataAccess dataAccess = new TituloDataAccess();
+		ResultSet result = dataAccess.getInformacionAdicionalDeTitulo(pCodigoTitulo.getNombre());
+		try{
+			while (result.next()){
+				pCodigoTitulo.setAnno(result.getInt(1));
+				//pCodigoTitulo.setDuracion(result.getFloat(3));
+				//pCodigoTitulo.setFechaDePublicacion(result.getDate(4));
+				pCodigoTitulo.setLinkYouTube(result.getString(5));
+				String nombreDirector = result.getString(6) + " " + result.getString(7);
+				pCodigoTitulo.setDirector(nombreDirector);
+			}
+		}catch(Exception e){
+			System.out.println("Error de query");
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -50,17 +70,104 @@ public class RepositorioTitulos implements IRepositorioTitulos{
 			e.printStackTrace();
 		} 
 	}
-
-	@Override
-	public List<TituloModel> buscarPorNombre(String pTitulo) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	/**
+	 * Metodo que tiene como funcion la de obtener, por medio del data access,
+	 * la informacion adicional necesarioa para mostar el perfil de un titulo
+	 * determinado
+	 */
+	public void getInfoTemporada(TemporadaModel pCodigoTitulo){
+		TituloDataAccess dataAccess = new TituloDataAccess();
+		ResultSet result = dataAccess.getInformacionAdicionalDeTitulo(pCodigoTitulo.getNombre());
+		try{
+			while (result.next()){
+				pCodigoTitulo.setAnno(result.getInt(1));
+				//pCodigoTitulo.setDuracion(result.getFloat(3));
+				//pCodigoTitulo.setFechaDePublicacion(result.getDate(4));
+				pCodigoTitulo.setLinkYouTube(result.getString(5));
+			}
+		}catch(Exception e){
+			System.out.println("Error de query");
+			e.printStackTrace();
+		}
+		
 	}
 
-	@Override
-	public List<TituloModel> buscarPorDirector(String pDirector) {
-		return null;
+	public void buscarPorDirector( BusquedaSimpleModel pBusqueda ){
+		
+		pBusqueda.setResultadoBusqueda(new ArrayList<TituloModel>());
+		TituloDataAccess dataAccess = new TituloDataAccess();
+		ResultSet result = dataAccess.getTitulosPorDirector(pBusqueda.getPalabraClave());
+		
+		try {
+			while(result.next()){
+				String nombre = result.getString(1);
+				String descripcion = result.getString(2);
+				String director = result.getString(3);
+				int tipoTitulo = result.getInt(4);
+				
+				if (tipoTitulo == 1){
+					PeliculaModel resultTitle = new PeliculaModel();
+					resultTitle.setNombre(nombre);
+					resultTitle.setDescripcion(descripcion);
+					resultTitle.setTipoDeTitulo(tipoTitulo);
+					resultTitle.setDirector(director);
+					pBusqueda.getResultadoBusqueda().add(resultTitle);
+				}else{
+					TemporadaModel resultTitle = new TemporadaModel();
+					resultTitle.setNombre(nombre);
+					resultTitle.setDescripcion(descripcion);
+					resultTitle.setTipoDeTitulo(tipoTitulo);
+					resultTitle.setDirector(director);
+					pBusqueda.getResultadoBusqueda().add(resultTitle);
+				}
+				
+			}
+		} catch (SQLException e) {
+			System.out.println("Error de query");
+			e.printStackTrace();
+		}
 	}
+
+	public void buscarPorNombre( BusquedaSimpleModel pBusqueda ){
+		
+		pBusqueda.setResultadoBusqueda(new ArrayList<TituloModel>());
+		TituloDataAccess dataAccess = new TituloDataAccess();
+		ResultSet result = dataAccess.getTitulosPorTitulo(pBusqueda.getPalabraClave());
+		
+		try {
+			
+			while(result.next()){
+			
+				String nombre = result.getString(1);
+				String descripcion = result.getString(2);
+				int tipoTitulo = result.getInt(3);
+				String director = result.getString(4) + " " + result.getString(5);
+				
+				if (tipoTitulo == 1){
+					PeliculaModel resultTitle = new PeliculaModel();
+					resultTitle.setNombre(nombre);
+					resultTitle.setDescripcion(descripcion);
+					resultTitle.setTipoDeTitulo(tipoTitulo);
+					resultTitle.setDirector(director);
+					pBusqueda.getResultadoBusqueda().add(resultTitle);
+				}else{
+					TemporadaModel resultTitle = new TemporadaModel();
+					resultTitle.setNombre(nombre);
+					resultTitle.setDescripcion(descripcion);
+					resultTitle.setTipoDeTitulo(tipoTitulo);
+					resultTitle.setDirector(director);
+					pBusqueda.getResultadoBusqueda().add(resultTitle);
+				}
+				
+			}
+		} catch (SQLException e) {
+			System.out.println("Error de query");
+			e.printStackTrace();
+		}
+	}
+
+
 
 	@Override
 	public List<ResennaModel> getResennas(String pCodigoTitulo) {
@@ -131,6 +238,38 @@ public class RepositorioTitulos implements IRepositorioTitulos{
 		return listaTitulos;
 	}
 
+	public boolean guardarResennaDeTitulo(ResennaModel pResenna){
+		
+		TituloDataAccess dataAccess = new TituloDataAccess();
+		return dataAccess.almacenarResenna(pResenna.getTitulo(), pResenna.getContenido(), pResenna.getAutor(), pResenna.getCalificacionDeExperto());
+		
+	}
+	
+	public void getResennaCompleta( ResennaModel pResenna ){
+	}
+	
+	public void getGenerosFrom( List<GeneroModel> pGeneros , String pTimestamp ){
+		GeneroModel genero1 = new GeneroModel();
+		genero1.setId(1233);
+		genero1.setNombre("Drama");
+		genero1.setDescripcion("Some description here...");
+		pGeneros.add(genero1);
+	}
+	
+	public int getCantidadGeneros(){
+		return 183;
+	}
+	
+	public void getGeneros( List<GeneroModel> pGeneros , int page ){
+		for (int i=1;i<=20;i++){
+			GeneroModel gen = new GeneroModel();
+			gen.setId(i);
+			gen.setNombre("Genero" + Integer.toString(i+20*page));
+			gen.setDescripcion("Some description here...");
+		}
+	}
+
+	
 	@Override
 	public List<TituloModel> getAllTitulos() {
 		// TODO Auto-generated method stub
@@ -162,6 +301,11 @@ public class RepositorioTitulos implements IRepositorioTitulos{
 	public void addTitulo(TituloModel pTitulo) {
 		// TODO Auto-generated method stub
 		
+	}
+
+		
+	public void getTitulosFrom( List<TituloModel> pTitulos , String pTimestamp ){
+
 	}
 
 }

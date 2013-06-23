@@ -6,8 +6,6 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.ws.rs.FormParam;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.GET;
 import javax.ws.rs.QueryParam;
@@ -62,7 +60,7 @@ public class GenerosController {
 	@GET
 	@Produces(MediaType.TEXT_HTML)
 	public Response getAddGeneroView(
-			@QueryParam("UUID") String pUUID){		
+			@QueryParam("UUID") String pUUID){
 		
 		return Response.ok( new Viewable(
 				Messages.getString("Pages.AgregarGenero") ) ).build() ;	

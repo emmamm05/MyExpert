@@ -13,7 +13,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import repositories.IRepositorioTitulos;
+import repositories.RepositoriesFactory;
 import repositories.RepositorioTitulos;
+import logic.IResennaTitulo;
+import logic.LogicFactory;
 
 import logic.CatalogosLogic;
 import logic.IResennaLogic;

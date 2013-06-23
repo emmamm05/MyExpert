@@ -1,5 +1,7 @@
 package logic;
 
+import repositories.IRepositorioUsuarios;
+import repositories.RepositoriesFactory;
 import repositories.RepositorioUsuarios;
 import models.RegistroModel;
 import models.UsuarioModel;
@@ -9,9 +11,9 @@ import models.UsuarioModel;
  * @author Luis Alonso
  *
  */
-public class ConfiguracionCuenta {
+public class CuentaLogica implements ICuentaLogic{
 
-	public ConfiguracionCuenta(){
+	public CuentaLogica(){
 		
 	}
 	
@@ -23,8 +25,10 @@ public class ConfiguracionCuenta {
 	public boolean registrarNuevoUsuario(RegistroModel pUserRegister){
 		
 		if((!pUserRegister.getUsername().equals("") && !pUserRegister.getPassword().equals("") && !pUserRegister.getMail().equals("") && !pUserRegister.getRol().equals("")) && pUserRegister.getPassword().equals(pUserRegister.getRepeatPassword())){//Se verifica que el usuario haya ingresado toda la informacion solicitada
-			RepositorioUsuarios userRepository = new RepositorioUsuarios();
-			return userRepository.setNewUser(pUserRegister.getUsername(), pUserRegister.getPassword(), pUserRegister.getMail(), pUserRegister.getRol());//Se verifica que el proceso para guardar los datos se haya completado
+			RepositoriesFactory factory = new RepositoriesFactory();
+			IRepositorioUsuarios userRepository = factory.getUserRespositorie();
+			userRepository.registraNuevoUsuario(pUserRegister);
+			return true;
 		}
 		else{
 			return false;
@@ -38,8 +42,10 @@ public class ConfiguracionCuenta {
 	 */
 	public boolean configurarCuentaDeUsuario(UsuarioModel pUser){
 		if(!pUser.getNombre().equals("") && !pUser.getPais().equals("") && !pUser.getExperiencia().equals("") && !pUser.getGenero().equals("") && !pUser.getGeneros().equals("") && !pUser.getEmail().equals("") && !pUser.getUser().equals("")){
-			RepositorioUsuarios userRepository = new RepositorioUsuarios();
-			return userRepository.guardarInformacionAdicionalDeUsuario(pUser.getUser(), pUser.getNombre(), pUser.getPais(), pUser.getGenero(), pUser.getGeneros(), pUser.getExperiencia(), pUser.getEmail());
+			RepositoriesFactory factory = new RepositoriesFactory();
+			IRepositorioUsuarios userRepository = factory.getUserRespositorie();
+			return userRepository.guardarInformacionAdicional(pUser);
+			//return userRepository.guardarInformacionAdicionalDeUsuario(pUser.getUser(), pUser.getNombre(), pUser.getPais(), pUser.getGenero(), pUser.getGeneros(), pUser.getExperiencia(), pUser.getEmail());
 		}else{
 			return false;
 		}

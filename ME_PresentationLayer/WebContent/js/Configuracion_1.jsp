@@ -10,7 +10,7 @@
 <title>MyExpert</title>
 <link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css' />
 <link href='http://fonts.googleapis.com/css?family=Abel|Satisfy' rel='stylesheet' type='text/css' />
-<link href="../css/default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/ME_PresentationLayer/css/default.css" rel="stylesheet" type="text/css" media="all" />
 <!--[if IE 6]>
 <link href="default_ie6.css" rel="stylesheet" type="text/css" />
 <![endif]-->
@@ -37,7 +37,7 @@
 <div id="header-wrapper">
 	<div id="header">
 		<div id="logo">
-			<h1><img src="../images/myexpert_256.png" alt=""/></h1>
+			<h1><img src="/ME_PresentationLayer/images/myexpert_256.png" alt=""/></h1>
 		</div>
 		<div id="menu">
 			<ul>
@@ -54,7 +54,7 @@
 <div id="footer-wrapper">
 	<div id="footer-content" style="height: 374px">
 		<div style="width: 313px; height: 168px; position: relative; left: 32px; top: -18px">
-			<img src="../images/icono_perfil.png" alt="" height="145" width="148"/>
+			<img src="/ME_PresentationLayer/images/icono_perfil.png" alt="" height="145" width="148"/>
 			<form action="" method="post">
 				Seleccionar imagen de perfil:<input name="File1" type="file" />
 			</form>

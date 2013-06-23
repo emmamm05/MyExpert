@@ -43,7 +43,7 @@
 <div id="footer-wrapper">
 	<div id="footer-content">
 		<div>
-			<form action="Titulo/Busqueda?UUID=<%= request.getParameter("UUID") %>" method="post" style="height: 577px">
+			<form action="/ME_PresentationLayer/rest/Titulo/Busqueda?UUID=<%= request.getParameter("UUID") %>" method="post" style="height: 254px">
 				<p style="width: 351px" id="tituloSeccion">Búsqueda de títulos</p>
 				<p></p>
 				<table style="width: 1000px; height: 261px;">
@@ -65,22 +65,35 @@
 
 						</td>
 					</tr>
-					<tr>
+				</table>
+			</form>
+			<form action="/ME_PresentationLayer/rest/Titulo/Mostrar?UUID=<%= request.getParameter("UUID") %>" method="post" style="height: 577px">
+				<table>
+					<!--<tr>
 						<td style="height: 21px">
 						</td>
-					</tr>
+					</tr>-->
 					<tr>
-						<td style="height:404px; border:thin">
+						<td style="border:thin">
+							<table>
+								<c:forEach items="${it.resultadoBusqueda}" var="element">
+									<tr>
+										<td><input name="verTitulo" type="submit" value="${element.nombre}" /><input type="hidden" name="verTipo" value="${element.tipoDeTitulo}" /></td><td>Director: ${element.director}</td>
+									</tr>
+								</c:forEach>
+							</table>
 						</td>
 					</tr>
 					<tr>
 						<td align="center"></td>
 					</tr>
+	
 				</table>
 			</form>
 		</div>
 	</div>
 </div>
+
 
 <!-- Fin Pare media de la pagina web -->
 
@@ -98,3 +111,4 @@
 
 </body>
 </html>
+

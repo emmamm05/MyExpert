@@ -10,7 +10,7 @@
 <title>MyExpert</title>
 <link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css' />
 <link href='http://fonts.googleapis.com/css?family=Abel|Satisfy' rel='stylesheet' type='text/css' />
-<link href="../css/default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/ME_PresentationLayer/css/default.css" rel="stylesheet" type="text/css" media="all" />
 <!--[if IE 6]>
 <link href="default_ie6.css" rel="stylesheet" type="text/css" />
 <![endif]-->
@@ -27,7 +27,7 @@
 <div id="header-wrapper">
 	<div id="header">
 		<div id="logo">
-			<h1><img src="../images/myexpert_256.png" alt=""/></h1>
+			<h1><img src="/ME_PresentationLayer/images/myexpert_256.png" alt=""/></h1>
 		</div>
 		<div id="menu">
 			<ul>
@@ -48,11 +48,11 @@
 <div id="footer-wrapper">
 	<div id="footer-content" style="height: 341px">
 		<div>
-			<form action="" method="post" style="height: 205px">
-				<p style="width: 351px" id="tituloSeccion">Nombre del titulo</p>
+			<form action="/ME_PresentationLayer/rest/Titulo/Resenna?UUID=<%= request.getParameter("UUID") %>" method="post" style="height: 205px">
+				<p style="width: 351px" id="tituloSeccion">Reseñar titulo</p>
 				<table class="auto-style1">
 					<tr>
-						<td>Para:</td><td></td>
+						<td>Para:</td><td>${it.titulo}<input type="hidden" name="nombreTitulo" value="${it.titulo}" /></td>
 					</tr>
 					<tr>
 						<td>Reseña:</td><td>

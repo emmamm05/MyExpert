@@ -4,16 +4,18 @@ import java.util.List;
 
 import models.BusquedaSimpleModel;
 import models.PeliculaModel;
+import models.TemporadaModel;
 import models.TituloModel;
 import models.GeneroModel;
 import repositories.IRepositorioTitulos;
+import repositories.RepositoriesFactory;
 
 /**
  * 
  * @author Luis Alonso
  *
  */
-public class Busquedas {
+public class Busquedas implements IBusquedaLogica{
 	
 	private String mCriterioDeBusqueda;
 	private List<String> mResultadoTitulos;
@@ -89,25 +91,17 @@ public class Busquedas {
 	 * @param pPalabraClave: Palabra utilizada para encontrar el titulo o titulos que el usuario
 	 * desea encontrar en la base de datos
 	 */
-	public void busquedaSimple(BusquedaSimpleModel pBusquedaModel){
+	public BusquedaSimpleModel BusquedaSimple(BusquedaSimpleModel pBusqueda){
 		
-//		IRepositorioTitulos titleRepository = new IRepositorioTitulos();
-//		if (pBusquedaModel.getBusquedaPorDirector()){
-//			this.mResultadoTitulos =  titleRepository.buscarPorDirector(pBusquedaModel.getPalabraClave());
-//			this.mPuntuacionResultadoTitulos = titleRepository.buscarPorDirector_aux(pBusquedaModel.getPalabraClave());
-//		}else if (pBusquedaModel.getBusquedaPorNombre()){
-//			this.mResultadoTitulos = titleRepository.buscarPorNombre(pBusquedaModel.getPalabraClave());
-//			this.mPuntuacionResultadoTitulos = titleRepository.buscarPorNombre_aux(pBusquedaModel.getPalabraClave());
-//		}
-//		
-//		for (int contador = 0; contador < this.mResultadoTitulos.size(); contador++){
-//			PeliculaModel titleModel = new PeliculaModel();
-//			titleModel.setNombre(this.mResultadoTitulos.get(contador));
-//			titleModel.setCalificacionesComunidad(this.mPuntuacionResultadoTitulos.get(contador));
-//			
-//			this.mResultadosDeBusqueda.add(titleModel);
-//		}
+		RepositoriesFactory factory = new RepositoriesFactory();
+		IRepositorioTitulos repoTitle = factory.getCatalogRepositorie();
 		
+		if (pBusqueda.getBusquedaPorDirector()){
+			repoTitle.buscarPorDirector(pBusqueda);
+		}else{
+			repoTitle.buscarPorNombre(pBusqueda);
+		}
+		return pBusqueda;
 	}
 	
 	/**
@@ -116,28 +110,23 @@ public class Busquedas {
 	 * @param pTitulo: modelo del titulo al que quieremos mostrar la informacion
 	 * @return se retorna el modelo con la infomacion completa (en caso de tener exito)
 	 */
-	public TituloModel buscarDatosDeTitulo(TituloModel pTitulo){
+	public void buscarDatosDeTitulo(TituloModel pTitulo){
 		
-//		TitleRepository titleRepository = new TitleRepository();
-//		GeneroModel generoTitulo = new GeneroModel();
-//		
-//		List<String> informacionDeTitulo = titleRepository.buscarInformacionDeTitulo(pTitulo.getNombre());
-//		List<Integer> calificacionesDeTitulo = titleRepository.buscarCalificacionesDeTitulo(pTitulo.getNombre());
-//		List<String> genero = titleRepository.buscarGeneroDeTitulo(pTitulo.getNombre());
-//		
-//		pTitulo.setDescripcion(informacionDeTitulo.get(0));//*
-//		pTitulo.setDirector(informacionDeTitulo.get(1));//*
-//		pTitulo.setCalificacionesIMDB(calificacionesDeTitulo.get(0));
-//		pTitulo.setCalificacionesComunidad(calificacionesDeTitulo.get(1));
-//		pTitulo.setAnno(titleRepository.buscarPublicacionDeTitulo(pTitulo.getNombre()));
-//		pTitulo.setCalificacionExpertos(titleRepository.buscarCalificaionDeExpertos(pTitulo.getNombre()));
-//		
-//		generoTitulo.setNombre(genero.get(0));
-//		generoTitulo.setDescripcion(genero.get(1));
-//		
-//		pTitulo.setGenero(generoTitulo);
-//		
-		return pTitulo;
+		//PeliculaModel pelicula = null;
+		//TemporadaModel temporada = null;
+		
+		RepositoriesFactory factory = new RepositoriesFactory();
+		IRepositorioTitulos repoTitle = factory.getCatalogRepositorie();
+		
+		repoTitle.getInfoTitulo(pTitulo);
+		/*if (pTitulo.getTipoDeTitulo() == 1){
+			  pelicula = (PeliculaModel)pTitulo;
+			  repoTitle.getInfoTitulo(pelicula);
+		  }else{
+			  temporada = (TemporadaModel)pTitulo;
+			  repoTitle.getInfoTemporada(temporada);
+		  }*/
 	}
+
 
 }

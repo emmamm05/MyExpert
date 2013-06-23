@@ -20,7 +20,8 @@ public class ResennaModel{
 	private String mCodigoAutor;
 	private String mCodigoTitulo;
 	private Timestamp mFechaDePublicacion;
-	private int mCalificacionDeExperto;
+	private float mCalificacionDeExperto;
+	private String mTitulo;
 	
 	/**
 	 * Constructor
@@ -109,14 +110,14 @@ public class ResennaModel{
 	 * @return the mCalificacionDeExperto
 	 */
 	@XmlElement(name="Calificacion")
-	public int getCalificacionDeExperto() {
+	public float getCalificacionDeExperto() {
 		return mCalificacionDeExperto;
 	}
 
 	/**
 	 * @param mCalificacionDeExperto the mCalificacionDeExperto to set
 	 */
-	public void setCalificacionDeExperto(int mCalificacionDeExperto) {
+	public void setCalificacionDeExperto(float mCalificacionDeExperto) {
 		this.mCalificacionDeExperto = mCalificacionDeExperto;
 	}
 	

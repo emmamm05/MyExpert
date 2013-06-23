@@ -17,6 +17,10 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.FormParam;
 
 import logic.Busquedas;
+import logic.IBusquedaLogica;
+import logic.IResennaTitulo;
+import logic.Login;
+import logic.ResennasDeTitulos;
 import logic.LogicFactory;
 import logic.Login;
 
@@ -43,6 +47,7 @@ public class TituloController{
 	private UriInfo mUriInfo;
 	private List<TituloModel> mResultadosDeBusqueda;
 	private TituloModel mTituloSelecionado;
+	private boolean mBuscando;
 	
 	  @GET
 	  @Produces(MediaType.TEXT_HTML)
@@ -59,77 +64,110 @@ public class TituloController{
 		  return Response.ok(new Viewable( perfilPageLocation ) ).build();
 	  }
 	  
+	  @Path("/MostrarBusquedas")
+	  @GET
+	  @Produces(MediaType.TEXT_HTML)
+	  public Response showBusquedaTitulo(){
+		  return Response.ok(new Viewable( "/BusquedaDeTitulo" ) ).build();
+		  
+	  }
+	  
+	  @Path("/MostrarResenna")
+	  @POST
+	  @Produces(MediaType.TEXT_HTML)
+	  public Response showResenna(
+			  @FormParam ("nombreTitulo") String pNombreTitulo
+	  ){
+		  System.out.println("Esta entrando a mostrar el view de las resennas");
+		  ResennaModel resenna = new ResennaModel();
+		  resenna.setTitulo(pNombreTitulo);
+		  
+		  return Response.ok(new Viewable( "/Resenna" , resenna) ).build();
+		  
+	  }
+	  
 	  // This method is called if HTML is request
-	  @Path("/Busqueda")
+ 	  @Path("/Busqueda")
 	  @POST
 	  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	  public Response requestSearch( 
 			  @FormParam("Criterio") String pCriterio, 
 			  @FormParam("PalabraClave") String pPalabraClave ){
-		  		  
+		  
 		  BusquedaSimpleModel search = new BusquedaSimpleModel();
 		  search.setPalabraClave(pPalabraClave);
 		  
-		  if("Pelicula o serie".equals(pCriterio)){
+		  if("Película o serie".equals(pCriterio)){
 			  search.setBusquedaPorNombre(true);
 		  }else if("Director".equals(pCriterio)){
 			  search.setBusquedaPorDirector(true);
 		  }
-		   
 		  
-//		  Busquedas newSearch = new Busquedas();
-//		  newSearch.busquedaSimple(search);
-//		  
-//		  this.mResultadosDeBusqueda = newSearch.getResultadosDeBusqueda();
-//		  
-//		  search.setResultadoBusqueda(this.mResultadosDeBusqueda);
-		return Response.ok(new Viewable( "/BusquedaDeTitulo"  )).build();
+		  LogicFactory factory = new LogicFactory();
+		  IBusquedaLogica searchLogic = factory.getBusquedaLogica();
+		  this.mResultadosDeBusqueda = search.getResultadoBusqueda();
+		  search = searchLogic.BusquedaSimple(search);
+		  
+		return Response.ok(new Viewable( "/BusquedaDeTitulo", search  )).build();
 	  }
 	  
 	  @Path("/Mostrar")
 	  @POST
 	  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	  public Response requestShowTitle(
-			  @FormParam("tituloSeleccion") String pTitulo){
+			  @FormParam("verTitulo") String pTitulo,
+			  @FormParam("verTipo") String pTipo){
 		  
-		  PeliculaModel selectedTitle = null;
+		  System.out.println("pasa a mostrar el perfil de titulo");
+		  System.out.println(pTitulo);
+		  System.out.println("el tipo de titulo es");
+		  System.out.println(pTipo);
 		  
-		  for (int contador = 0; contador < this.mResultadosDeBusqueda.size(); contador++){
+		  TituloModel selectedTitle = new TituloModel();
+		  selectedTitle.setNombre(pTitulo);
+		  selectedTitle.setTipoDeTitulo(Integer.parseInt(pTipo));
+		  
+		  /*for (int contador = 0; contador < this.mResultadosDeBusqueda.size(); contador++){
 			  if (this.mResultadosDeBusqueda.get(contador).getNombre().equals(pTitulo)){
-				  selectedTitle = (PeliculaModel)this.mResultadosDeBusqueda.get(contador);
+				  selectedTitle = new TituloModel();
+				  selectedTitle.setNombre(pTitulo);
 				  break;
 			  }
-		  }
+		  }*/
 		  
 		  Busquedas search = new Busquedas();
-		  selectedTitle = (PeliculaModel)search.buscarDatosDeTitulo(selectedTitle);
-		  
-		  return Response.ok(new Viewable("/BusquedaDeTitulo",selectedTitle )).build();
+		  search.buscarDatosDeTitulo(selectedTitle);
+		  return Response.ok(new Viewable("/PerfilTitulo",selectedTitle )).build();
 	  }
 	  
-	  @Path("/Resenna")
+ @Path("/Resenna")
 	  @POST
 	  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	  public Response requestReview(
 			  @FormParam("resenna") String pReview,
-			  @FormParam("calificacion") String pScore){
-//		  
-//		  ResennasDeTitulos review = new ResennasDeTitulos();
+			  @FormParam("calificacion") String pScore,
+			  @FormParam("nombreTitulo") String pNombreTitulo){
+		  
+		  LogicFactory factory = new LogicFactory();
+		  IResennaTitulo review = factory.getResennaLogica();
 		  ResennaModel reviewModel = new ResennaModel();
 		  
+		  reviewModel.setTitulo(pNombreTitulo);
 		  reviewModel.setContenido(pReview);
+		  reviewModel.setAutor("emma");//Cambiar esto
 		  
 		  try{
-			  reviewModel.setCalificacionDeExperto(Integer.parseInt(pScore));
+			  reviewModel.setCalificacionDeExperto(Float.parseFloat(pScore));
 		  }catch(Exception e){}
 		  
-//		  boolean isValid = review.resennarTitulo(reviewModel);
+		  boolean isValid = review.crearResenna(reviewModel);
 		  
-//		  if (isValid){
+		  if (isValid){
+			  System.out.println("Se guardo buen la resenna");
 			  return Response.ok(new Viewable("/PerfilTitulo",this.mTituloSelecionado )).build();
-//		  }
+		  }
 		  
-//		  return Response.ok(new Viewable("/BusquedaDeTitulo",this.mTituloSelecionado )).build();
+		  return Response.ok(new Viewable("/BusquedaDeTitulo",this.mTituloSelecionado )).build();
 	  }
 	  
 	  @Path("/Add")

@@ -1,11 +1,14 @@
 package repositories;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 import models.RecomendacionModel;
 import models.UsuarioModel;
+import models.RegistroModel;
 
 
 import java.sql.PreparedStatement;
@@ -20,6 +23,19 @@ import javax.management.Query;
  * incluyendo las busquedas
  */
 public class RepositorioUsuarios implements IRepositorioUsuarios{
+	
+	/**
+	 * Metodo encarga de verificar en la base de datos la 
+	 * autetificacion del usuario
+	 * @param pUsuarioModel
+	 * @return boolean
+	 */
+	public boolean verificaLoginUsuario( UsuarioModel pUsuarioModel ){
+		
+		//Colocar la logica para conectares con el data access
+		
+		return true;
+	}
 
 
 	/**
@@ -136,6 +152,60 @@ public class RepositorioUsuarios implements IRepositorioUsuarios{
 		}
 		
 		return isValid;
+	}
+	 
+	public boolean registraNuevoUsuario( RegistroModel pUsuarioModel ){
+		
+		UsuariosDataAccess dataAccess = new UsuariosDataAccess();
+		return dataAccess.registraNuevoUsuario(pUsuarioModel.getUsername(), pUsuarioModel.getPassword(), pUsuarioModel.getMail(), pUsuarioModel.getRol());
+		
+	}
+	
+	/**
+	 * Metodo encargado de guardar la informacion adicional del uauario en la
+	 * base de datos por medio del data access
+	 */
+	public boolean guardarInformacionAdicional( UsuarioModel pUsuario ){
+		
+		UsuariosDataAccess dataAccess = new UsuariosDataAccess();
+		String date = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+		
+		dataAccess.guardarInformacionAdicional(pUsuario.getUser(), pUsuario.getNombre(), pUsuario.getPais(), pUsuario.getGenero(), pUsuario.getGeneros(), pUsuario.getExperiencia(), pUsuario.getEmail(), date);
+		
+		return true;
+	}
+	
+	/**
+	 * Metodo encargado de actualizar la informacion adicional del usuario
+	 * en al base de datos por medio del data access
+	 */
+	public boolean actualizarInformacionAdicional( UsuarioModel pUsuario ){
+		
+		//Colocar la logica para conectarse con el data access
+		
+		return true;
+	}
+	
+	/**
+	 * Metodo encargado de obtener la informacion
+	 * necesario para mostara el perfil del usuario
+	 */
+	public boolean getPerfilUsuario( UsuarioModel pUsuario ){
+		
+		//Colocar la logica para conectarse con el data access
+		
+		return true;
+	}
+	
+	/**
+	 * Metodo encargado de cambiar la clace de un determinado
+	 * usuario
+	 */
+	public boolean cambiarClave( UsuarioModel pUsuarioModel ){
+		
+		//Colocar la logica para conectarse con el data access
+		
+		return true;
 	}
 	
 	/**

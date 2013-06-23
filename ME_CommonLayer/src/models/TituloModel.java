@@ -1,22 +1,19 @@
 package models;
 
+import java.util.HashMap;
+import java.util.List;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-import javax.imageio.ImageIO;
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * Encargada de manejar toda la informacion conrrespondiente de determinado titulo
  * @author Luis Alonso
  *
  */
-@XmlRootElement(name = "titulo")
+ @XmlRootElement(name = "titulomodel")
 public class TituloModel{
 	
 	private String mNombre;
@@ -24,11 +21,17 @@ public class TituloModel{
 	private String mCodigo;
 	private int mAnno;
 	private String mDirector;
+	private int mAnno;
+	private HashMap<Integer, Integer> mCalificacionExpertos;
+	private int mCalificacionesIMDB;
+	private int mCalificacionesComunidad;
 	private List<ResennaModel> mResennas;
+	private ResennaModel mResenna;
 	private GeneroModel mGenero;
+	private String mLinkYoutube;
+	private int mTipoDeTitulo;
 	private Date mFechaCreacion;
 	private String mImagen;
-	private String mLinkYoutube;
 	
 	/*
 	 */
@@ -54,7 +57,7 @@ public class TituloModel{
 	/**
 	 * @return the mAnno
 	 */
-	@XmlElement
+	 @XmlElement
 	public int getAnno() {
 		return mAnno;
 	}
@@ -69,7 +72,7 @@ public class TituloModel{
 	/**
 	 * @return the mDescripcion
 	 */
-	@XmlElement
+	 @XmlElement
 	public String getDescripcion() {
 		return mDescripcion;
 	}
@@ -84,7 +87,7 @@ public class TituloModel{
 	/**
 	 * @return the mDirector
 	 */
-	@XmlElement
+	 @XmlElement
 	public String getDirector() {
 		return mDirector;
 	}
@@ -99,27 +102,42 @@ public class TituloModel{
 	/**
 	 * @return the mGenero
 	 */
-	@XmlElement
-	public GeneroModel getGenero() {
-		return mGenero;
+	 @XmlElement
+	public HashMap<Integer, Integer> getCalificacionExpertos() {
+		return mCalificacionExpertos;
 	}
 
 	/**
 	 * @param mGenero the mGenero to set
 	 */
-	public void setGenero(GeneroModel mGenero) {
-		this.mGenero = mGenero;
+	public void setCalificacionExpertos(HashMap<Integer, Integer> mCalificacionExpertos) {
+		this.mCalificacionExpertos = mCalificacionExpertos;
 	}
 
-	@XmlElement
-	public String getCodigo() {
-		return mCodigo;
+	/**
+	 * @return the mCalificacionesIMDB
+	 */
+	 @XmlElement
+	public int getCalificacionesIMDB() {
+		return mCalificacionesIMDB;
 	}
 
 	public void setCodigo(String mCodigo) {
 		this.mCodigo = mCodigo;
 	}
 
+	/**
+	 * @return the mCalificacionesComunidad
+	 */
+	 @XmlElement
+	public int getCalificacionesComunidad() {
+		return mCalificacionesComunidad;
+	}
+
+	public void setCalificacionesComunidad(int mCalificacionesComunidad) {
+		this.mCalificacionesComunidad = mCalificacionesComunidad;
+	}
+	
 	@XmlElement
 	public List<ResennaModel> getResennas() {
 		return mResennas;
@@ -129,6 +147,9 @@ public class TituloModel{
 		this.mResennas = mResennas;
 	}
 
+	/**
+	 * @return the mResenna
+	 */
 	@XmlElement
 	public Date getFechaCreacion() {
 		return mFechaCreacion;
@@ -138,6 +159,9 @@ public class TituloModel{
 		this.mFechaCreacion = mFechaCreacion;
 	}
 
+	/**
+	 * @return the mGenero
+	 */
 	@XmlElement
 	public String getImagen() {
 		return mImagen;
@@ -154,5 +178,37 @@ public class TituloModel{
 
 	public void setmLinkYoutube(String mLinkYoutube) {
 		this.mLinkYoutube = mLinkYoutube;
+	}
+
+	/**
+	 * @return the mLinkYouTube
+	 */
+	 @XmlElement
+	public String getLinkYouTube() {
+		return mLinkYouTube;
+	}
+
+	/**
+	 * @param mLinkYouTube the mLinkYouTube to set
+	 */
+	public void setLinkYouTube(String mLinkYouTube) {
+		this.mLinkYouTube = mLinkYouTube;
+	}
+	
+	/**
+	 * @return the mTipoDeTitulo
+	 */
+	 @XmlElement
+	public int getTipoDeTitulo() {
+		return mTipoDeTitulo;
+	}
+
+
+
+	/**
+	 * @param mTipoDeTitulo the mTipoDeTitulo to set
+	 */
+	public void setTipoDeTitulo(int mTipoDeTitulo) {
+		this.mTipoDeTitulo = mTipoDeTitulo;
 	}
 }

@@ -1,6 +1,8 @@
 package models;
 
 import java.util.List;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 /**
@@ -8,6 +10,7 @@ import java.util.List;
  * @author Luis Alonso
  *
  */
+@XmlRootElement(name = "busquedasimple")
 public class BusquedaSimpleModel{
 	
 	private boolean mBusquedaPorNombre;
@@ -67,6 +70,7 @@ public class BusquedaSimpleModel{
 	/**
 	 * @return the mResultadoBusqueda
 	 */
+	@XmlElement
 	public List<TituloModel> getResultadoBusqueda() {
 		return mResultadoBusqueda;
 	}
