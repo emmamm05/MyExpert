@@ -26,10 +26,9 @@
 		</div>
 		<div id="menu">
 			<ul>
-				<li><a href="#" accesskey="1" title="">Perfil</a></li>
-				<li><a href="Buzon.html" accesskey="2" title="">Buzón</a></li>
-				<li class="current_page_item"><a href="/ME_PresentationLayer/rest/BusquedaDeTitulo" accesskey="3" title="">Búsqueda de títulos</a></li>
-				<li><a href="logInMyExpert.html" accesskey="4" title="">Salir</a></li>
+				<jsp:include page="basicMenu.jsp">
+					<jsp:param value="1" name="current"/>
+				</jsp:include>
 			</ul>
 		</div>
 	</div>

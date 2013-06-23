@@ -141,8 +141,8 @@ public class TituloModel{
 		return mResennas;
 	}
 
-	public void setmResennas(List<ResennaModel> Resennas) {
-		this.mResennas = mResennas;
+	public void setResennas(List<ResennaModel> Resennas) {
+		this.mResennas = Resennas;
 	}
 
 	/**

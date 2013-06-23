@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 
 /**
@@ -16,7 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * TODO: Revisar cuales modelos no son leidos en los views para 
  * quitar el serializable
  */
-@XmlRootElement(name = "usuarios")
+@XmlRootElement(name = "ExpertoModel")
 public class UsuarioModel implements Serializable{
 	
 	
@@ -55,7 +56,7 @@ public class UsuarioModel implements Serializable{
 	/**
 	 * @return the mBuzon
 	 */
-	@XmlElement
+	@XmlTransient
 	public HashMap<Integer,RecomendacionModel> getBuzon() {
 		return mBuzon;
 	}
@@ -74,7 +75,7 @@ public class UsuarioModel implements Serializable{
 	/**
 	 * @return the mApellidos
 	 */
-	@XmlElement
+	@XmlElement(name="Apellidos")
 	public String getApellidos() {
 		return mApellidos;
 	}
@@ -114,7 +115,7 @@ public class UsuarioModel implements Serializable{
 	/**
 	 * @return the mEstado
 	 */
-	@XmlElement
+	@XmlTransient
 	public boolean isEstado() {
 		return mEstado;
 	}
@@ -124,7 +125,7 @@ public class UsuarioModel implements Serializable{
 	/**
 	 * @return the mPuntuacion
 	 */
-	@XmlElement
+	@XmlTransient
 	public int getPuntuacion() {
 		return mPuntuacion;
 	}
@@ -188,7 +189,7 @@ public class UsuarioModel implements Serializable{
 	/**
 	 * @return the User
 	 */
-	@XmlElement
+	@XmlElement( name="NombreUsuario" )
 	public String getUser() {
 		return mUser;
 	}
@@ -204,7 +205,7 @@ public class UsuarioModel implements Serializable{
 	/**
 	 * @return the Nombre
 	 */
-	@XmlElement
+	@XmlElement( name="Name" )
 	public String getNombre() {
 		return mNombre;
 	}
@@ -249,7 +250,7 @@ public class UsuarioModel implements Serializable{
 		return mGeneros;
 	}
 	
-	@XmlElement
+	@XmlTransient
 	public int getRole(){
 		return mRol;
 	}

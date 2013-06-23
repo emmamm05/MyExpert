@@ -18,6 +18,10 @@ import java.util.Date;
 
 @XmlRootElement(name = "Recomendacion")
 public class RecomendacionModel implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int     mId;
 	private String  mDescripcion;
 	private int     mAnno;

@@ -21,6 +21,10 @@ import models.BusquedaSimpleModel;
  * @author emma
  *
  */
+/**
+ * @author emma
+ *
+ */
 public class RepositorioTitulos implements IRepositorioTitulos{
 	
 	/**
@@ -46,6 +50,10 @@ public class RepositorioTitulos implements IRepositorioTitulos{
 		}
 	}
 
+	/* 
+	 * Metodo que tiene como funcion agregar un nuevo titulo en la base de datos
+	 * por medio del dataaccess
+	 */
 	@Override
 	public void addTitulo(TituloModel pTitulo, String pCodigoUsuario) {
 		TitulosDataAccess dataAccess = new TitulosDataAccess();
@@ -129,6 +137,9 @@ public class RepositorioTitulos implements IRepositorioTitulos{
 		}
 	}
 
+	/* Metodo que tiene como funcion buscar usando al parametro de Nombre de Pelicula
+	 * pBusqueda: Modelo de la busqueda conteniendo la lista de los resultados
+	 */
 	public void buscarPorNombre( BusquedaSimpleModel pBusqueda ){
 		
 		pBusqueda.setResultadoBusqueda(new ArrayList<TituloModel>());
@@ -169,6 +180,9 @@ public class RepositorioTitulos implements IRepositorioTitulos{
 
 
 
+	/* metodo que se encarga de obtener las resennas con respecto a un codigo de 
+	 * titulo
+	 */
 	@Override
 	public List<ResennaModel> getResennas(String pCodigoTitulo) {
 
@@ -194,6 +208,8 @@ public class RepositorioTitulos implements IRepositorioTitulos{
 		return listaResennas;
 	}
 
+	/* Se encarga de rellenar la informacion correspondiente al modelo de Resenna
+	 */
 	@Override
 	public void getResennaCompleta(ResennaModel pResenna) {
 		TitulosDataAccess dataAccess = new TitulosDataAccess();

@@ -26,11 +26,9 @@
 		</div>
 		<div id="menu">
 			<ul>
-				<li><a href="#" accesskey="1" title="">Perfil</a></li>
-				<li><a href="Buzon.html" accesskey="2" title="">Buzón</a></li>
-				<li class="current_page_item"><a href="#" accesskey="3" title="">Búsqueda de títulos</a></li>
-				<li><a href="logInMyExpert.html" accesskey="4" title="">Salir</a></li>
-
+				<jsp:include page="basicMenu.jsp">
+					<jsp:param value="1" name="current"/>
+				</jsp:include>
 			</ul>
 		</div>
 	</div>
@@ -40,20 +38,20 @@
 
 <!-- Pare media de la pagina web -->
 
-<div id="footer-wrapper">
+<div id="footer-wrapper" style="height: 800px;">
 	<div id="footer-content">
 		<div>
 			<form action="/ME_PresentationLayer/rest/Titulo/Busqueda?UUID=<%= request.getParameter("UUID") %>" method="post" style="height: 254px">
 				<p style="width: 351px" id="tituloSeccion">Búsqueda de títulos</p>
 				<p></p>
-				<table style="width: 1000px; height: 261px;">
+				<table style="width: 1000px; height: 51px;">
 					<tr>
 						<td>
 							<table style="width: 1000px">
 								<tr>
 									<td style="width: 230px" align="center">
 									<select name="Criterio">
-										<option>Película o serie</option>
+										<option>Titulo</option>
 										<option>Director</option>
 									</select></td>
 									<td align="center" style="width: 568px">
@@ -66,30 +64,40 @@
 						</td>
 					</tr>
 				</table>
-			</form>
-			<form action="/ME_PresentationLayer/rest/Titulo/Mostrar?UUID=<%= request.getParameter("UUID") %>" method="post" style="height: 577px">
-				<table>
-					<!--<tr>
-						<td style="height: 21px">
-						</td>
-					</tr>-->
-					<tr>
-						<td style="border:thin">
-							<table>
-								<c:forEach items="${it.resultadoBusqueda}" var="element">
-									<tr>
-										<td><input name="verTitulo" type="submit" value="${element.nombre}" /><input type="hidden" name="verTipo" value="${element.tipoDeTitulo}" /></td><td>Director: ${element.director}</td>
-									</tr>
-								</c:forEach>
-							</table>
-						</td>
-					</tr>
-					<tr>
-						<td align="center"></td>
-					</tr>
+				<table border="0" >
+						<c:forEach items="${it.resultadoBusqueda}" var="titulo" >
+						<tr style=" height: 50px;">
+							<td>Nombre: ${titulo.nombre} </td>
+							<td><a href="/ME_PresentationLayer/rest/Titulo/Mostrar?UUID=<%= request.getParameter("UUID") %>&Codigo=${titulo.nombre}"><input type="button" value="Ver"/></input></a></td>
+							<td><a href="/ME_PresentationLayer/rest/Titulo/Deshabilitar?UUID=<%= request.getParameter("UUID") %>&Codigo=${titulo.nombre}"><input type="button" value="Deshabilitar"/></input></a></td>
+						</tr>
+						</c:forEach>
+					</table>
+<!-- 			</form> -->
+<%-- 			<form action="/ME_PresentationLayer/rest/Titulo/Mostrar?UUID=<%= request.getParameter("UUID") %>" method="post" style="height: 577px"> --%>
+<!-- 				<table> -->
+<!-- 					<tr>
+<!-- 						<td style="height: 21px"> -->
+<!-- 						</td> -->
+<!-- 					</tr>--> -->
+<!-- 					<tr> -->
+<!-- 						<td style="border:thin"> -->
+<!-- 							<table> -->
+<%-- 								<c:forEach items="${it.resultadoBusqueda}" var="element"> --%>
+<!-- 									<tr> -->
+<%-- 										<td><input name="verTitulo" type="submit" value="${element.nombre}" /><input type="hidden" name="verTipo" value="${element.tipoDeTitulo}" /></td><td>Director: ${element.director}</td> --%>
+<%-- 										<td><a href="/ME_PresentationLayer/rest/Titulo/Mostrar?UUID=<%= request.getParameter("UUID") %>"><input type="button" value="deshabilitar"/></input></a></td> --%>
+<!-- 									</tr> -->
+<%-- 								</c:forEach> --%>
+<!-- 							</table> -->
+<!-- 						</td> -->
+<!-- 					</tr> -->
+<!-- 					<tr> -->
+<!-- 						<td align="center"></td> -->
+<!-- 					</tr> -->
 	
-				</table>
-			</form>
+<!-- 				</table> -->
+<!-- 			</form> -->
 		</div>
 	</div>
 </div>

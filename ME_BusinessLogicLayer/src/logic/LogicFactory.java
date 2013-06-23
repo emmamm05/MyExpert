@@ -37,8 +37,8 @@ public class LogicFactory {
 	 * Metodo encargado de instancia a la clase BusquedaLogica
 	 * @return objeto BusquedaLogica
 	 */
-	public IBusquedaLogica getBusquedaLogica(){
-		return new Busquedas();
+	public IBusquedasLogic getBusquedaLogica(){
+		return new BusquedasLogic();
 	}
 
 	
@@ -65,5 +65,8 @@ public class LogicFactory {
 		// TODO Auto-generated method stub
 		return new CuentaLogic();
 	}
-
+	
+	public IBusquedasLogic createBusquedaLogic(){
+		return new BusquedasLogic();
+	}
 }

@@ -2,11 +2,13 @@ package logic;
 
 import java.util.List;
 
+import models.BusquedaSimpleModel;
 import models.TituloModel;
 
 public interface IBusquedasLogic {
 
-	public List<TituloModel> buscarPorDirector( String pDirector );
-	public List<TituloModel> buscarPorNombre( String pNombre ); 
+	public BusquedaSimpleModel BusquedaSimple(BusquedaSimpleModel pBusqueda);
+	public void buscarDatosDeTitulo(TituloModel pTitulo);
+
 	
 }

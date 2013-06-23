@@ -15,7 +15,7 @@ import repositories.RepositoriesFactory;
  * @author Luis Alonso
  *
  */
-public class Busquedas implements IBusquedaLogica{
+public class BusquedasLogic implements IBusquedasLogic{
 	
 	private String mCriterioDeBusqueda;
 	private List<String> mResultadoTitulos;
@@ -25,7 +25,7 @@ public class Busquedas implements IBusquedaLogica{
 	/**
 	 * Construcctor
 	 */
-	public Busquedas(){
+	public BusquedasLogic(){
 		
 	}
 
@@ -127,6 +127,7 @@ public class Busquedas implements IBusquedaLogica{
 			  repoTitle.getInfoTemporada(temporada);
 		  }*/
 	}
+
 
 
 }

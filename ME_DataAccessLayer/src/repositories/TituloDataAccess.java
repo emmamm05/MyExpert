@@ -95,6 +95,7 @@ public class TituloDataAccess implements ITitulosDataAccess{
 			pstmt.setString(1, pNombreTitulo);
 			rs = pstmt.executeQuery();
 		}catch(Exception e){
+			e.printStackTrace();
 			System.out.println("Error al tratar de establecer conexion desde el repositorio");
 		}
 		

@@ -16,8 +16,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.FormParam;
 
-import logic.Busquedas;
-import logic.IBusquedaLogica;
+import logic.BusquedasLogic;
+import logic.IBusquedasLogic;
 import logic.IResennaTitulo;
 import logic.Login;
 import logic.ResennasDeTitulos;
@@ -45,9 +45,6 @@ public class TituloController{
 	
 	@Context
 	private UriInfo mUriInfo;
-	private List<TituloModel> mResultadosDeBusqueda;
-	private TituloModel mTituloSelecionado;
-	private boolean mBuscando;
 	
 	  @GET
 	  @Produces(MediaType.TEXT_HTML)
@@ -94,51 +91,39 @@ public class TituloController{
 			  @FormParam("Criterio") String pCriterio, 
 			  @FormParam("PalabraClave") String pPalabraClave ){
 		  
-		  BusquedaSimpleModel search = new BusquedaSimpleModel();
-		  search.setPalabraClave(pPalabraClave);
+		  BusquedaSimpleModel busquedaSimpleModel = new BusquedaSimpleModel();
+		  busquedaSimpleModel.setPalabraClave(pPalabraClave);
 		  
-		  if("Película o serie".equals(pCriterio)){
-			  search.setBusquedaPorNombre(true);
+		  if("Titulo".equals(pCriterio)){
+			  busquedaSimpleModel.setBusquedaPorNombre(true);
 		  }else if("Director".equals(pCriterio)){
-			  search.setBusquedaPorDirector(true);
+			  busquedaSimpleModel.setBusquedaPorDirector(true);
 		  }
 		  
 		  LogicFactory factory = new LogicFactory();
-		  IBusquedaLogica searchLogic = factory.getBusquedaLogica();
-		  this.mResultadosDeBusqueda = search.getResultadoBusqueda();
-		  search = searchLogic.BusquedaSimple(search);
+		  IBusquedasLogic busquedaLogic = factory.getBusquedaLogica();
 		  
-		return Response.ok(new Viewable( "/BusquedaDeTitulo", search  )).build();
+		  busquedaLogic.BusquedaSimple(busquedaSimpleModel);
+		  
+		  
+		  
+		return Response.ok(new Viewable( "/BusquedaDeTitulo", busquedaSimpleModel  )).build();
 	  }
 	  
 	  @Path("/Mostrar")
-	  @POST
-	  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	  @GET
+	  @Produces(MediaType.TEXT_HTML)
 	  public Response requestShowTitle(
-			  @FormParam("verTitulo") String pTitulo,
-			  @FormParam("verTipo") String pTipo){
+			  @QueryParam("UUID") String pUUID,
+			  @QueryParam("Codigo") String pNombre){
 		  
-		  System.out.println("pasa a mostrar el perfil de titulo");
-		  System.out.println(pTitulo);
-		  System.out.println("el tipo de titulo es");
-		  System.out.println(pTipo);
+		  LogicFactory factory = new LogicFactory();
+		  TituloModel model = new TituloModel();
+		  model.setNombre(pNombre);
+		  factory.createBusquedaLogic().buscarDatosDeTitulo(model);
 		  
-		  TituloModel selectedTitle = new TituloModel();
-		  selectedTitle.setNombre(pTitulo);
-		  selectedTitle.setTipoDeTitulo(Integer.parseInt(pTipo));
-		  
-		  /*for (int contador = 0; contador < this.mResultadosDeBusqueda.size(); contador++){
-			  if (this.mResultadosDeBusqueda.get(contador).getNombre().equals(pTitulo)){
-				  selectedTitle = new TituloModel();
-				  selectedTitle.setNombre(pTitulo);
-				  break;
-			  }
-		  }*/
-		  
-		  Busquedas search = new Busquedas();
-		  search.buscarDatosDeTitulo(selectedTitle);
-		  return Response.ok(new Viewable("/PerfilTitulo",selectedTitle )).build();
-	  }
+		  return Response.ok(new Viewable("/PerfilTitulo", model )).build();
+	  }			
 	  
  @Path("/Resenna")
 	  @POST
@@ -151,6 +136,7 @@ public class TituloController{
 		  LogicFactory factory = new LogicFactory();
 		  IResennaTitulo review = factory.getResennaLogica();
 		  ResennaModel reviewModel = new ResennaModel();
+		  TituloModel tituloSelecionado = new TituloModel();
 		  
 		  reviewModel.setTitulo(pNombreTitulo);
 		  reviewModel.setContenido(pReview);
@@ -164,10 +150,10 @@ public class TituloController{
 		  
 		  if (isValid){
 			  System.out.println("Se guardo buen la resenna");
-			  return Response.ok(new Viewable("/PerfilTitulo",this.mTituloSelecionado )).build();
+			  return Response.ok(new Viewable("/PerfilTitulo",tituloSelecionado )).build();
 		  }
 		  
-		  return Response.ok(new Viewable("/BusquedaDeTitulo",this.mTituloSelecionado )).build();
+		  return Response.ok(new Viewable("/BusquedaDeTitulo",tituloSelecionado )).build();
 	  }
 	  
 	  @Path("/Add")
@@ -222,34 +208,4 @@ public class TituloController{
 		  
 		  return Response.seeOther(location).build();
 	  }
-	  
-
-	/**
-	 * @return the mResultadosDeBusqueda
-	 */
-	public List<TituloModel> getResultadosDeBusqueda() {
-		return mResultadosDeBusqueda;
-	}
-
-	/**
-	 * @param mResultadosDeBusqueda the mResultadosDeBusqueda to set
-	 */
-	public void setResultadosDeBusqueda(List<TituloModel> mResultadosDeBusqueda) {
-		this.mResultadosDeBusqueda = mResultadosDeBusqueda;
-	}
-
-	/**
-	 * @return the mTituloSelecionado
-	 */
-	public TituloModel getTituloSelecionado() {
-		return mTituloSelecionado;
-	}
-
-	/**
-	 * @param mTituloSelecionado the mTituloSelecionado to set
-	 */
-	public void setTituloSelecionado(TituloModel mTituloSelecionado) {
-		this.mTituloSelecionado = mTituloSelecionado;
-	}
-
 }
